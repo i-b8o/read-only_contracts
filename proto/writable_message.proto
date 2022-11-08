@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+option go_package = "./;pb";
+
+
+message WritableParagraph {
+    uint64 ID        = 1;
+    uint64 Num       = 2;
+    bool HasLinks    = 3;
+    bool IsTable     = 4;
+    bool IsNFT       = 5;
+    string Class     = 6;
+    string Content   = 7;
+    uint64 ChapterID = 8;
+}
+
+message UpdateOneRequestMesssage {
+    uint64 ID      = 1;
+    string Content = 2;
+}
+
+message CreateRegulationRequest {
+    string Name         = 1;
+    string Abbreviation = 2;
+    string Title        = 3;
+}
+
+message CreateRegulationResponse {
+    uint64 ID = 1;
+}
+
+message DeleteRegulationRequest {
+    uint64 ID = 1;
+}
+
+message DeleteRegulationResponse {
+    string Status = 1;
+}
+
+message CreateChapterRequest {
+    uint64 ID                     = 1;
+    string Name                   = 2;
+    string Num                    = 3;
+    string RegulationID           = 4;
+    string OrderNum               = 5;
+    repeated WritableParagraph Paragraphs = 6;
+    string UpdatedAt              = 7;
+}
+
+message CreateChapterResponse {
+    uint64 ID = 1;
+}
+
+message DeleteChaptersForRegulationRequest {
+    uint64 ID = 1;
+}
+
+message DeleteChaptersForRegulationResponse {
+    string Status = 1;
+}
+
+message CreateAllParagraphsRequest {
+    repeated WritableParagraph Paragraphs = 1;
+}
+
+message CreateAllParagraphsResponse {
+    string Status = 1;
+}
+
+message UpdateOneParagraphRequest {
+    uint64 ID      = 1;
+    string Content = 2;
+}
+
+message UpdateOneParagraphResponse {
+    string Status = 1;
+}
+
+message DeleteParagraphsForChapterRequest {
+    uint64 ID = 1;
+}
+
+message DeleteParagraphsForChapterResponse {
+    string Status = 1;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "./;pb";
+
+import "read_only_message.proto";
+
+service ReadOnlyRegulationGRPC {
+    rpc GetRegulation(GetRegulationRequest) returns (GetRegulationResponse) {};
+    rpc GetChapter(GetChapterRequest) returns (GetChapterResponse) {};
+    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc GetParagraphs(GetParagraphsRequest) returns (GetParagraphsResponse) {};
+    rpc Search(SearchRequest) returns (SearchResponse) {};
+    rpc SearchRegulations(SearchRequest) returns (SearchResponse) {};
+    rpc SearchChapters(SearchRequest) returns (SearchResponse) {};
+    rpc SearchPargaraphs(SearchRequest) returns (SearchResponse) {};
+}

@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+option go_package = "./;pb";
+
+
+message ReadOnlyParagraph {
+    uint64 ID        = 1;
+    uint64 Num       = 2;
+    bool HasLinks    = 3;
+    bool IsTable     = 4;
+    bool IsNFT       = 5;
+    string Class     = 6;
+    string Content   = 7;
+    uint64 ChapterID = 8;
+}
+
+
+
+message ReadOnlyChapter {
+    uint64 ID                     = 1;
+    string Name                   = 2;
+    string Num                    = 3;
+    string RegulationID           = 4;
+    string OrderNum               = 5;
+    repeated ReadOnlyParagraph Paragraphs = 6;
+    string UpdatedAt              = 7;
+}
+
+message ID {
+    uint64 ID = 1;
+}
+
+message Status {
+    string Status = 1;
+}
+
+message GetRegulationRequest {
+    uint64 ID = 1;
+}
+
+message GetRegulationResponse {
+    string Name         = 1;
+    string Abbreviation = 2;
+    string Title        = 3;
+}
+
+message GetChapterRequest {
+    uint64 ID = 1;
+}
+
+message GetChapterResponse {
+    uint64 ID                     = 1;
+    string Name                   = 2;
+    string Num                    = 3;
+    string RegulationID           = 4;
+    string OrderNum               = 5;
+    repeated ReadOnlyParagraph Paragraphs = 6;
+    string UpdatedAt              = 7;
+}
+
+message GetAllChaptersRequest {
+    uint64 ID = 1;
+}
+
+message GetAllChaptersResponse {
+    repeated ReadOnlyChapter Chapters = 1;
+}
+
+message GetParagraphsRequest {
+    uint64 ID = 1;
+}
+
+message GetParagraphsResponse {
+    repeated ReadOnlyParagraph Paragraphs = 1;
+}
+
+message SearchRequest {
+    string SearchQuery = 1;
+    string Limit       = 2;
+    string Offset      = 3;
+}
+
+message SearchResponse {
+    string RID       = 1;
+    string RName     = 2;
+    string CID       = 3;
+    string CName     = 4;
+    string UpdatedAt = 5;
+    string PID       = 6;
+    string Text      = 7;
+    string Count     = 8;
+}
