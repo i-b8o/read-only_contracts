@@ -9,8 +9,8 @@ service ReadOnlyRegulationGRPC {
     rpc GetChapter(GetChapterRequest) returns (GetChapterResponse) {};
     rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
     rpc GetParagraphs(GetParagraphsRequest) returns (GetParagraphsResponse) {};
-    rpc Search(SearchRequest) returns (SearchResponse) {};
-    rpc SearchRegulations(SearchRequest) returns (SearchResponse) {};
-    rpc SearchChapters(SearchRequest) returns (SearchResponse) {};
-    rpc SearchPargaraphs(SearchRequest) returns (SearchResponse) {};
+    rpc Search(SearchRequest) returns (SearchResponseMessage) {};
+    rpc SearchRegulations(SearchRequest) returns (SearchResponseMessage) {};
+    rpc SearchChapters(SearchRequest) returns (SearchResponseMessage) {};
+    rpc SearchPargaraphs(SearchRequest) returns (SearchResponseMessage) {};
 }

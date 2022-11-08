@@ -82,3 +82,14 @@ message SearchResponse {
     string Text      = 7;
     string Count     = 8;
 }
+
+message SearchResponseMessage {
+    string RID       = 1;
+    string RName     = 2;
+    string CID       = 3;
+    string CName     = 4;
+    string UpdatedAt = 5;
+    string PID       = 6;
+    string Text      = 7;
+    string Count     = 8;
+}

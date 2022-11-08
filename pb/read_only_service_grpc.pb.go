@@ -26,10 +26,10 @@ type ReadOnlyRegulationGRPCClient interface {
 	GetChapter(ctx context.Context, in *GetChapterRequest, opts ...grpc.CallOption) (*GetChapterResponse, error)
 	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
 	GetParagraphs(ctx context.Context, in *GetParagraphsRequest, opts ...grpc.CallOption) (*GetParagraphsResponse, error)
-	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
-	SearchRegulations(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
-	SearchChapters(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
-	SearchPargaraphs(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
+	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
+	SearchRegulations(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
+	SearchChapters(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
+	SearchPargaraphs(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
 }
 
 type readOnlyRegulationGRPCClient struct {
@@ -76,8 +76,8 @@ func (c *readOnlyRegulationGRPCClient) GetParagraphs(ctx context.Context, in *Ge
 	return out, nil
 }
 
-func (c *readOnlyRegulationGRPCClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
-	out := new(SearchResponse)
+func (c *readOnlyRegulationGRPCClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+	out := new(SearchResponseMessage)
 	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -85,8 +85,8 @@ func (c *readOnlyRegulationGRPCClient) Search(ctx context.Context, in *SearchReq
 	return out, nil
 }
 
-func (c *readOnlyRegulationGRPCClient) SearchRegulations(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
-	out := new(SearchResponse)
+func (c *readOnlyRegulationGRPCClient) SearchRegulations(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+	out := new(SearchResponseMessage)
 	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchRegulations", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -94,8 +94,8 @@ func (c *readOnlyRegulationGRPCClient) SearchRegulations(ctx context.Context, in
 	return out, nil
 }
 
-func (c *readOnlyRegulationGRPCClient) SearchChapters(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
-	out := new(SearchResponse)
+func (c *readOnlyRegulationGRPCClient) SearchChapters(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+	out := new(SearchResponseMessage)
 	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchChapters", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -103,8 +103,8 @@ func (c *readOnlyRegulationGRPCClient) SearchChapters(ctx context.Context, in *S
 	return out, nil
 }
 
-func (c *readOnlyRegulationGRPCClient) SearchPargaraphs(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
-	out := new(SearchResponse)
+func (c *readOnlyRegulationGRPCClient) SearchPargaraphs(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+	out := new(SearchResponseMessage)
 	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchPargaraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -120,10 +120,10 @@ type ReadOnlyRegulationGRPCServer interface {
 	GetChapter(context.Context, *GetChapterRequest) (*GetChapterResponse, error)
 	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
 	GetParagraphs(context.Context, *GetParagraphsRequest) (*GetParagraphsResponse, error)
-	Search(context.Context, *SearchRequest) (*SearchResponse, error)
-	SearchRegulations(context.Context, *SearchRequest) (*SearchResponse, error)
-	SearchChapters(context.Context, *SearchRequest) (*SearchResponse, error)
-	SearchPargaraphs(context.Context, *SearchRequest) (*SearchResponse, error)
+	Search(context.Context, *SearchRequest) (*SearchResponseMessage, error)
+	SearchRegulations(context.Context, *SearchRequest) (*SearchResponseMessage, error)
+	SearchChapters(context.Context, *SearchRequest) (*SearchResponseMessage, error)
+	SearchPargaraphs(context.Context, *SearchRequest) (*SearchResponseMessage, error)
 	mustEmbedUnimplementedReadOnlyRegulationGRPCServer()
 }
 
@@ -143,16 +143,16 @@ func (UnimplementedReadOnlyRegulationGRPCServer) GetAllChapters(context.Context,
 func (UnimplementedReadOnlyRegulationGRPCServer) GetParagraphs(context.Context, *GetParagraphsRequest) (*GetParagraphsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetParagraphs not implemented")
 }
-func (UnimplementedReadOnlyRegulationGRPCServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedReadOnlyRegulationGRPCServer) Search(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
-func (UnimplementedReadOnlyRegulationGRPCServer) SearchRegulations(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedReadOnlyRegulationGRPCServer) SearchRegulations(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchRegulations not implemented")
 }
-func (UnimplementedReadOnlyRegulationGRPCServer) SearchChapters(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedReadOnlyRegulationGRPCServer) SearchChapters(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchChapters not implemented")
 }
-func (UnimplementedReadOnlyRegulationGRPCServer) SearchPargaraphs(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedReadOnlyRegulationGRPCServer) SearchPargaraphs(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchPargaraphs not implemented")
 }
 func (UnimplementedReadOnlyRegulationGRPCServer) mustEmbedUnimplementedReadOnlyRegulationGRPCServer() {
