@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./;read_only_pb";
+option go_package = "./;pb";
 
 message ReadOnlyParagraph {
     uint64 ID        = 1;

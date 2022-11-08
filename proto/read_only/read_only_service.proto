@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./;read_only_pb";
+option go_package = "./;pb";
 
 import "read_only_message.proto";
 
