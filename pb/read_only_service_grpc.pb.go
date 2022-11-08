@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: read_only_service.proto
 
-package pb
+package read_only_pb
 
 import (
 	context "context"
