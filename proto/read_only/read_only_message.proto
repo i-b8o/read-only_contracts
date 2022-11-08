@@ -25,13 +25,6 @@ message ReadOnlyChapter {
     string UpdatedAt              = 7;
 }
 
-message ID {
-    uint64 ID = 1;
-}
-
-message Status {
-    string Status = 1;
-}
 
 message GetRegulationRequest {
     uint64 ID = 1;
