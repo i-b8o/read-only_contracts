@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "./;pb";
 
-import "messages.proto";
+import "message.proto";
 
 service SupremeRegulationGRPC {
     rpc CreateAbsent(CreateAbsentRequest) returns (CreateAbsentResponse) {};
@@ -11,7 +11,7 @@ service SupremeRegulationGRPC {
 
     rpc CreatePseudoChapter(CreatePseudoChapterRequest) returns (CreatePseudoChapterResponse) {};
     rpc DeletePseudoChapter(DeletePseudoChapterRequest) returns (DeletePseudoChapterResponse) {};
-    rpc GetChapterIDByPseudo(GetChapterIDByPseudoRequest) (GetChapterIDByPseudoResponse)
+    rpc GetChapterIDByPseudo(GetChapterIDByPseudoRequest) returns (GetChapterIDByPseudoResponse) {};
 
     rpc CreatePseudoRegulation(CreatePseudoRegulationRequest) returns (CreatePseudoRegulationResponse) {};
     rpc DeletePseudoRegulation(DeletePseudoRegulationRequest) returns (DeletePseudoRegulationResponse) {};

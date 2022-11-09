@@ -8,7 +8,7 @@ message CreateAbsentRequest{
 }
 
 message DeleteForParagraphAbsentRequest{
-    uint64 ParagraphID =1 
+    uint64 ParagraphID =1;
 }
 
 message DoneAbsentRequest{
