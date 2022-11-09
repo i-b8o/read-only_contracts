@@ -2,66 +2,77 @@ syntax = "proto3";
 
 option go_package = "./;pb";
 
-message CreateRegulationRequest {
-    string Name         = 1;
-    string Abbreviation = 2;
-    string Title        = 3;
-    string PseudoID     = 4;
-
+message CreateAbsentRequest{
+    string PseudoId      = 1;
+    uint64 ParagraphId = 2; 
 }
 
-message CreateRegulationResponse {
-    uint64 ID = 1;
+message DeleteForParagraphAbsentRequest{
+    uint64 ParagraphID =1 
 }
 
-message CreateChapterRequest {
-    uint64 ID                     = 1;
-    string PseudoID               = 2;
-    string Name                   = 3;
-    string Num                    = 4;
-    string RegulationID           = 5;
-    string OrderNum               = 6;
-
+message DoneAbsentRequest{
+    string PseudoId = 1;
 }
 
-message CreateChapterResponse {
-    uint64 ID = 1;
-}
-
-message CreateParagraph {
-    uint64 ID        = 1;
-    uint64 Num       = 2;
-    bool HasLinks    = 3;
-    bool IsTable     = 4;
-    bool IsNFT       = 5;
-    string Class     = 6;
-    string Content   = 7;
-    uint64 ChapterID = 8;
-}
-
-
-message CreateParagraphsRequest {
-    reapeted CreateParagraph Paragraphs = 1;
-}
-
-
-message CreateParagraphsResponse {
-    string Status = 1;
-
-}
-
-message GenerateLinksRequest {
-    uint64 ID = 1;
-}
-
-message GenerateLinksResponse {
+message CreateAbsentResponse {
     string Status = 1;
 }
 
+message DeleteForParagraphAbsentResponse {
+    string Status = 1;
+}
 
+message DoneAbsentResponse {
+    string Status = 1;
+}
 
+message CreatePseudoChapterRequest {
+    uint64 ID = 1;
+    string PseudoId = 2;
+}
 
+message CreatePseudoChapterResponse {
+    string Status = 1;
+}
 
+message DeletePseudoChapterRequest {  
+    uint64 ID = 1;
+}
 
+message DeletePseudoChapterResponse {
+    string Status = 1;
+}
 
+message GetChapterIDByPseudoRequest {
+        uint64 ID = 1;
+}
 
+message GetChapterIDByPseudoResponse {
+        uint64 ID = 1;
+}
+
+message CreatePseudoRegulationRequest {
+    uint64 ID       = 1; 
+    string PseudoId = 2;
+}
+
+message DeletePseudoRegulationRequest {
+    uint64 regulationId = 1;
+}
+
+message GetIDPseudoRegulationRequest {
+    string PseudoId = 1;
+}
+
+message CreatePseudoRegulationResponse {
+    string Status = 1;
+}
+
+message DeletePseudoRegulationResponse {
+    string Status = 1;
+}
+
+message GetIDPseudoRegulationResponse {
+    uint64 ID = 1; 
+}

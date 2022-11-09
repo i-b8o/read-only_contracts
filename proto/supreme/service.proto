@@ -5,14 +5,15 @@ option go_package = "./;pb";
 import "messages.proto";
 
 service SupremeRegulationGRPC {
-    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc CreateParagraphs(CreateParagraphsRequest) returns (CreateParagraphsResponse) {};
-    rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-    
-    
-    rpc CreateRegulation(Regulation) returns (ID) {};
-    rpc CreateChapter(Chapter) returns (ID) {};
-    rpc CreateParagraphs(Paragraphs) returns (Status) {};
-    rpc GenerateLinks(ID) returns (Status) {};
+    rpc CreateAbsent(CreateAbsentRequest) returns (CreateAbsentResponse) {};
+    rpc DeleteForParagraphAbsent(DeleteForParagraphAbsentRequest) returns (DeleteForParagraphAbsentResponse) {};
+    rpc DoneAbsent(DoneAbsentRequest) returns (DoneAbsentResponse) {};
+
+    rpc CreatePseudoChapter(CreatePseudoChapterRequest) returns (CreatePseudoChapterResponse) {};
+    rpc DeletePseudoChapter(DeletePseudoChapterRequest) returns (DeletePseudoChapterResponse) {};
+    rpc GetChapterIDByPseudo(GetChapterIDByPseudoRequest) (GetChapterIDByPseudoResponse)
+
+    rpc CreatePseudoRegulation(CreatePseudoRegulationRequest) returns (CreatePseudoRegulationResponse) {};
+    rpc DeletePseudoRegulation(DeletePseudoRegulationRequest) returns (DeletePseudoRegulationResponse) {};
+    rpc GetIDPseudoRegulation(GetIDPseudoRegulationRequest) returns (GetIDPseudoRegulationResponse) {};
 }
