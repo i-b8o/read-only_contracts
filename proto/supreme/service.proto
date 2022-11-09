@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "./;pb";
+
+import "messages.proto";
+
+service SupremeRegulationGRPC {
+    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
+    rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
+    rpc CreateParagraphs(CreateParagraphsRequest) returns (CreateParagraphsResponse) {};
+    rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
+    
+    
+    rpc CreateRegulation(Regulation) returns (ID) {};
+    rpc CreateChapter(Chapter) returns (ID) {};
+    rpc CreateParagraphs(Paragraphs) returns (Status) {};
+    rpc GenerateLinks(ID) returns (Status) {};
+}

@@ -4,6 +4,7 @@ gen:
 	protoc --go-grpc_out=pb/ proto/read_only/*.proto -I=proto/read_only
 	protoc -I=proto/writable --go_out=pb/ proto/writable/*.proto
 	protoc --go-grpc_out=pb/ proto/writable/*.proto -I=proto/writable
+	
 git:
 	$(MAKE) gen
 	git add .

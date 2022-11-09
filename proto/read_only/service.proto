@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "./;pb";
 
-import "read_only_message.proto";
+import "message.proto";
 
 service ReadOnlyRegulationGRPC {
     rpc GetRegulation(GetRegulationRequest) returns (GetRegulationResponse) {};

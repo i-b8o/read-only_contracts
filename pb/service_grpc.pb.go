@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.6.1
-// source: writable_service.proto
+// source: service.proto
 
 package pb
 
@@ -318,5 +318,5 @@ var WritableRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "writable_service.proto",
+	Metadata: "service.proto",
 }

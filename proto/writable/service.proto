@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "./;pb";
 
-import "writable_message.proto";
+import "message.proto";
 
 service WritableRegulationGRPC {
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
