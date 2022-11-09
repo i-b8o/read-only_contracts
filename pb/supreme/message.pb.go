@@ -20,17 +20,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CreateAbsentRequest struct {
+type CreateChapterRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PseudoId    string `protobuf:"bytes,1,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
-	ParagraphId uint64 `protobuf:"varint,2,opt,name=ParagraphId,proto3" json:"ParagraphId,omitempty"`
+	ChapterId    uint64 `protobuf:"varint,1,opt,name=ChapterId,proto3" json:"ChapterId,omitempty"`
+	PseudoId     string `protobuf:"bytes,2,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
+	RegulationId uint64 `protobuf:"varint,3,opt,name=RegulationId,proto3" json:"RegulationId,omitempty"`
+	ChapterName  string `protobuf:"bytes,4,opt,name=ChapterName,proto3" json:"ChapterName,omitempty"`
+	ChapterNum   string `protobuf:"bytes,5,opt,name=ChapterNum,proto3" json:"ChapterNum,omitempty"`
+	OrderNum     uint64 `protobuf:"varint,6,opt,name=OrderNum,proto3" json:"OrderNum,omitempty"`
 }
 
-func (x *CreateAbsentRequest) Reset() {
-	*x = CreateAbsentRequest{}
+func (x *CreateChapterRequest) Reset() {
+	*x = CreateChapterRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -38,13 +42,13 @@ func (x *CreateAbsentRequest) Reset() {
 	}
 }
 
-func (x *CreateAbsentRequest) String() string {
+func (x *CreateChapterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAbsentRequest) ProtoMessage() {}
+func (*CreateChapterRequest) ProtoMessage() {}
 
-func (x *CreateAbsentRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateChapterRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,35 +60,63 @@ func (x *CreateAbsentRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAbsentRequest.ProtoReflect.Descriptor instead.
-func (*CreateAbsentRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateChapterRequest.ProtoReflect.Descriptor instead.
+func (*CreateChapterRequest) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateAbsentRequest) GetPseudoId() string {
+func (x *CreateChapterRequest) GetChapterId() uint64 {
+	if x != nil {
+		return x.ChapterId
+	}
+	return 0
+}
+
+func (x *CreateChapterRequest) GetPseudoId() string {
 	if x != nil {
 		return x.PseudoId
 	}
 	return ""
 }
 
-func (x *CreateAbsentRequest) GetParagraphId() uint64 {
+func (x *CreateChapterRequest) GetRegulationId() uint64 {
 	if x != nil {
-		return x.ParagraphId
+		return x.RegulationId
 	}
 	return 0
 }
 
-type DeleteForParagraphAbsentRequest struct {
+func (x *CreateChapterRequest) GetChapterName() string {
+	if x != nil {
+		return x.ChapterName
+	}
+	return ""
+}
+
+func (x *CreateChapterRequest) GetChapterNum() string {
+	if x != nil {
+		return x.ChapterNum
+	}
+	return ""
+}
+
+func (x *CreateChapterRequest) GetOrderNum() uint64 {
+	if x != nil {
+		return x.OrderNum
+	}
+	return 0
+}
+
+type CreateChapterResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ParagraphID uint64 `protobuf:"varint,1,opt,name=ParagraphID,proto3" json:"ParagraphID,omitempty"`
+	ID string `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
 }
 
-func (x *DeleteForParagraphAbsentRequest) Reset() {
-	*x = DeleteForParagraphAbsentRequest{}
+func (x *CreateChapterResponse) Reset() {
+	*x = CreateChapterResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -92,13 +124,13 @@ func (x *DeleteForParagraphAbsentRequest) Reset() {
 	}
 }
 
-func (x *DeleteForParagraphAbsentRequest) String() string {
+func (x *CreateChapterResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteForParagraphAbsentRequest) ProtoMessage() {}
+func (*CreateChapterResponse) ProtoMessage() {}
 
-func (x *DeleteForParagraphAbsentRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateChapterResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -110,28 +142,35 @@ func (x *DeleteForParagraphAbsentRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteForParagraphAbsentRequest.ProtoReflect.Descriptor instead.
-func (*DeleteForParagraphAbsentRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateChapterResponse.ProtoReflect.Descriptor instead.
+func (*CreateChapterResponse) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *DeleteForParagraphAbsentRequest) GetParagraphID() uint64 {
+func (x *CreateChapterResponse) GetID() string {
 	if x != nil {
-		return x.ParagraphID
+		return x.ID
 	}
-	return 0
+	return ""
 }
 
-type DoneAbsentRequest struct {
+type Paragraph struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PseudoId string `protobuf:"bytes,1,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
+	ParagraphId       uint64 `protobuf:"varint,1,opt,name=ParagraphId,proto3" json:"ParagraphId,omitempty"`
+	ParagraphOrderNum uint64 `protobuf:"varint,2,opt,name=ParagraphOrderNum,proto3" json:"ParagraphOrderNum,omitempty"`
+	IsTable           bool   `protobuf:"varint,3,opt,name=IsTable,proto3" json:"IsTable,omitempty"`
+	IsNFT             bool   `protobuf:"varint,4,opt,name=IsNFT,proto3" json:"IsNFT,omitempty"`
+	HasLinks          bool   `protobuf:"varint,5,opt,name=HasLinks,proto3" json:"HasLinks,omitempty"`
+	ParagraphClass    string `protobuf:"bytes,6,opt,name=ParagraphClass,proto3" json:"ParagraphClass,omitempty"`
+	ParagraphText     string `protobuf:"bytes,7,opt,name=ParagraphText,proto3" json:"ParagraphText,omitempty"`
+	ChapterId         uint64 `protobuf:"varint,8,opt,name=ChapterId,proto3" json:"ChapterId,omitempty"`
 }
 
-func (x *DoneAbsentRequest) Reset() {
-	*x = DoneAbsentRequest{}
+func (x *Paragraph) Reset() {
+	*x = Paragraph{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -139,13 +178,13 @@ func (x *DoneAbsentRequest) Reset() {
 	}
 }
 
-func (x *DoneAbsentRequest) String() string {
+func (x *Paragraph) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DoneAbsentRequest) ProtoMessage() {}
+func (*Paragraph) ProtoMessage() {}
 
-func (x *DoneAbsentRequest) ProtoReflect() protoreflect.Message {
+func (x *Paragraph) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -157,28 +196,77 @@ func (x *DoneAbsentRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DoneAbsentRequest.ProtoReflect.Descriptor instead.
-func (*DoneAbsentRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use Paragraph.ProtoReflect.Descriptor instead.
+func (*Paragraph) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *DoneAbsentRequest) GetPseudoId() string {
+func (x *Paragraph) GetParagraphId() uint64 {
 	if x != nil {
-		return x.PseudoId
+		return x.ParagraphId
+	}
+	return 0
+}
+
+func (x *Paragraph) GetParagraphOrderNum() uint64 {
+	if x != nil {
+		return x.ParagraphOrderNum
+	}
+	return 0
+}
+
+func (x *Paragraph) GetIsTable() bool {
+	if x != nil {
+		return x.IsTable
+	}
+	return false
+}
+
+func (x *Paragraph) GetIsNFT() bool {
+	if x != nil {
+		return x.IsNFT
+	}
+	return false
+}
+
+func (x *Paragraph) GetHasLinks() bool {
+	if x != nil {
+		return x.HasLinks
+	}
+	return false
+}
+
+func (x *Paragraph) GetParagraphClass() string {
+	if x != nil {
+		return x.ParagraphClass
 	}
 	return ""
 }
 
-type CreateAbsentResponse struct {
+func (x *Paragraph) GetParagraphText() string {
+	if x != nil {
+		return x.ParagraphText
+	}
+	return ""
+}
+
+func (x *Paragraph) GetChapterId() uint64 {
+	if x != nil {
+		return x.ChapterId
+	}
+	return 0
+}
+
+type CreateParagraphsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
+	Paragraphs []*Paragraph `protobuf:"bytes,1,rep,name=paragraphs,proto3" json:"paragraphs,omitempty"`
 }
 
-func (x *CreateAbsentResponse) Reset() {
-	*x = CreateAbsentResponse{}
+func (x *CreateParagraphsRequest) Reset() {
+	*x = CreateParagraphsRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -186,13 +274,13 @@ func (x *CreateAbsentResponse) Reset() {
 	}
 }
 
-func (x *CreateAbsentResponse) String() string {
+func (x *CreateParagraphsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateAbsentResponse) ProtoMessage() {}
+func (*CreateParagraphsRequest) ProtoMessage() {}
 
-func (x *CreateAbsentResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateParagraphsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -204,19 +292,19 @@ func (x *CreateAbsentResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateAbsentResponse.ProtoReflect.Descriptor instead.
-func (*CreateAbsentResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateParagraphsRequest.ProtoReflect.Descriptor instead.
+func (*CreateParagraphsRequest) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *CreateAbsentResponse) GetStatus() string {
+func (x *CreateParagraphsRequest) GetParagraphs() []*Paragraph {
 	if x != nil {
-		return x.Status
+		return x.Paragraphs
 	}
-	return ""
+	return nil
 }
 
-type DeleteForParagraphAbsentResponse struct {
+type CreateParagraphsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -224,8 +312,8 @@ type DeleteForParagraphAbsentResponse struct {
 	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
 }
 
-func (x *DeleteForParagraphAbsentResponse) Reset() {
-	*x = DeleteForParagraphAbsentResponse{}
+func (x *CreateParagraphsResponse) Reset() {
+	*x = CreateParagraphsResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -233,13 +321,13 @@ func (x *DeleteForParagraphAbsentResponse) Reset() {
 	}
 }
 
-func (x *DeleteForParagraphAbsentResponse) String() string {
+func (x *CreateParagraphsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteForParagraphAbsentResponse) ProtoMessage() {}
+func (*CreateParagraphsResponse) ProtoMessage() {}
 
-func (x *DeleteForParagraphAbsentResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateParagraphsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -251,28 +339,31 @@ func (x *DeleteForParagraphAbsentResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteForParagraphAbsentResponse.ProtoReflect.Descriptor instead.
-func (*DeleteForParagraphAbsentResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateParagraphsResponse.ProtoReflect.Descriptor instead.
+func (*CreateParagraphsResponse) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *DeleteForParagraphAbsentResponse) GetStatus() string {
+func (x *CreateParagraphsResponse) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
 	return ""
 }
 
-type DoneAbsentResponse struct {
+type CreateRegulationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
+	PseudoId       string `protobuf:"bytes,1,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
+	RegulationName string `protobuf:"bytes,2,opt,name=RegulationName,proto3" json:"RegulationName,omitempty"`
+	Abbreviation   string `protobuf:"bytes,3,opt,name=Abbreviation,proto3" json:"Abbreviation,omitempty"`
+	Title          string `protobuf:"bytes,4,opt,name=Title,proto3" json:"Title,omitempty"`
 }
 
-func (x *DoneAbsentResponse) Reset() {
-	*x = DoneAbsentResponse{}
+func (x *CreateRegulationRequest) Reset() {
+	*x = CreateRegulationRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -280,13 +371,13 @@ func (x *DoneAbsentResponse) Reset() {
 	}
 }
 
-func (x *DoneAbsentResponse) String() string {
+func (x *CreateRegulationRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DoneAbsentResponse) ProtoMessage() {}
+func (*CreateRegulationRequest) ProtoMessage() {}
 
-func (x *DoneAbsentResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateRegulationRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -298,29 +389,49 @@ func (x *DoneAbsentResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DoneAbsentResponse.ProtoReflect.Descriptor instead.
-func (*DoneAbsentResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateRegulationRequest.ProtoReflect.Descriptor instead.
+func (*CreateRegulationRequest) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DoneAbsentResponse) GetStatus() string {
+func (x *CreateRegulationRequest) GetPseudoId() string {
 	if x != nil {
-		return x.Status
+		return x.PseudoId
 	}
 	return ""
 }
 
-type CreatePseudoChapterRequest struct {
+func (x *CreateRegulationRequest) GetRegulationName() string {
+	if x != nil {
+		return x.RegulationName
+	}
+	return ""
+}
+
+func (x *CreateRegulationRequest) GetAbbreviation() string {
+	if x != nil {
+		return x.Abbreviation
+	}
+	return ""
+}
+
+func (x *CreateRegulationRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+type CreateRegulationResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ID       uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-	PseudoId string `protobuf:"bytes,2,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=Id,proto3" json:"Id,omitempty"`
 }
 
-func (x *CreatePseudoChapterRequest) Reset() {
-	*x = CreatePseudoChapterRequest{}
+func (x *CreateRegulationResponse) Reset() {
+	*x = CreateRegulationResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -328,13 +439,13 @@ func (x *CreatePseudoChapterRequest) Reset() {
 	}
 }
 
-func (x *CreatePseudoChapterRequest) String() string {
+func (x *CreateRegulationResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePseudoChapterRequest) ProtoMessage() {}
+func (*CreateRegulationResponse) ProtoMessage() {}
 
-func (x *CreatePseudoChapterRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateRegulationResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -346,35 +457,28 @@ func (x *CreatePseudoChapterRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePseudoChapterRequest.ProtoReflect.Descriptor instead.
-func (*CreatePseudoChapterRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateRegulationResponse.ProtoReflect.Descriptor instead.
+func (*CreateRegulationResponse) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreatePseudoChapterRequest) GetID() uint64 {
+func (x *CreateRegulationResponse) GetId() string {
 	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
-func (x *CreatePseudoChapterRequest) GetPseudoId() string {
-	if x != nil {
-		return x.PseudoId
+		return x.Id
 	}
 	return ""
 }
 
-type CreatePseudoChapterResponse struct {
+type GenerateLinksRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
 }
 
-func (x *CreatePseudoChapterResponse) Reset() {
-	*x = CreatePseudoChapterResponse{}
+func (x *GenerateLinksRequest) Reset() {
+	*x = GenerateLinksRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -382,13 +486,13 @@ func (x *CreatePseudoChapterResponse) Reset() {
 	}
 }
 
-func (x *CreatePseudoChapterResponse) String() string {
+func (x *GenerateLinksRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreatePseudoChapterResponse) ProtoMessage() {}
+func (*GenerateLinksRequest) ProtoMessage() {}
 
-func (x *CreatePseudoChapterResponse) ProtoReflect() protoreflect.Message {
+func (x *GenerateLinksRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -400,19 +504,19 @@ func (x *CreatePseudoChapterResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreatePseudoChapterResponse.ProtoReflect.Descriptor instead.
-func (*CreatePseudoChapterResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateLinksRequest.ProtoReflect.Descriptor instead.
+func (*GenerateLinksRequest) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CreatePseudoChapterResponse) GetStatus() string {
+func (x *GenerateLinksRequest) GetID() uint64 {
 	if x != nil {
-		return x.Status
+		return x.ID
 	}
-	return ""
+	return 0
 }
 
-type DeletePseudoChapterRequest struct {
+type GenerateLinksResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -420,8 +524,8 @@ type DeletePseudoChapterRequest struct {
 	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
 }
 
-func (x *DeletePseudoChapterRequest) Reset() {
-	*x = DeletePseudoChapterRequest{}
+func (x *GenerateLinksResponse) Reset() {
+	*x = GenerateLinksResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_message_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -429,13 +533,13 @@ func (x *DeletePseudoChapterRequest) Reset() {
 	}
 }
 
-func (x *DeletePseudoChapterRequest) String() string {
+func (x *GenerateLinksResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeletePseudoChapterRequest) ProtoMessage() {}
+func (*GenerateLinksResponse) ProtoMessage() {}
 
-func (x *DeletePseudoChapterRequest) ProtoReflect() protoreflect.Message {
+func (x *GenerateLinksResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_message_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -447,443 +551,12 @@ func (x *DeletePseudoChapterRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeletePseudoChapterRequest.ProtoReflect.Descriptor instead.
-func (*DeletePseudoChapterRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateLinksResponse.ProtoReflect.Descriptor instead.
+func (*GenerateLinksResponse) Descriptor() ([]byte, []int) {
 	return file_message_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DeletePseudoChapterRequest) GetID() uint64 {
-	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
-type DeletePseudoChapterResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
-}
-
-func (x *DeletePseudoChapterResponse) Reset() {
-	*x = DeletePseudoChapterResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeletePseudoChapterResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePseudoChapterResponse) ProtoMessage() {}
-
-func (x *DeletePseudoChapterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePseudoChapterResponse.ProtoReflect.Descriptor instead.
-func (*DeletePseudoChapterResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *DeletePseudoChapterResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-type GetChapterIDByPseudoRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-}
-
-func (x *GetChapterIDByPseudoRequest) Reset() {
-	*x = GetChapterIDByPseudoRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetChapterIDByPseudoRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetChapterIDByPseudoRequest) ProtoMessage() {}
-
-func (x *GetChapterIDByPseudoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetChapterIDByPseudoRequest.ProtoReflect.Descriptor instead.
-func (*GetChapterIDByPseudoRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *GetChapterIDByPseudoRequest) GetID() uint64 {
-	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
-type GetChapterIDByPseudoResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-}
-
-func (x *GetChapterIDByPseudoResponse) Reset() {
-	*x = GetChapterIDByPseudoResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetChapterIDByPseudoResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetChapterIDByPseudoResponse) ProtoMessage() {}
-
-func (x *GetChapterIDByPseudoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetChapterIDByPseudoResponse.ProtoReflect.Descriptor instead.
-func (*GetChapterIDByPseudoResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *GetChapterIDByPseudoResponse) GetID() uint64 {
-	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
-type CreatePseudoRegulationRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ID       uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-	PseudoId string `protobuf:"bytes,2,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
-}
-
-func (x *CreatePseudoRegulationRequest) Reset() {
-	*x = CreatePseudoRegulationRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[12]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CreatePseudoRegulationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePseudoRegulationRequest) ProtoMessage() {}
-
-func (x *CreatePseudoRegulationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[12]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePseudoRegulationRequest.ProtoReflect.Descriptor instead.
-func (*CreatePseudoRegulationRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *CreatePseudoRegulationRequest) GetID() uint64 {
-	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
-func (x *CreatePseudoRegulationRequest) GetPseudoId() string {
-	if x != nil {
-		return x.PseudoId
-	}
-	return ""
-}
-
-type DeletePseudoRegulationRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	RegulationId uint64 `protobuf:"varint,1,opt,name=regulationId,proto3" json:"regulationId,omitempty"`
-}
-
-func (x *DeletePseudoRegulationRequest) Reset() {
-	*x = DeletePseudoRegulationRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeletePseudoRegulationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePseudoRegulationRequest) ProtoMessage() {}
-
-func (x *DeletePseudoRegulationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePseudoRegulationRequest.ProtoReflect.Descriptor instead.
-func (*DeletePseudoRegulationRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *DeletePseudoRegulationRequest) GetRegulationId() uint64 {
-	if x != nil {
-		return x.RegulationId
-	}
-	return 0
-}
-
-type GetIDPseudoRegulationRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	PseudoId string `protobuf:"bytes,1,opt,name=PseudoId,proto3" json:"PseudoId,omitempty"`
-}
-
-func (x *GetIDPseudoRegulationRequest) Reset() {
-	*x = GetIDPseudoRegulationRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetIDPseudoRegulationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetIDPseudoRegulationRequest) ProtoMessage() {}
-
-func (x *GetIDPseudoRegulationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetIDPseudoRegulationRequest.ProtoReflect.Descriptor instead.
-func (*GetIDPseudoRegulationRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *GetIDPseudoRegulationRequest) GetPseudoId() string {
-	if x != nil {
-		return x.PseudoId
-	}
-	return ""
-}
-
-type CreatePseudoRegulationResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
-}
-
-func (x *CreatePseudoRegulationResponse) Reset() {
-	*x = CreatePseudoRegulationResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[15]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CreatePseudoRegulationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePseudoRegulationResponse) ProtoMessage() {}
-
-func (x *CreatePseudoRegulationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[15]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePseudoRegulationResponse.ProtoReflect.Descriptor instead.
-func (*CreatePseudoRegulationResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *CreatePseudoRegulationResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-type DeletePseudoRegulationResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Status string `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
-}
-
-func (x *DeletePseudoRegulationResponse) Reset() {
-	*x = DeletePseudoRegulationResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeletePseudoRegulationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeletePseudoRegulationResponse) ProtoMessage() {}
-
-func (x *DeletePseudoRegulationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeletePseudoRegulationResponse.ProtoReflect.Descriptor instead.
-func (*DeletePseudoRegulationResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DeletePseudoRegulationResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-type GetIDPseudoRegulationResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-}
-
-func (x *GetIDPseudoRegulationResponse) Reset() {
-	*x = GetIDPseudoRegulationResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetIDPseudoRegulationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetIDPseudoRegulationResponse) ProtoMessage() {}
-
-func (x *GetIDPseudoRegulationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetIDPseudoRegulationResponse.ProtoReflect.Descriptor instead.
-func (*GetIDPseudoRegulationResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *GetIDPseudoRegulationResponse) GetID() uint64 {
+func (x *GenerateLinksResponse) GetID() uint64 {
 	if x != nil {
 		return x.ID
 	}
@@ -894,73 +567,66 @@ var File_message_proto protoreflect.FileDescriptor
 
 var file_message_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
-	0x53, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x62, 0x73, 0x65, 0x6e, 0x74, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f,
-	0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f,
-	0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x49,
-	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0b, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61,
-	0x70, 0x68, 0x49, 0x64, 0x22, 0x43, 0x0a, 0x1f, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x6f,
-	0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x41, 0x62, 0x73, 0x65, 0x6e, 0x74,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x50, 0x61, 0x72, 0x61, 0x67,
-	0x72, 0x61, 0x70, 0x68, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0b, 0x50, 0x61,
-	0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x49, 0x44, 0x22, 0x2f, 0x0a, 0x11, 0x44, 0x6f, 0x6e,
-	0x65, 0x41, 0x62, 0x73, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a,
-	0x0a, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x22, 0x2e, 0x0a, 0x14, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x41, 0x62, 0x73, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x3a, 0x0a, 0x20, 0x44, 0x65,
-	0x6c, 0x65, 0x74, 0x65, 0x46, 0x6f, 0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68,
-	0x41, 0x62, 0x73, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16,
-	0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2c, 0x0a, 0x12, 0x44, 0x6f, 0x6e, 0x65, 0x41, 0x62,
-	0x73, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06,
-	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x53, 0x74,
-	0x61, 0x74, 0x75, 0x73, 0x22, 0x48, 0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x73,
-	0x65, 0x75, 0x64, 0x6f, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02,
-	0x49, 0x44, 0x12, 0x1a, 0x0a, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x22, 0x35,
-	0x0a, 0x1b, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x43, 0x68,
-	0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a,
-	0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x53,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2c, 0x0a, 0x1a, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50,
-	0x73, 0x65, 0x75, 0x64, 0x6f, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52,
-	0x02, 0x49, 0x44, 0x22, 0x35, 0x0a, 0x1b, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x73, 0x65,
-	0x75, 0x64, 0x6f, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2d, 0x0a, 0x1b, 0x47, 0x65,
-	0x74, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x44, 0x42, 0x79, 0x50, 0x73, 0x65, 0x75,
-	0x64, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x2e, 0x0a, 0x1c, 0x47, 0x65, 0x74,
-	0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x44, 0x42, 0x79, 0x50, 0x73, 0x65, 0x75, 0x64,
-	0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x4b, 0x0a, 0x1d, 0x43, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x12, 0x1a, 0x0a, 0x08, 0x50, 0x73,
-	0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50, 0x73,
-	0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x22, 0x43, 0x0a, 0x1d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x72, 0x65, 0x67, 0x75, 0x6c,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0c, 0x72,
-	0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22, 0x3a, 0x0a, 0x1c, 0x47,
-	0x65, 0x74, 0x49, 0x44, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x50,
-	0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50,
-	0x73, 0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x22, 0x38, 0x0a, 0x1e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61,
-	0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75,
-	0x73, 0x22, 0x38, 0x0a, 0x1e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x73, 0x65, 0x75, 0x64,
-	0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2f, 0x0a, 0x1d, 0x47,
-	0x65, 0x74, 0x49, 0x44, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02,
-	0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x42, 0x07, 0x5a, 0x05,
-	0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0xd2, 0x01, 0x0a, 0x14, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x43, 0x68, 0x61, 0x70,
+	0x74, 0x65, 0x72, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x09, 0x43, 0x68, 0x61,
+	0x70, 0x74, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f,
+	0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50, 0x73, 0x65, 0x75, 0x64, 0x6f,
+	0x49, 0x64, 0x12, 0x22, 0x0a, 0x0c, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0c, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x20, 0x0a, 0x0b, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x43, 0x68, 0x61,
+	0x70, 0x74, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x43, 0x68, 0x61, 0x70,
+	0x74, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x43, 0x68,
+	0x61, 0x70, 0x74, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x12, 0x1a, 0x0a, 0x08, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x4e, 0x75, 0x6d, 0x18, 0x06, 0x20, 0x01, 0x28, 0x04, 0x52, 0x08, 0x4f, 0x72, 0x64, 0x65,
+	0x72, 0x4e, 0x75, 0x6d, 0x22, 0x27, 0x0a, 0x15, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x68,
+	0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a,
+	0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x49, 0x44, 0x22, 0x93, 0x02,
+	0x0a, 0x09, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x12, 0x20, 0x0a, 0x0b, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04,
+	0x52, 0x0b, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x49, 0x64, 0x12, 0x2c, 0x0a,
+	0x11, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e,
+	0x75, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x11, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72,
+	0x61, 0x70, 0x68, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x12, 0x18, 0x0a, 0x07, 0x49,
+	0x73, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x49, 0x73,
+	0x54, 0x61, 0x62, 0x6c, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x49, 0x73, 0x4e, 0x46, 0x54, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x49, 0x73, 0x4e, 0x46, 0x54, 0x12, 0x1a, 0x0a, 0x08, 0x48,
+	0x61, 0x73, 0x4c, 0x69, 0x6e, 0x6b, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x48,
+	0x61, 0x73, 0x4c, 0x69, 0x6e, 0x6b, 0x73, 0x12, 0x26, 0x0a, 0x0e, 0x50, 0x61, 0x72, 0x61, 0x67,
+	0x72, 0x61, 0x70, 0x68, 0x43, 0x6c, 0x61, 0x73, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0e, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x43, 0x6c, 0x61, 0x73, 0x73, 0x12,
+	0x24, 0x0a, 0x0d, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x54, 0x65, 0x78, 0x74,
+	0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70,
+	0x68, 0x54, 0x65, 0x78, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72,
+	0x49, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x04, 0x52, 0x09, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x49, 0x64, 0x22, 0x45, 0x0a, 0x17, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
+	0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2a,
+	0x0a, 0x0a, 0x70, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x52, 0x0a,
+	0x70, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22, 0x32, 0x0a, 0x18, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x97,
+	0x01, 0x0a, 0x17, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x50, 0x73,
+	0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x50, 0x73,
+	0x65, 0x75, 0x64, 0x6f, 0x49, 0x64, 0x12, 0x26, 0x0a, 0x0e, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e,
+	0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x22,
+	0x0a, 0x0c, 0x41, 0x62, 0x62, 0x72, 0x65, 0x76, 0x69, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x41, 0x62, 0x62, 0x72, 0x65, 0x76, 0x69, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x22, 0x2a, 0x0a, 0x18, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x02, 0x49, 0x64, 0x22, 0x26, 0x0a, 0x14, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65,
+	0x4c, 0x69, 0x6e, 0x6b, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
+	0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x27, 0x0a, 0x15,
+	0x47, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x6e, 0x6b, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x04, 0x52, 0x02, 0x49, 0x44, 0x42, 0x07, 0x5a, 0x05, 0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -975,33 +641,25 @@ func file_message_proto_rawDescGZIP() []byte {
 	return file_message_proto_rawDescData
 }
 
-var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_message_proto_goTypes = []interface{}{
-	(*CreateAbsentRequest)(nil),              // 0: CreateAbsentRequest
-	(*DeleteForParagraphAbsentRequest)(nil),  // 1: DeleteForParagraphAbsentRequest
-	(*DoneAbsentRequest)(nil),                // 2: DoneAbsentRequest
-	(*CreateAbsentResponse)(nil),             // 3: CreateAbsentResponse
-	(*DeleteForParagraphAbsentResponse)(nil), // 4: DeleteForParagraphAbsentResponse
-	(*DoneAbsentResponse)(nil),               // 5: DoneAbsentResponse
-	(*CreatePseudoChapterRequest)(nil),       // 6: CreatePseudoChapterRequest
-	(*CreatePseudoChapterResponse)(nil),      // 7: CreatePseudoChapterResponse
-	(*DeletePseudoChapterRequest)(nil),       // 8: DeletePseudoChapterRequest
-	(*DeletePseudoChapterResponse)(nil),      // 9: DeletePseudoChapterResponse
-	(*GetChapterIDByPseudoRequest)(nil),      // 10: GetChapterIDByPseudoRequest
-	(*GetChapterIDByPseudoResponse)(nil),     // 11: GetChapterIDByPseudoResponse
-	(*CreatePseudoRegulationRequest)(nil),    // 12: CreatePseudoRegulationRequest
-	(*DeletePseudoRegulationRequest)(nil),    // 13: DeletePseudoRegulationRequest
-	(*GetIDPseudoRegulationRequest)(nil),     // 14: GetIDPseudoRegulationRequest
-	(*CreatePseudoRegulationResponse)(nil),   // 15: CreatePseudoRegulationResponse
-	(*DeletePseudoRegulationResponse)(nil),   // 16: DeletePseudoRegulationResponse
-	(*GetIDPseudoRegulationResponse)(nil),    // 17: GetIDPseudoRegulationResponse
+	(*CreateChapterRequest)(nil),     // 0: CreateChapterRequest
+	(*CreateChapterResponse)(nil),    // 1: CreateChapterResponse
+	(*Paragraph)(nil),                // 2: Paragraph
+	(*CreateParagraphsRequest)(nil),  // 3: CreateParagraphsRequest
+	(*CreateParagraphsResponse)(nil), // 4: CreateParagraphsResponse
+	(*CreateRegulationRequest)(nil),  // 5: CreateRegulationRequest
+	(*CreateRegulationResponse)(nil), // 6: CreateRegulationResponse
+	(*GenerateLinksRequest)(nil),     // 7: GenerateLinksRequest
+	(*GenerateLinksResponse)(nil),    // 8: GenerateLinksResponse
 }
 var file_message_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: CreateParagraphsRequest.paragraphs:type_name -> Paragraph
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_message_proto_init() }
@@ -1011,7 +669,7 @@ func file_message_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_message_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateAbsentRequest); i {
+			switch v := v.(*CreateChapterRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1023,7 +681,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteForParagraphAbsentRequest); i {
+			switch v := v.(*CreateChapterResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1035,7 +693,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DoneAbsentRequest); i {
+			switch v := v.(*Paragraph); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1047,7 +705,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateAbsentResponse); i {
+			switch v := v.(*CreateParagraphsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1059,7 +717,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteForParagraphAbsentResponse); i {
+			switch v := v.(*CreateParagraphsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1071,7 +729,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DoneAbsentResponse); i {
+			switch v := v.(*CreateRegulationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1083,7 +741,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatePseudoChapterRequest); i {
+			switch v := v.(*CreateRegulationResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1095,7 +753,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatePseudoChapterResponse); i {
+			switch v := v.(*GenerateLinksRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1107,115 +765,7 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeletePseudoChapterRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeletePseudoChapterResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetChapterIDByPseudoRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetChapterIDByPseudoResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatePseudoRegulationRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeletePseudoRegulationRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetIDPseudoRegulationRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreatePseudoRegulationResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeletePseudoRegulationResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetIDPseudoRegulationResponse); i {
+			switch v := v.(*GenerateLinksResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1233,7 +783,7 @@ func file_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

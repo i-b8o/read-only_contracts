@@ -22,15 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SupremeRegulationGRPCClient interface {
-	CreateAbsent(ctx context.Context, in *CreateAbsentRequest, opts ...grpc.CallOption) (*CreateAbsentResponse, error)
-	DeleteForParagraphAbsent(ctx context.Context, in *DeleteForParagraphAbsentRequest, opts ...grpc.CallOption) (*DeleteForParagraphAbsentResponse, error)
-	DoneAbsent(ctx context.Context, in *DoneAbsentRequest, opts ...grpc.CallOption) (*DoneAbsentResponse, error)
-	CreatePseudoChapter(ctx context.Context, in *CreatePseudoChapterRequest, opts ...grpc.CallOption) (*CreatePseudoChapterResponse, error)
-	DeletePseudoChapter(ctx context.Context, in *DeletePseudoChapterRequest, opts ...grpc.CallOption) (*DeletePseudoChapterResponse, error)
-	GetChapterIDByPseudo(ctx context.Context, in *GetChapterIDByPseudoRequest, opts ...grpc.CallOption) (*GetChapterIDByPseudoResponse, error)
-	CreatePseudoRegulation(ctx context.Context, in *CreatePseudoRegulationRequest, opts ...grpc.CallOption) (*CreatePseudoRegulationResponse, error)
-	DeletePseudoRegulation(ctx context.Context, in *DeletePseudoRegulationRequest, opts ...grpc.CallOption) (*DeletePseudoRegulationResponse, error)
-	GetIDPseudoRegulation(ctx context.Context, in *GetIDPseudoRegulationRequest, opts ...grpc.CallOption) (*GetIDPseudoRegulationResponse, error)
+	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
+	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*CreateParagraphsResponse, error)
+	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
+	GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error)
 }
 
 type supremeRegulationGRPCClient struct {
@@ -41,81 +36,36 @@ func NewSupremeRegulationGRPCClient(cc grpc.ClientConnInterface) SupremeRegulati
 	return &supremeRegulationGRPCClient{cc}
 }
 
-func (c *supremeRegulationGRPCClient) CreateAbsent(ctx context.Context, in *CreateAbsentRequest, opts ...grpc.CallOption) (*CreateAbsentResponse, error) {
-	out := new(CreateAbsentResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateAbsent", in, out, opts...)
+func (c *supremeRegulationGRPCClient) CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
+	out := new(CreateChapterResponse)
+	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateChapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *supremeRegulationGRPCClient) DeleteForParagraphAbsent(ctx context.Context, in *DeleteForParagraphAbsentRequest, opts ...grpc.CallOption) (*DeleteForParagraphAbsentResponse, error) {
-	out := new(DeleteForParagraphAbsentResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/DeleteForParagraphAbsent", in, out, opts...)
+func (c *supremeRegulationGRPCClient) CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*CreateParagraphsResponse, error) {
+	out := new(CreateParagraphsResponse)
+	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *supremeRegulationGRPCClient) DoneAbsent(ctx context.Context, in *DoneAbsentRequest, opts ...grpc.CallOption) (*DoneAbsentResponse, error) {
-	out := new(DoneAbsentResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/DoneAbsent", in, out, opts...)
+func (c *supremeRegulationGRPCClient) CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error) {
+	out := new(CreateRegulationResponse)
+	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *supremeRegulationGRPCClient) CreatePseudoChapter(ctx context.Context, in *CreatePseudoChapterRequest, opts ...grpc.CallOption) (*CreatePseudoChapterResponse, error) {
-	out := new(CreatePseudoChapterResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreatePseudoChapter", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *supremeRegulationGRPCClient) DeletePseudoChapter(ctx context.Context, in *DeletePseudoChapterRequest, opts ...grpc.CallOption) (*DeletePseudoChapterResponse, error) {
-	out := new(DeletePseudoChapterResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/DeletePseudoChapter", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *supremeRegulationGRPCClient) GetChapterIDByPseudo(ctx context.Context, in *GetChapterIDByPseudoRequest, opts ...grpc.CallOption) (*GetChapterIDByPseudoResponse, error) {
-	out := new(GetChapterIDByPseudoResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/GetChapterIDByPseudo", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *supremeRegulationGRPCClient) CreatePseudoRegulation(ctx context.Context, in *CreatePseudoRegulationRequest, opts ...grpc.CallOption) (*CreatePseudoRegulationResponse, error) {
-	out := new(CreatePseudoRegulationResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreatePseudoRegulation", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *supremeRegulationGRPCClient) DeletePseudoRegulation(ctx context.Context, in *DeletePseudoRegulationRequest, opts ...grpc.CallOption) (*DeletePseudoRegulationResponse, error) {
-	out := new(DeletePseudoRegulationResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/DeletePseudoRegulation", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *supremeRegulationGRPCClient) GetIDPseudoRegulation(ctx context.Context, in *GetIDPseudoRegulationRequest, opts ...grpc.CallOption) (*GetIDPseudoRegulationResponse, error) {
-	out := new(GetIDPseudoRegulationResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/GetIDPseudoRegulation", in, out, opts...)
+func (c *supremeRegulationGRPCClient) GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error) {
+	out := new(GenerateLinksResponse)
+	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/GenerateLinks", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,15 +76,10 @@ func (c *supremeRegulationGRPCClient) GetIDPseudoRegulation(ctx context.Context,
 // All implementations must embed UnimplementedSupremeRegulationGRPCServer
 // for forward compatibility
 type SupremeRegulationGRPCServer interface {
-	CreateAbsent(context.Context, *CreateAbsentRequest) (*CreateAbsentResponse, error)
-	DeleteForParagraphAbsent(context.Context, *DeleteForParagraphAbsentRequest) (*DeleteForParagraphAbsentResponse, error)
-	DoneAbsent(context.Context, *DoneAbsentRequest) (*DoneAbsentResponse, error)
-	CreatePseudoChapter(context.Context, *CreatePseudoChapterRequest) (*CreatePseudoChapterResponse, error)
-	DeletePseudoChapter(context.Context, *DeletePseudoChapterRequest) (*DeletePseudoChapterResponse, error)
-	GetChapterIDByPseudo(context.Context, *GetChapterIDByPseudoRequest) (*GetChapterIDByPseudoResponse, error)
-	CreatePseudoRegulation(context.Context, *CreatePseudoRegulationRequest) (*CreatePseudoRegulationResponse, error)
-	DeletePseudoRegulation(context.Context, *DeletePseudoRegulationRequest) (*DeletePseudoRegulationResponse, error)
-	GetIDPseudoRegulation(context.Context, *GetIDPseudoRegulationRequest) (*GetIDPseudoRegulationResponse, error)
+	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
+	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*CreateParagraphsResponse, error)
+	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
+	GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error)
 	mustEmbedUnimplementedSupremeRegulationGRPCServer()
 }
 
@@ -142,32 +87,17 @@ type SupremeRegulationGRPCServer interface {
 type UnimplementedSupremeRegulationGRPCServer struct {
 }
 
-func (UnimplementedSupremeRegulationGRPCServer) CreateAbsent(context.Context, *CreateAbsentRequest) (*CreateAbsentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAbsent not implemented")
+func (UnimplementedSupremeRegulationGRPCServer) CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateChapter not implemented")
 }
-func (UnimplementedSupremeRegulationGRPCServer) DeleteForParagraphAbsent(context.Context, *DeleteForParagraphAbsentRequest) (*DeleteForParagraphAbsentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteForParagraphAbsent not implemented")
+func (UnimplementedSupremeRegulationGRPCServer) CreateParagraphs(context.Context, *CreateParagraphsRequest) (*CreateParagraphsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateParagraphs not implemented")
 }
-func (UnimplementedSupremeRegulationGRPCServer) DoneAbsent(context.Context, *DoneAbsentRequest) (*DoneAbsentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DoneAbsent not implemented")
+func (UnimplementedSupremeRegulationGRPCServer) CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRegulation not implemented")
 }
-func (UnimplementedSupremeRegulationGRPCServer) CreatePseudoChapter(context.Context, *CreatePseudoChapterRequest) (*CreatePseudoChapterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePseudoChapter not implemented")
-}
-func (UnimplementedSupremeRegulationGRPCServer) DeletePseudoChapter(context.Context, *DeletePseudoChapterRequest) (*DeletePseudoChapterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePseudoChapter not implemented")
-}
-func (UnimplementedSupremeRegulationGRPCServer) GetChapterIDByPseudo(context.Context, *GetChapterIDByPseudoRequest) (*GetChapterIDByPseudoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetChapterIDByPseudo not implemented")
-}
-func (UnimplementedSupremeRegulationGRPCServer) CreatePseudoRegulation(context.Context, *CreatePseudoRegulationRequest) (*CreatePseudoRegulationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePseudoRegulation not implemented")
-}
-func (UnimplementedSupremeRegulationGRPCServer) DeletePseudoRegulation(context.Context, *DeletePseudoRegulationRequest) (*DeletePseudoRegulationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePseudoRegulation not implemented")
-}
-func (UnimplementedSupremeRegulationGRPCServer) GetIDPseudoRegulation(context.Context, *GetIDPseudoRegulationRequest) (*GetIDPseudoRegulationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetIDPseudoRegulation not implemented")
+func (UnimplementedSupremeRegulationGRPCServer) GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinks not implemented")
 }
 func (UnimplementedSupremeRegulationGRPCServer) mustEmbedUnimplementedSupremeRegulationGRPCServer() {}
 
@@ -182,164 +112,74 @@ func RegisterSupremeRegulationGRPCServer(s grpc.ServiceRegistrar, srv SupremeReg
 	s.RegisterService(&SupremeRegulationGRPC_ServiceDesc, srv)
 }
 
-func _SupremeRegulationGRPC_CreateAbsent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateAbsentRequest)
+func _SupremeRegulationGRPC_CreateChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateChapterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).CreateAbsent(ctx, in)
+		return srv.(SupremeRegulationGRPCServer).CreateChapter(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreateAbsent",
+		FullMethod: "/SupremeRegulationGRPC/CreateChapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).CreateAbsent(ctx, req.(*CreateAbsentRequest))
+		return srv.(SupremeRegulationGRPCServer).CreateChapter(ctx, req.(*CreateChapterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SupremeRegulationGRPC_DeleteForParagraphAbsent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteForParagraphAbsentRequest)
+func _SupremeRegulationGRPC_CreateParagraphs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateParagraphsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).DeleteForParagraphAbsent(ctx, in)
+		return srv.(SupremeRegulationGRPCServer).CreateParagraphs(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/DeleteForParagraphAbsent",
+		FullMethod: "/SupremeRegulationGRPC/CreateParagraphs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).DeleteForParagraphAbsent(ctx, req.(*DeleteForParagraphAbsentRequest))
+		return srv.(SupremeRegulationGRPCServer).CreateParagraphs(ctx, req.(*CreateParagraphsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SupremeRegulationGRPC_DoneAbsent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DoneAbsentRequest)
+func _SupremeRegulationGRPC_CreateRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRegulationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).DoneAbsent(ctx, in)
+		return srv.(SupremeRegulationGRPCServer).CreateRegulation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/DoneAbsent",
+		FullMethod: "/SupremeRegulationGRPC/CreateRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).DoneAbsent(ctx, req.(*DoneAbsentRequest))
+		return srv.(SupremeRegulationGRPCServer).CreateRegulation(ctx, req.(*CreateRegulationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SupremeRegulationGRPC_CreatePseudoChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePseudoChapterRequest)
+func _SupremeRegulationGRPC_GenerateLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateLinksRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).CreatePseudoChapter(ctx, in)
+		return srv.(SupremeRegulationGRPCServer).GenerateLinks(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreatePseudoChapter",
+		FullMethod: "/SupremeRegulationGRPC/GenerateLinks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).CreatePseudoChapter(ctx, req.(*CreatePseudoChapterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SupremeRegulationGRPC_DeletePseudoChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePseudoChapterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).DeletePseudoChapter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/DeletePseudoChapter",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).DeletePseudoChapter(ctx, req.(*DeletePseudoChapterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SupremeRegulationGRPC_GetChapterIDByPseudo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetChapterIDByPseudoRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).GetChapterIDByPseudo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/GetChapterIDByPseudo",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).GetChapterIDByPseudo(ctx, req.(*GetChapterIDByPseudoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SupremeRegulationGRPC_CreatePseudoRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePseudoRegulationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).CreatePseudoRegulation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreatePseudoRegulation",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).CreatePseudoRegulation(ctx, req.(*CreatePseudoRegulationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SupremeRegulationGRPC_DeletePseudoRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePseudoRegulationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).DeletePseudoRegulation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/DeletePseudoRegulation",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).DeletePseudoRegulation(ctx, req.(*DeletePseudoRegulationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SupremeRegulationGRPC_GetIDPseudoRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetIDPseudoRegulationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SupremeRegulationGRPCServer).GetIDPseudoRegulation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/GetIDPseudoRegulation",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SupremeRegulationGRPCServer).GetIDPseudoRegulation(ctx, req.(*GetIDPseudoRegulationRequest))
+		return srv.(SupremeRegulationGRPCServer).GenerateLinks(ctx, req.(*GenerateLinksRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -352,40 +192,20 @@ var SupremeRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SupremeRegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateAbsent",
-			Handler:    _SupremeRegulationGRPC_CreateAbsent_Handler,
+			MethodName: "CreateChapter",
+			Handler:    _SupremeRegulationGRPC_CreateChapter_Handler,
 		},
 		{
-			MethodName: "DeleteForParagraphAbsent",
-			Handler:    _SupremeRegulationGRPC_DeleteForParagraphAbsent_Handler,
+			MethodName: "CreateParagraphs",
+			Handler:    _SupremeRegulationGRPC_CreateParagraphs_Handler,
 		},
 		{
-			MethodName: "DoneAbsent",
-			Handler:    _SupremeRegulationGRPC_DoneAbsent_Handler,
+			MethodName: "CreateRegulation",
+			Handler:    _SupremeRegulationGRPC_CreateRegulation_Handler,
 		},
 		{
-			MethodName: "CreatePseudoChapter",
-			Handler:    _SupremeRegulationGRPC_CreatePseudoChapter_Handler,
-		},
-		{
-			MethodName: "DeletePseudoChapter",
-			Handler:    _SupremeRegulationGRPC_DeletePseudoChapter_Handler,
-		},
-		{
-			MethodName: "GetChapterIDByPseudo",
-			Handler:    _SupremeRegulationGRPC_GetChapterIDByPseudo_Handler,
-		},
-		{
-			MethodName: "CreatePseudoRegulation",
-			Handler:    _SupremeRegulationGRPC_CreatePseudoRegulation_Handler,
-		},
-		{
-			MethodName: "DeletePseudoRegulation",
-			Handler:    _SupremeRegulationGRPC_DeletePseudoRegulation_Handler,
-		},
-		{
-			MethodName: "GetIDPseudoRegulation",
-			Handler:    _SupremeRegulationGRPC_GetIDPseudoRegulation_Handler,
+			MethodName: "GenerateLinks",
+			Handler:    _SupremeRegulationGRPC_GenerateLinks_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
