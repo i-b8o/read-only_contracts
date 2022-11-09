@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: service.proto
 
-package pb
+package pb_supreme
 
 import (
 	context "context"
@@ -38,7 +38,7 @@ func NewSupremeRegulationGRPCClient(cc grpc.ClientConnInterface) SupremeRegulati
 
 func (c *supremeRegulationGRPCClient) CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
 	out := new(CreateChapterResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateChapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/CreateChapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *supremeRegulationGRPCClient) CreateChapter(ctx context.Context, in *Cre
 
 func (c *supremeRegulationGRPCClient) CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*CreateParagraphsResponse, error) {
 	out := new(CreateParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateParagraphs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/CreateParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *supremeRegulationGRPCClient) CreateParagraphs(ctx context.Context, in *
 
 func (c *supremeRegulationGRPCClient) CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error) {
 	out := new(CreateRegulationResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/CreateRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/CreateRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *supremeRegulationGRPCClient) CreateRegulation(ctx context.Context, in *
 
 func (c *supremeRegulationGRPCClient) GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error) {
 	out := new(GenerateLinksResponse)
-	err := c.cc.Invoke(ctx, "/SupremeRegulationGRPC/GenerateLinks", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/GenerateLinks", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +122,7 @@ func _SupremeRegulationGRPC_CreateChapter_Handler(srv interface{}, ctx context.C
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreateChapter",
+		FullMethod: "/supreme.v1.SupremeRegulationGRPC/CreateChapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SupremeRegulationGRPCServer).CreateChapter(ctx, req.(*CreateChapterRequest))
@@ -140,7 +140,7 @@ func _SupremeRegulationGRPC_CreateParagraphs_Handler(srv interface{}, ctx contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreateParagraphs",
+		FullMethod: "/supreme.v1.SupremeRegulationGRPC/CreateParagraphs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SupremeRegulationGRPCServer).CreateParagraphs(ctx, req.(*CreateParagraphsRequest))
@@ -158,7 +158,7 @@ func _SupremeRegulationGRPC_CreateRegulation_Handler(srv interface{}, ctx contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/CreateRegulation",
+		FullMethod: "/supreme.v1.SupremeRegulationGRPC/CreateRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SupremeRegulationGRPCServer).CreateRegulation(ctx, req.(*CreateRegulationRequest))
@@ -176,7 +176,7 @@ func _SupremeRegulationGRPC_GenerateLinks_Handler(srv interface{}, ctx context.C
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SupremeRegulationGRPC/GenerateLinks",
+		FullMethod: "/supreme.v1.SupremeRegulationGRPC/GenerateLinks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SupremeRegulationGRPCServer).GenerateLinks(ctx, req.(*GenerateLinksRequest))
@@ -188,7 +188,7 @@ func _SupremeRegulationGRPC_GenerateLinks_Handler(srv interface{}, ctx context.C
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var SupremeRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "SupremeRegulationGRPC",
+	ServiceName: "supreme.v1.SupremeRegulationGRPC",
 	HandlerType: (*SupremeRegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "./;pb";
+package writable.v1;
+
+option go_package = "writable/v1;pb_writable";
 
 
 message WritableParagraph {

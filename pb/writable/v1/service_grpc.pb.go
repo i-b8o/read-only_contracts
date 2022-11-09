@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: service.proto
 
-package pb
+package pb_writable
 
 import (
 	context "context"
@@ -41,7 +41,7 @@ func NewWritableRegulationGRPCClient(cc grpc.ClientConnInterface) WritableRegula
 
 func (c *writableRegulationGRPCClient) CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error) {
 	out := new(CreateRegulationResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/CreateRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/CreateRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func (c *writableRegulationGRPCClient) CreateRegulation(ctx context.Context, in 
 
 func (c *writableRegulationGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*DeleteRegulationResponse, error) {
 	out := new(DeleteRegulationResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/DeleteRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/DeleteRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func (c *writableRegulationGRPCClient) DeleteRegulation(ctx context.Context, in 
 
 func (c *writableRegulationGRPCClient) CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
 	out := new(CreateChapterResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/CreateChapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/CreateChapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func (c *writableRegulationGRPCClient) CreateChapter(ctx context.Context, in *Cr
 
 func (c *writableRegulationGRPCClient) DeleteChaptersForRegulation(ctx context.Context, in *DeleteChaptersForRegulationRequest, opts ...grpc.CallOption) (*DeleteChaptersForRegulationResponse, error) {
 	out := new(DeleteChaptersForRegulationResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/DeleteChaptersForRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/DeleteChaptersForRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ func (c *writableRegulationGRPCClient) DeleteChaptersForRegulation(ctx context.C
 
 func (c *writableRegulationGRPCClient) CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*CreateAllParagraphsResponse, error) {
 	out := new(CreateAllParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/CreateAllParagraphs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/CreateAllParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c *writableRegulationGRPCClient) CreateAllParagraphs(ctx context.Context, 
 
 func (c *writableRegulationGRPCClient) UpdateOneParagraph(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*UpdateOneParagraphResponse, error) {
 	out := new(UpdateOneParagraphResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/UpdateOneParagraph", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/UpdateOneParagraph", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +95,7 @@ func (c *writableRegulationGRPCClient) UpdateOneParagraph(ctx context.Context, i
 
 func (c *writableRegulationGRPCClient) DeleteParagraphsForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*DeleteParagraphsForChapterResponse, error) {
 	out := new(DeleteParagraphsForChapterResponse)
-	err := c.cc.Invoke(ctx, "/WritableRegulationGRPC/DeleteParagraphsForChapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/DeleteParagraphsForChapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -165,7 +165,7 @@ func _WritableRegulationGRPC_CreateRegulation_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/CreateRegulation",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/CreateRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).CreateRegulation(ctx, req.(*CreateRegulationRequest))
@@ -183,7 +183,7 @@ func _WritableRegulationGRPC_DeleteRegulation_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/DeleteRegulation",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/DeleteRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).DeleteRegulation(ctx, req.(*DeleteRegulationRequest))
@@ -201,7 +201,7 @@ func _WritableRegulationGRPC_CreateChapter_Handler(srv interface{}, ctx context.
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/CreateChapter",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/CreateChapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).CreateChapter(ctx, req.(*CreateChapterRequest))
@@ -219,7 +219,7 @@ func _WritableRegulationGRPC_DeleteChaptersForRegulation_Handler(srv interface{}
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/DeleteChaptersForRegulation",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/DeleteChaptersForRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).DeleteChaptersForRegulation(ctx, req.(*DeleteChaptersForRegulationRequest))
@@ -237,7 +237,7 @@ func _WritableRegulationGRPC_CreateAllParagraphs_Handler(srv interface{}, ctx co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/CreateAllParagraphs",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/CreateAllParagraphs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).CreateAllParagraphs(ctx, req.(*CreateAllParagraphsRequest))
@@ -255,7 +255,7 @@ func _WritableRegulationGRPC_UpdateOneParagraph_Handler(srv interface{}, ctx con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/UpdateOneParagraph",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/UpdateOneParagraph",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).UpdateOneParagraph(ctx, req.(*UpdateOneParagraphRequest))
@@ -273,7 +273,7 @@ func _WritableRegulationGRPC_DeleteParagraphsForChapter_Handler(srv interface{},
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/WritableRegulationGRPC/DeleteParagraphsForChapter",
+		FullMethod: "/writable.v1.WritableRegulationGRPC/DeleteParagraphsForChapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WritableRegulationGRPCServer).DeleteParagraphsForChapter(ctx, req.(*DeleteParagraphsForChapterRequest))
@@ -285,7 +285,7 @@ func _WritableRegulationGRPC_DeleteParagraphsForChapter_Handler(srv interface{},
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var WritableRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "WritableRegulationGRPC",
+	ServiceName: "writable.v1.WritableRegulationGRPC",
 	HandlerType: (*WritableRegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

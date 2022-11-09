@@ -1,6 +1,9 @@
 syntax = "proto3";
 
-option go_package = "./;pb";
+package supreme.v1;
+
+option go_package = "supreme/v1;pb_supreme";
+
 
 message CreateChapterRequest {
     uint64 ChapterId    = 1;

@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: service.proto
 
-package pb
+package pb_read_only
 
 import (
 	context "context"
@@ -42,7 +42,7 @@ func NewReadOnlyRegulationGRPCClient(cc grpc.ClientConnInterface) ReadOnlyRegula
 
 func (c *readOnlyRegulationGRPCClient) GetRegulation(ctx context.Context, in *GetRegulationRequest, opts ...grpc.CallOption) (*GetRegulationResponse, error) {
 	out := new(GetRegulationResponse)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/GetRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/GetRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *readOnlyRegulationGRPCClient) GetRegulation(ctx context.Context, in *Ge
 
 func (c *readOnlyRegulationGRPCClient) GetChapter(ctx context.Context, in *GetChapterRequest, opts ...grpc.CallOption) (*GetChapterResponse, error) {
 	out := new(GetChapterResponse)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/GetChapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/GetChapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (c *readOnlyRegulationGRPCClient) GetChapter(ctx context.Context, in *GetCh
 
 func (c *readOnlyRegulationGRPCClient) GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error) {
 	out := new(GetAllChaptersResponse)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/GetAllChapters", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/GetAllChapters", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func (c *readOnlyRegulationGRPCClient) GetAllChapters(ctx context.Context, in *G
 
 func (c *readOnlyRegulationGRPCClient) GetParagraphs(ctx context.Context, in *GetParagraphsRequest, opts ...grpc.CallOption) (*GetParagraphsResponse, error) {
 	out := new(GetParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/GetParagraphs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/GetParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +78,7 @@ func (c *readOnlyRegulationGRPCClient) GetParagraphs(ctx context.Context, in *Ge
 
 func (c *readOnlyRegulationGRPCClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/Search", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +87,7 @@ func (c *readOnlyRegulationGRPCClient) Search(ctx context.Context, in *SearchReq
 
 func (c *readOnlyRegulationGRPCClient) SearchRegulations(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchRegulations", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/SearchRegulations", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +96,7 @@ func (c *readOnlyRegulationGRPCClient) SearchRegulations(ctx context.Context, in
 
 func (c *readOnlyRegulationGRPCClient) SearchChapters(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchChapters", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/SearchChapters", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +105,7 @@ func (c *readOnlyRegulationGRPCClient) SearchChapters(ctx context.Context, in *S
 
 func (c *readOnlyRegulationGRPCClient) SearchPargaraphs(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/ReadOnlyRegulationGRPC/SearchPargaraphs", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/read_only.v1.ReadOnlyRegulationGRPC/SearchPargaraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -179,7 +179,7 @@ func _ReadOnlyRegulationGRPC_GetRegulation_Handler(srv interface{}, ctx context.
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/GetRegulation",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/GetRegulation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).GetRegulation(ctx, req.(*GetRegulationRequest))
@@ -197,7 +197,7 @@ func _ReadOnlyRegulationGRPC_GetChapter_Handler(srv interface{}, ctx context.Con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/GetChapter",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/GetChapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).GetChapter(ctx, req.(*GetChapterRequest))
@@ -215,7 +215,7 @@ func _ReadOnlyRegulationGRPC_GetAllChapters_Handler(srv interface{}, ctx context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/GetAllChapters",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/GetAllChapters",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).GetAllChapters(ctx, req.(*GetAllChaptersRequest))
@@ -233,7 +233,7 @@ func _ReadOnlyRegulationGRPC_GetParagraphs_Handler(srv interface{}, ctx context.
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/GetParagraphs",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/GetParagraphs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).GetParagraphs(ctx, req.(*GetParagraphsRequest))
@@ -251,7 +251,7 @@ func _ReadOnlyRegulationGRPC_Search_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/Search",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/Search",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).Search(ctx, req.(*SearchRequest))
@@ -269,7 +269,7 @@ func _ReadOnlyRegulationGRPC_SearchRegulations_Handler(srv interface{}, ctx cont
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/SearchRegulations",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/SearchRegulations",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).SearchRegulations(ctx, req.(*SearchRequest))
@@ -287,7 +287,7 @@ func _ReadOnlyRegulationGRPC_SearchChapters_Handler(srv interface{}, ctx context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/SearchChapters",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/SearchChapters",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).SearchChapters(ctx, req.(*SearchRequest))
@@ -305,7 +305,7 @@ func _ReadOnlyRegulationGRPC_SearchPargaraphs_Handler(srv interface{}, ctx conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/ReadOnlyRegulationGRPC/SearchPargaraphs",
+		FullMethod: "/read_only.v1.ReadOnlyRegulationGRPC/SearchPargaraphs",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ReadOnlyRegulationGRPCServer).SearchPargaraphs(ctx, req.(*SearchRequest))
@@ -317,7 +317,7 @@ func _ReadOnlyRegulationGRPC_SearchPargaraphs_Handler(srv interface{}, ctx conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ReadOnlyRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ReadOnlyRegulationGRPC",
+	ServiceName: "read_only.v1.ReadOnlyRegulationGRPC",
 	HandlerType: (*ReadOnlyRegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
