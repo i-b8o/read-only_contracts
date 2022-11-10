@@ -14,4 +14,7 @@ service WritableRegulationGRPC {
     rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (CreateAllParagraphsResponse) {};
     rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (UpdateOneParagraphResponse) {};
     rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (DeleteParagraphsForChapterResponse) {};
+    rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
+    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
 }

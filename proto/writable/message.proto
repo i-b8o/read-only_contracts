@@ -85,3 +85,37 @@ message DeleteParagraphsForChapterRequest {
 message DeleteParagraphsForChapterResponse {
     string Status = 1;
 }
+
+message GetParagraphsWithHrefsRequest {
+    uint64 ID = 1;
+}
+
+message GetParagraphsWithHrefsResponse {
+     repeated WritableParagraph Paragraphs = 1;
+}
+
+message GetAllChaptersRequest {
+    uint64 ID = 1;
+}
+
+message WritableChapter {
+    uint64 ID                     = 1;
+    string Name                   = 2;
+    string Num                    = 3;
+    string RegulationID           = 4;
+    string OrderNum               = 5;
+    repeated WritableParagraph Paragraphs = 6;
+    string UpdatedAt              = 7;
+}
+
+message GetAllChaptersResponse {
+    repeated WritableChapter Chapters = 1;
+}
+
+message GetRegulationIdByChapterIdRequest {
+    uint64 ID = 1;
+}
+
+message GetRegulationIdByChapterIdResponse {
+    uint64 ID = 1;
+}

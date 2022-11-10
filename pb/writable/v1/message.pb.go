@@ -908,6 +908,383 @@ func (x *DeleteParagraphsForChapterResponse) GetStatus() string {
 	return ""
 }
 
+type GetParagraphsWithHrefsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+}
+
+func (x *GetParagraphsWithHrefsRequest) Reset() {
+	*x = GetParagraphsWithHrefsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetParagraphsWithHrefsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParagraphsWithHrefsRequest) ProtoMessage() {}
+
+func (x *GetParagraphsWithHrefsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParagraphsWithHrefsRequest.ProtoReflect.Descriptor instead.
+func (*GetParagraphsWithHrefsRequest) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetParagraphsWithHrefsRequest) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+type GetParagraphsWithHrefsResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Paragraphs []*WritableParagraph `protobuf:"bytes,1,rep,name=Paragraphs,proto3" json:"Paragraphs,omitempty"`
+}
+
+func (x *GetParagraphsWithHrefsResponse) Reset() {
+	*x = GetParagraphsWithHrefsResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetParagraphsWithHrefsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParagraphsWithHrefsResponse) ProtoMessage() {}
+
+func (x *GetParagraphsWithHrefsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParagraphsWithHrefsResponse.ProtoReflect.Descriptor instead.
+func (*GetParagraphsWithHrefsResponse) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetParagraphsWithHrefsResponse) GetParagraphs() []*WritableParagraph {
+	if x != nil {
+		return x.Paragraphs
+	}
+	return nil
+}
+
+type GetAllChaptersRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+}
+
+func (x *GetAllChaptersRequest) Reset() {
+	*x = GetAllChaptersRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllChaptersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllChaptersRequest) ProtoMessage() {}
+
+func (x *GetAllChaptersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllChaptersRequest.ProtoReflect.Descriptor instead.
+func (*GetAllChaptersRequest) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetAllChaptersRequest) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+type WritableChapter struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID           uint64               `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+	Name         string               `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`
+	Num          string               `protobuf:"bytes,3,opt,name=Num,proto3" json:"Num,omitempty"`
+	RegulationID string               `protobuf:"bytes,4,opt,name=RegulationID,proto3" json:"RegulationID,omitempty"`
+	OrderNum     string               `protobuf:"bytes,5,opt,name=OrderNum,proto3" json:"OrderNum,omitempty"`
+	Paragraphs   []*WritableParagraph `protobuf:"bytes,6,rep,name=Paragraphs,proto3" json:"Paragraphs,omitempty"`
+	UpdatedAt    string               `protobuf:"bytes,7,opt,name=UpdatedAt,proto3" json:"UpdatedAt,omitempty"`
+}
+
+func (x *WritableChapter) Reset() {
+	*x = WritableChapter{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WritableChapter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WritableChapter) ProtoMessage() {}
+
+func (x *WritableChapter) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WritableChapter.ProtoReflect.Descriptor instead.
+func (*WritableChapter) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *WritableChapter) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+func (x *WritableChapter) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *WritableChapter) GetNum() string {
+	if x != nil {
+		return x.Num
+	}
+	return ""
+}
+
+func (x *WritableChapter) GetRegulationID() string {
+	if x != nil {
+		return x.RegulationID
+	}
+	return ""
+}
+
+func (x *WritableChapter) GetOrderNum() string {
+	if x != nil {
+		return x.OrderNum
+	}
+	return ""
+}
+
+func (x *WritableChapter) GetParagraphs() []*WritableParagraph {
+	if x != nil {
+		return x.Paragraphs
+	}
+	return nil
+}
+
+func (x *WritableChapter) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
+type GetAllChaptersResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Chapters []*WritableChapter `protobuf:"bytes,1,rep,name=Chapters,proto3" json:"Chapters,omitempty"`
+}
+
+func (x *GetAllChaptersResponse) Reset() {
+	*x = GetAllChaptersResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllChaptersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllChaptersResponse) ProtoMessage() {}
+
+func (x *GetAllChaptersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllChaptersResponse.ProtoReflect.Descriptor instead.
+func (*GetAllChaptersResponse) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetAllChaptersResponse) GetChapters() []*WritableChapter {
+	if x != nil {
+		return x.Chapters
+	}
+	return nil
+}
+
+type GetRegulationIdByChapterIdRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+}
+
+func (x *GetRegulationIdByChapterIdRequest) Reset() {
+	*x = GetRegulationIdByChapterIdRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetRegulationIdByChapterIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRegulationIdByChapterIdRequest) ProtoMessage() {}
+
+func (x *GetRegulationIdByChapterIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRegulationIdByChapterIdRequest.ProtoReflect.Descriptor instead.
+func (*GetRegulationIdByChapterIdRequest) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetRegulationIdByChapterIdRequest) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+type GetRegulationIdByChapterIdResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+}
+
+func (x *GetRegulationIdByChapterIdResponse) Reset() {
+	*x = GetRegulationIdByChapterIdResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetRegulationIdByChapterIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRegulationIdByChapterIdResponse) ProtoMessage() {}
+
+func (x *GetRegulationIdByChapterIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRegulationIdByChapterIdResponse.ProtoReflect.Descriptor instead.
+func (*GetRegulationIdByChapterIdResponse) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetRegulationIdByChapterIdResponse) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
 var File_message_proto protoreflect.FileDescriptor
 
 var file_message_proto_rawDesc = []byte{
@@ -994,9 +1371,47 @@ var file_message_proto_rawDesc = []byte{
 	0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x46, 0x6f,
 	0x72, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
 	0x12, 0x16, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x42, 0x19, 0x5a, 0x17, 0x77, 0x72, 0x69, 0x74,
-	0x61, 0x62, 0x6c, 0x65, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72, 0x69, 0x74, 0x61,
-	0x62, 0x6c, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2f, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74, 0x68, 0x48, 0x72, 0x65,
+	0x66, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x60, 0x0a, 0x1e, 0x47, 0x65, 0x74,
+	0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74, 0x68, 0x48, 0x72,
+	0x65, 0x66, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a, 0x0a, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x1e, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x57, 0x72,
+	0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x52,
+	0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22, 0x27, 0x0a, 0x15, 0x47,
+	0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04,
+	0x52, 0x02, 0x49, 0x44, 0x22, 0xe5, 0x01, 0x0a, 0x0f, 0x57, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c,
+	0x65, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x12, 0x12, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03,
+	0x4e, 0x75, 0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4e, 0x75, 0x6d, 0x12, 0x22,
+	0x0a, 0x0c, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x44, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x49, 0x44, 0x12, 0x1a, 0x0a, 0x08, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x18, 0x05,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x4e, 0x75, 0x6d, 0x12, 0x3e,
+	0x0a, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x06, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31,
+	0x2e, 0x57, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61,
+	0x70, 0x68, 0x52, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x12, 0x1c,
+	0x0a, 0x09, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x09, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x52, 0x0a, 0x16,
+	0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x38, 0x0a, 0x08, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61,
+	0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x57, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x43,
+	0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x08, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73,
+	0x22, 0x33, 0x0a, 0x21, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x64, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x34, 0x0a, 0x22, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x75,
+	0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49,
+	0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x42, 0x19, 0x5a, 0x17, 0x77,
+	0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72,
+	0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1011,7 +1426,7 @@ func file_message_proto_rawDescGZIP() []byte {
 	return file_message_proto_rawDescData
 }
 
-var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_message_proto_goTypes = []interface{}{
 	(*WritableParagraph)(nil),                   // 0: writable.v1.WritableParagraph
 	(*UpdateOneRequestMesssage)(nil),            // 1: writable.v1.UpdateOneRequestMesssage
@@ -1029,15 +1444,25 @@ var file_message_proto_goTypes = []interface{}{
 	(*UpdateOneParagraphResponse)(nil),          // 13: writable.v1.UpdateOneParagraphResponse
 	(*DeleteParagraphsForChapterRequest)(nil),   // 14: writable.v1.DeleteParagraphsForChapterRequest
 	(*DeleteParagraphsForChapterResponse)(nil),  // 15: writable.v1.DeleteParagraphsForChapterResponse
+	(*GetParagraphsWithHrefsRequest)(nil),       // 16: writable.v1.GetParagraphsWithHrefsRequest
+	(*GetParagraphsWithHrefsResponse)(nil),      // 17: writable.v1.GetParagraphsWithHrefsResponse
+	(*GetAllChaptersRequest)(nil),               // 18: writable.v1.GetAllChaptersRequest
+	(*WritableChapter)(nil),                     // 19: writable.v1.WritableChapter
+	(*GetAllChaptersResponse)(nil),              // 20: writable.v1.GetAllChaptersResponse
+	(*GetRegulationIdByChapterIdRequest)(nil),   // 21: writable.v1.GetRegulationIdByChapterIdRequest
+	(*GetRegulationIdByChapterIdResponse)(nil),  // 22: writable.v1.GetRegulationIdByChapterIdResponse
 }
 var file_message_proto_depIdxs = []int32{
-	0, // 0: writable.v1.CreateChapterRequest.Paragraphs:type_name -> writable.v1.WritableParagraph
-	0, // 1: writable.v1.CreateAllParagraphsRequest.Paragraphs:type_name -> writable.v1.WritableParagraph
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0,  // 0: writable.v1.CreateChapterRequest.Paragraphs:type_name -> writable.v1.WritableParagraph
+	0,  // 1: writable.v1.CreateAllParagraphsRequest.Paragraphs:type_name -> writable.v1.WritableParagraph
+	0,  // 2: writable.v1.GetParagraphsWithHrefsResponse.Paragraphs:type_name -> writable.v1.WritableParagraph
+	0,  // 3: writable.v1.WritableChapter.Paragraphs:type_name -> writable.v1.WritableParagraph
+	19, // 4: writable.v1.GetAllChaptersResponse.Chapters:type_name -> writable.v1.WritableChapter
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_message_proto_init() }
@@ -1238,6 +1663,90 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
+		file_message_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetParagraphsWithHrefsRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetParagraphsWithHrefsResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllChaptersRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WritableChapter); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllChaptersResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRegulationIdByChapterIdRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRegulationIdByChapterIdResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1245,7 +1754,7 @@ func file_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

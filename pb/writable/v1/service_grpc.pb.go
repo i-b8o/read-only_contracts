@@ -29,6 +29,9 @@ type WritableRegulationGRPCClient interface {
 	CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*CreateAllParagraphsResponse, error)
 	UpdateOneParagraph(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*UpdateOneParagraphResponse, error)
 	DeleteParagraphsForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*DeleteParagraphsForChapterResponse, error)
+	GetParagraphsWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error)
+	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
+	GetRegulationIdByChapterId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error)
 }
 
 type writableRegulationGRPCClient struct {
@@ -102,6 +105,33 @@ func (c *writableRegulationGRPCClient) DeleteParagraphsForChapter(ctx context.Co
 	return out, nil
 }
 
+func (c *writableRegulationGRPCClient) GetParagraphsWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error) {
+	out := new(GetParagraphsWithHrefsResponse)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/GetParagraphsWithHrefs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *writableRegulationGRPCClient) GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error) {
+	out := new(GetAllChaptersResponse)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/GetAllChapters", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *writableRegulationGRPCClient) GetRegulationIdByChapterId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error) {
+	out := new(GetRegulationIdByChapterIdResponse)
+	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/GetRegulationIdByChapterId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WritableRegulationGRPCServer is the server API for WritableRegulationGRPC service.
 // All implementations must embed UnimplementedWritableRegulationGRPCServer
 // for forward compatibility
@@ -113,6 +143,9 @@ type WritableRegulationGRPCServer interface {
 	CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*CreateAllParagraphsResponse, error)
 	UpdateOneParagraph(context.Context, *UpdateOneParagraphRequest) (*UpdateOneParagraphResponse, error)
 	DeleteParagraphsForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*DeleteParagraphsForChapterResponse, error)
+	GetParagraphsWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error)
+	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
+	GetRegulationIdByChapterId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error)
 	mustEmbedUnimplementedWritableRegulationGRPCServer()
 }
 
@@ -140,6 +173,15 @@ func (UnimplementedWritableRegulationGRPCServer) UpdateOneParagraph(context.Cont
 }
 func (UnimplementedWritableRegulationGRPCServer) DeleteParagraphsForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*DeleteParagraphsForChapterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteParagraphsForChapter not implemented")
+}
+func (UnimplementedWritableRegulationGRPCServer) GetParagraphsWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetParagraphsWithHrefs not implemented")
+}
+func (UnimplementedWritableRegulationGRPCServer) GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllChapters not implemented")
+}
+func (UnimplementedWritableRegulationGRPCServer) GetRegulationIdByChapterId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegulationIdByChapterId not implemented")
 }
 func (UnimplementedWritableRegulationGRPCServer) mustEmbedUnimplementedWritableRegulationGRPCServer() {
 }
@@ -281,6 +323,60 @@ func _WritableRegulationGRPC_DeleteParagraphsForChapter_Handler(srv interface{},
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WritableRegulationGRPC_GetParagraphsWithHrefs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetParagraphsWithHrefsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WritableRegulationGRPCServer).GetParagraphsWithHrefs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/writable.v1.WritableRegulationGRPC/GetParagraphsWithHrefs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WritableRegulationGRPCServer).GetParagraphsWithHrefs(ctx, req.(*GetParagraphsWithHrefsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WritableRegulationGRPC_GetAllChapters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllChaptersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WritableRegulationGRPCServer).GetAllChapters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/writable.v1.WritableRegulationGRPC/GetAllChapters",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WritableRegulationGRPCServer).GetAllChapters(ctx, req.(*GetAllChaptersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WritableRegulationGRPC_GetRegulationIdByChapterId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRegulationIdByChapterIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WritableRegulationGRPCServer).GetRegulationIdByChapterId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/writable.v1.WritableRegulationGRPC/GetRegulationIdByChapterId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WritableRegulationGRPCServer).GetRegulationIdByChapterId(ctx, req.(*GetRegulationIdByChapterIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WritableRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for WritableRegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -315,6 +411,18 @@ var WritableRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteParagraphsForChapter",
 			Handler:    _WritableRegulationGRPC_DeleteParagraphsForChapter_Handler,
+		},
+		{
+			MethodName: "GetParagraphsWithHrefs",
+			Handler:    _WritableRegulationGRPC_GetParagraphsWithHrefs_Handler,
+		},
+		{
+			MethodName: "GetAllChapters",
+			Handler:    _WritableRegulationGRPC_GetAllChapters_Handler,
+		},
+		{
+			MethodName: "GetRegulationIdByChapterId",
+			Handler:    _WritableRegulationGRPC_GetRegulationIdByChapterId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
