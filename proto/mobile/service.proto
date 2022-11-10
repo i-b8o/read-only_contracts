@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package mobile.v1;
+
+option go_package = "mobile/v1;pb_mobile";
+
+import "message.proto";
