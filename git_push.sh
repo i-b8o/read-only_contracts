@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "contracts"
+echo "supreme"
 git add . && \
 git add -u && \
 git commit -m $1 && \
-git push origin main
+git push origin master
