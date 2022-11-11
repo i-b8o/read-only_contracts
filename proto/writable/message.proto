@@ -43,7 +43,7 @@ message CreateChapterRequest {
     uint64 ID                     = 1;
     string Name                   = 2;
     string Num                    = 3;
-    string RegulationID           = 4;
+    uint64 RegulationID           = 4;
     string OrderNum               = 5;
     repeated WritableParagraph Paragraphs = 6;
     string UpdatedAt              = 7;
