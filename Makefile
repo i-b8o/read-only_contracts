@@ -19,6 +19,5 @@ push_all:
 	../regulations_supreme_service/git.sh "$m" || true
 	../regulations_read_only_service/git.sh "$m" || true
 	../regulations_parser/git.sh "$m" || true
-	../regulations_contracts_service/git.sh "$m" || true
 	../regulations_mobile_service/git.sh "$m" || true
 
