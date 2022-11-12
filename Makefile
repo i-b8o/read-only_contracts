@@ -16,8 +16,16 @@ git:
 pull:
 	git pull origin main
 
-push_all:
+update:
 	$(MAKE) git
+	../regulations_writable_service/update.sh || true
+	../regulations_supreme_service/update.sh || true
+	../regulations_read_only_service/update.sh || true
+	../regulations_parser/update.sh || true
+	../regulations_mobile_service/update.sh || true
+
+push_all:
+	$(MAKE) update
 	../regulations_writable_service/git_push.sh '$m' || true
 	../regulations_supreme_service/git_push.sh '$m' || true
 	../regulations_read_only_service/git_push.sh '$m' || true
