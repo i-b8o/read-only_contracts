@@ -40,8 +40,8 @@ message DeleteRegulationResponse {
 }
 
 message CreateChapterRequest {
-    uint64 ID                     = 1;
-    string Name                   = 2;
+    uint64 ID                             = 1;
+    string Name                           = 2;
     string Num                    = 3;
     uint64 RegulationID           = 4;
     uint32 OrderNum               = 5;
