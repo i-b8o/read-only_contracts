@@ -26,6 +26,7 @@ type SupremeRegulationGRPCClient interface {
 	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*CreateParagraphsResponse, error)
 	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
 	GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error)
+	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*DeleteRegulationResponse, error)
 }
 
 type supremeRegulationGRPCClient struct {
@@ -72,6 +73,15 @@ func (c *supremeRegulationGRPCClient) GenerateLinks(ctx context.Context, in *Gen
 	return out, nil
 }
 
+func (c *supremeRegulationGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*DeleteRegulationResponse, error) {
+	out := new(DeleteRegulationResponse)
+	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/DeleteRegulation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SupremeRegulationGRPCServer is the server API for SupremeRegulationGRPC service.
 // All implementations must embed UnimplementedSupremeRegulationGRPCServer
 // for forward compatibility
@@ -80,6 +90,7 @@ type SupremeRegulationGRPCServer interface {
 	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*CreateParagraphsResponse, error)
 	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
 	GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error)
+	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*DeleteRegulationResponse, error)
 	mustEmbedUnimplementedSupremeRegulationGRPCServer()
 }
 
@@ -98,6 +109,9 @@ func (UnimplementedSupremeRegulationGRPCServer) CreateRegulation(context.Context
 }
 func (UnimplementedSupremeRegulationGRPCServer) GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinks not implemented")
+}
+func (UnimplementedSupremeRegulationGRPCServer) DeleteRegulation(context.Context, *DeleteRegulationRequest) (*DeleteRegulationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRegulation not implemented")
 }
 func (UnimplementedSupremeRegulationGRPCServer) mustEmbedUnimplementedSupremeRegulationGRPCServer() {}
 
@@ -184,6 +198,24 @@ func _SupremeRegulationGRPC_GenerateLinks_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SupremeRegulationGRPC_DeleteRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRegulationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SupremeRegulationGRPCServer).DeleteRegulation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/supreme.v1.SupremeRegulationGRPC/DeleteRegulation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SupremeRegulationGRPCServer).DeleteRegulation(ctx, req.(*DeleteRegulationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SupremeRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for SupremeRegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -206,6 +238,10 @@ var SupremeRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateLinks",
 			Handler:    _SupremeRegulationGRPC_GenerateLinks_Handler,
+		},
+		{
+			MethodName: "DeleteRegulation",
+			Handler:    _SupremeRegulationGRPC_DeleteRegulation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

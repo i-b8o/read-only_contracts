@@ -11,5 +11,5 @@ service SupremeRegulationGRPC {
     rpc CreateParagraphs(CreateParagraphsRequest) returns (CreateParagraphsResponse) {};
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-
+    rpc DeleteRegulation(DeleteRegulationRequest) returns (DeleteRegulationResponse) {};
 }

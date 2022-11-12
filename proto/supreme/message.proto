@@ -44,7 +44,7 @@ message CreateRegulationRequest {
     string Title          = 4;
 }
 message CreateRegulationResponse {
-    string Id = 1;
+    uint64 ID = 1;
 }
 
 message GenerateLinksRequest {
@@ -52,4 +52,12 @@ message GenerateLinksRequest {
 }
 message GenerateLinksResponse {
     uint64 ID = 1;
+}
+
+message DeleteRegulationRequest {
+    uint64 ID = 1;
+}
+
+message DeleteRegulationResponse {
+    string Status = 1;
 }
