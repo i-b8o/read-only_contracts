@@ -10,6 +10,6 @@ gen:
 update:
 	$(MAKE) gen
 	git add .
-	git commit -a -m '$m'
-	git push -u origin main
+	git commit -a -m '$m' || true
+	git push -u origin main || true
 	./update.sh
