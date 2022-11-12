@@ -11,7 +11,7 @@ message CreateChapterRequest {
     uint64 RegulationId = 3;
 	string ChapterName  = 4;
 	string ChapterNum   = 5;
-	uint64 OrderNum     = 6;
+	uint32 OrderNum     = 6;
 }
 
 message CreateChapterResponse{
@@ -20,7 +20,7 @@ message CreateChapterResponse{
 
 message Paragraph {
     uint64    ParagraphId       = 1;
-    uint64    ParagraphOrderNum = 2;
+    uint32    ParagraphOrderNum = 2;
     bool      IsTable           = 3;
     bool      IsNFT             = 4;
     bool      HasLinks          = 5;
