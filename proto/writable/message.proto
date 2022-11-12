@@ -35,10 +35,6 @@ message DeleteRegulationRequest {
     uint64 ID = 1;
 }
 
-message DeleteRegulationResponse {
-    string Status = 1;
-}
-
 message CreateChapterRequest {
     uint64 ID                             = 1;
     string Name                           = 2;
@@ -57,10 +53,6 @@ message DeleteChaptersForRegulationRequest {
     uint64 ID = 1;
 }
 
-message DeleteChaptersForRegulationResponse {
-    string Status = 1;
-}
-
 message CreateAllParagraphsRequest {
     repeated WritableParagraph Paragraphs = 1;
 }
@@ -74,16 +66,8 @@ message UpdateOneParagraphRequest {
     string Content = 2;
 }
 
-message UpdateOneParagraphResponse {
-    string Status = 1;
-}
-
 message DeleteParagraphsForChapterRequest {
     uint64 ID = 1;
-}
-
-message DeleteParagraphsForChapterResponse {
-    string Status = 1;
 }
 
 message GetParagraphsWithHrefsRequest {

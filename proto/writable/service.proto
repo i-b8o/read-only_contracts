@@ -5,15 +5,16 @@ package writable.v1;
 option go_package = "writable/v1;pb_writable";
 
 import "message.proto";
+import "google/protobuf/empty.proto";
 
 service WritableRegulationGRPC {
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (DeleteRegulationResponse) {};
+    rpc DeleteRegulation(DeleteRegulationRequest) returns (google.protobuf.Empty) {};
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc DeleteChaptersForRegulation(DeleteChaptersForRegulationRequest) returns (DeleteChaptersForRegulationResponse) {};
+    rpc DeleteChaptersForRegulation(DeleteChaptersForRegulationRequest) returns (google.protobuf.Empty) {};
     rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (CreateAllParagraphsResponse) {};
-    rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (UpdateOneParagraphResponse) {};
-    rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (DeleteParagraphsForChapterResponse) {};
+    rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (google.protobuf.Empty) {};
+    rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (google.protobuf.Empty) {};
     rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
     rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
     rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
