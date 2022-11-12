@@ -7,35 +7,9 @@ gen:
 	protoc -I=proto/supreme --go_out=pb/ proto/supreme/*.proto
 	protoc --go-grpc_out=pb/ proto/supreme/*.proto -I=proto/supreme
 	
-git:
+update:
 	$(MAKE) gen
 	git add .
 	git commit -a -m '$m'
 	git push -u origin main
-
-pull:
-	git pull origin main
-
-update:
-	$(MAKE) git
-	../regulations_writable_service/update.sh || true
-	../regulations_supreme_service/update.sh || true
-	../regulations_read_only_service/update.sh || true
-	../regulations_parser/update.sh || true
-	../regulations_mobile_service/update.sh || true
-
-push_all:
-	$(MAKE) update
-	../regulations_writable_service/git_push.sh '$m' || true
-	../regulations_supreme_service/git_push.sh '$m' || true
-	../regulations_read_only_service/git_push.sh '$m' || true
-	../regulations_parser/git_push.sh '$m' || true
-	../regulations_mobile_service/git_push.sh '$m' || true
-
-pull_all:
-	$(MAKE) pull
-	../regulations_writable_service/git_pull.sh || true
-	../regulations_supreme_service/git_pull.sh || true
-	../regulations_read_only_service/git_pull.sh || true
-	../regulations_parser/git_pull.sh || true
-	../regulations_mobile_service/git_pull.sh || true
+	./update.sh
