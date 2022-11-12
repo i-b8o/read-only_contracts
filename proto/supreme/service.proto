@@ -8,10 +8,12 @@ import "message.proto";
 
 import "google/protobuf/empty.proto";
 
+message Empty {}
+
 service SupremeRegulationGRPC {
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc CreateParagraphs(CreateParagraphsRequest) returns (google.protobuf.Empty) {};
+    rpc CreateParagraphs(CreateParagraphsRequest) returns (Empty) {};
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (google.protobuf.Empty) {};
+    rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
 }

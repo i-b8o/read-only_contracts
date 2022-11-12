@@ -8,7 +8,6 @@ package pb_supreme
 
 import (
 	context "context"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -24,10 +23,10 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SupremeRegulationGRPCClient interface {
 	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
-	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
 	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
 	GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error)
-	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type supremeRegulationGRPCClient struct {
@@ -47,8 +46,8 @@ func (c *supremeRegulationGRPCClient) CreateChapter(ctx context.Context, in *Cre
 	return out, nil
 }
 
-func (c *supremeRegulationGRPCClient) CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *supremeRegulationGRPCClient) CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/CreateParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -74,8 +73,8 @@ func (c *supremeRegulationGRPCClient) GenerateLinks(ctx context.Context, in *Gen
 	return out, nil
 }
 
-func (c *supremeRegulationGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *supremeRegulationGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/supreme.v1.SupremeRegulationGRPC/DeleteRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,10 +87,10 @@ func (c *supremeRegulationGRPCClient) DeleteRegulation(ctx context.Context, in *
 // for forward compatibility
 type SupremeRegulationGRPCServer interface {
 	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
-	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*empty.Empty, error)
+	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error)
 	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
 	GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error)
-	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*empty.Empty, error)
+	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*Empty, error)
 	mustEmbedUnimplementedSupremeRegulationGRPCServer()
 }
 
@@ -102,7 +101,7 @@ type UnimplementedSupremeRegulationGRPCServer struct {
 func (UnimplementedSupremeRegulationGRPCServer) CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateChapter not implemented")
 }
-func (UnimplementedSupremeRegulationGRPCServer) CreateParagraphs(context.Context, *CreateParagraphsRequest) (*empty.Empty, error) {
+func (UnimplementedSupremeRegulationGRPCServer) CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateParagraphs not implemented")
 }
 func (UnimplementedSupremeRegulationGRPCServer) CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error) {
@@ -111,7 +110,7 @@ func (UnimplementedSupremeRegulationGRPCServer) CreateRegulation(context.Context
 func (UnimplementedSupremeRegulationGRPCServer) GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinks not implemented")
 }
-func (UnimplementedSupremeRegulationGRPCServer) DeleteRegulation(context.Context, *DeleteRegulationRequest) (*empty.Empty, error) {
+func (UnimplementedSupremeRegulationGRPCServer) DeleteRegulation(context.Context, *DeleteRegulationRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRegulation not implemented")
 }
 func (UnimplementedSupremeRegulationGRPCServer) mustEmbedUnimplementedSupremeRegulationGRPCServer() {}
