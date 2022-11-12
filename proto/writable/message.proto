@@ -7,7 +7,7 @@ option go_package = "writable/v1;pb_writable";
 
 message WritableParagraph {
     uint64 ID        = 1;
-    uint64 Num       = 2;
+    uint32 Num       = 2;
     bool HasLinks    = 3;
     bool IsTable     = 4;
     bool IsNFT       = 5;
@@ -44,9 +44,9 @@ message CreateChapterRequest {
     string Name                           = 2;
     string Num                            = 3;
     uint64 RegulationID                   = 4;
-    uint32 OrderNum               = 5;
+    uint32 OrderNum                       = 5;
     repeated WritableParagraph Paragraphs = 6;
-    string UpdatedAt              = 7;
+    string UpdatedAt                      = 7;
 }
 
 message CreateChapterResponse {

@@ -22,5 +22,7 @@ cd ../regulations_supreme_service/
 function_push "supreme"
 cd ../regulations_mobile_service/
 function_push "mobile"
+cd ../regulations_http_server/
+function_push "http"
 cd ../regulations_parser/
 function_push "parser"

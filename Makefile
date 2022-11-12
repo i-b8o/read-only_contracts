@@ -13,3 +13,4 @@ update:
 	git commit -a -m '$m' || true
 	git push -u origin main || true
 	./update.sh
+	endif
