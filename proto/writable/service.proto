@@ -12,7 +12,7 @@ service WritableRegulationGRPC {
     rpc DeleteRegulation(DeleteRegulationRequest) returns (google.protobuf.Empty) {};
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc DeleteChaptersForRegulation(DeleteChaptersForRegulationRequest) returns (google.protobuf.Empty) {};
-    rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (CreateAllParagraphsResponse) {};
+    rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (google.protobuf.Empty) {};
     rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (google.protobuf.Empty) {};
     rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (google.protobuf.Empty) {};
     rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};

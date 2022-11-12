@@ -33,9 +33,6 @@ message CreateParagraphsRequest {
     repeated Paragraph paragraphs = 1;
 }
 
-message CreateParagraphsResponse {
-    string Status = 1;
-}
 
 message CreateRegulationRequest {
     string PseudoId      = 1;
@@ -56,8 +53,4 @@ message GenerateLinksResponse {
 
 message DeleteRegulationRequest {
     uint64 ID = 1;
-}
-
-message DeleteRegulationResponse {
-    string Status = 1;
 }

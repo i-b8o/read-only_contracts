@@ -6,10 +6,12 @@ option go_package = "supreme/v1;pb_supreme";
 
 import "message.proto";
 
+import "google/protobuf/empty.proto";
+
 service SupremeRegulationGRPC {
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc CreateParagraphs(CreateParagraphsRequest) returns (CreateParagraphsResponse) {};
+    rpc CreateParagraphs(CreateParagraphsRequest) returns (google.protobuf.Empty) {};
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (DeleteRegulationResponse) {};
+    rpc DeleteRegulation(DeleteRegulationRequest) returns (google.protobuf.Empty) {};
 }

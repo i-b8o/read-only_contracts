@@ -27,7 +27,7 @@ type WritableRegulationGRPCClient interface {
 	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
 	DeleteChaptersForRegulation(ctx context.Context, in *DeleteChaptersForRegulationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*CreateAllParagraphsResponse, error)
+	CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	UpdateOneParagraph(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	DeleteParagraphsForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetParagraphsWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error)
@@ -79,8 +79,8 @@ func (c *writableRegulationGRPCClient) DeleteChaptersForRegulation(ctx context.C
 	return out, nil
 }
 
-func (c *writableRegulationGRPCClient) CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*CreateAllParagraphsResponse, error) {
-	out := new(CreateAllParagraphsResponse)
+func (c *writableRegulationGRPCClient) CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/CreateAllParagraphs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -141,7 +141,7 @@ type WritableRegulationGRPCServer interface {
 	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*empty.Empty, error)
 	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
 	DeleteChaptersForRegulation(context.Context, *DeleteChaptersForRegulationRequest) (*empty.Empty, error)
-	CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*CreateAllParagraphsResponse, error)
+	CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*empty.Empty, error)
 	UpdateOneParagraph(context.Context, *UpdateOneParagraphRequest) (*empty.Empty, error)
 	DeleteParagraphsForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*empty.Empty, error)
 	GetParagraphsWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error)
@@ -166,7 +166,7 @@ func (UnimplementedWritableRegulationGRPCServer) CreateChapter(context.Context, 
 func (UnimplementedWritableRegulationGRPCServer) DeleteChaptersForRegulation(context.Context, *DeleteChaptersForRegulationRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteChaptersForRegulation not implemented")
 }
-func (UnimplementedWritableRegulationGRPCServer) CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*CreateAllParagraphsResponse, error) {
+func (UnimplementedWritableRegulationGRPCServer) CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAllParagraphs not implemented")
 }
 func (UnimplementedWritableRegulationGRPCServer) UpdateOneParagraph(context.Context, *UpdateOneParagraphRequest) (*empty.Empty, error) {

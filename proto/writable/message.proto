@@ -57,10 +57,6 @@ message CreateAllParagraphsRequest {
     repeated WritableParagraph Paragraphs = 1;
 }
 
-message CreateAllParagraphsResponse {
-    string Status = 1;
-}
-
 message UpdateOneParagraphRequest {
     uint64 ID      = 1;
     string Content = 2;
