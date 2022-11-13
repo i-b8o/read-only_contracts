@@ -99,3 +99,10 @@ message GetRegulationIdByChapterIdRequest {
 message GetRegulationIdByChapterIdResponse {
     uint64 ID = 1;
 }
+
+message GetOneRequest {
+    uint64 ID = 1;
+}
+message GetOneResponse {
+    WritableParagraph paragraph = 1;
+}

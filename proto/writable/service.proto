@@ -11,12 +11,15 @@ message Empty {}
 service WritableRegulationGRPC {
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
+    
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc DeleteChaptersForRegulation(DeleteChaptersForRegulationRequest) returns (Empty) {};
+    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
+    
     rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (Empty) {};
     rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (Empty) {};
     rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (Empty) {};
     rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
-    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
-    rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
+    rpc GetOne(GetOneRequest) returns (GetOneResponse) {};
 }

@@ -6,8 +6,6 @@ option go_package = "supreme/v1;pb_supreme";
 
 import "message.proto";
 
-import "google/protobuf/empty.proto";
-
 message Empty {}
 
 service SupremeRegulationGRPC {
