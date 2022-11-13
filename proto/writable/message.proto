@@ -99,8 +99,3 @@ message GetRegulationIdByChapterIdRequest {
 message GetRegulationIdByChapterIdResponse {
     uint64 ID = 1;
 }
-
-message UpdateOneRequest {
-    uint64 ID = 1;
-    string Content = 2; 
-}

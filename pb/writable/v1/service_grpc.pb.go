@@ -32,7 +32,6 @@ type WritableRegulationGRPCClient interface {
 	UpdateOneParagraph(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
 	DeleteParagraphsForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetParagraphsWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error)
-	UpdateOne(ctx context.Context, in *UpdateOneRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type writableRegulationGRPCClient struct {
@@ -133,15 +132,6 @@ func (c *writableRegulationGRPCClient) GetParagraphsWithHrefs(ctx context.Contex
 	return out, nil
 }
 
-func (c *writableRegulationGRPCClient) UpdateOne(ctx context.Context, in *UpdateOneRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/writable.v1.WritableRegulationGRPC/UpdateOne", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // WritableRegulationGRPCServer is the server API for WritableRegulationGRPC service.
 // All implementations must embed UnimplementedWritableRegulationGRPCServer
 // for forward compatibility
@@ -156,7 +146,6 @@ type WritableRegulationGRPCServer interface {
 	UpdateOneParagraph(context.Context, *UpdateOneParagraphRequest) (*Empty, error)
 	DeleteParagraphsForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*Empty, error)
 	GetParagraphsWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error)
-	UpdateOne(context.Context, *UpdateOneRequest) (*Empty, error)
 	mustEmbedUnimplementedWritableRegulationGRPCServer()
 }
 
@@ -193,9 +182,6 @@ func (UnimplementedWritableRegulationGRPCServer) DeleteParagraphsForChapter(cont
 }
 func (UnimplementedWritableRegulationGRPCServer) GetParagraphsWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetParagraphsWithHrefs not implemented")
-}
-func (UnimplementedWritableRegulationGRPCServer) UpdateOne(context.Context, *UpdateOneRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateOne not implemented")
 }
 func (UnimplementedWritableRegulationGRPCServer) mustEmbedUnimplementedWritableRegulationGRPCServer() {
 }
@@ -391,24 +377,6 @@ func _WritableRegulationGRPC_GetParagraphsWithHrefs_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WritableRegulationGRPC_UpdateOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateOneRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WritableRegulationGRPCServer).UpdateOne(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/writable.v1.WritableRegulationGRPC/UpdateOne",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WritableRegulationGRPCServer).UpdateOne(ctx, req.(*UpdateOneRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // WritableRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for WritableRegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -455,10 +423,6 @@ var WritableRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetParagraphsWithHrefs",
 			Handler:    _WritableRegulationGRPC_GetParagraphsWithHrefs_Handler,
-		},
-		{
-			MethodName: "UpdateOne",
-			Handler:    _WritableRegulationGRPC_UpdateOne_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

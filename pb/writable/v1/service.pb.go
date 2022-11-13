@@ -64,7 +64,7 @@ var file_service_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x0b, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31, 0x1a, 0x0d, 0x6d, 0x65,
 	0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x07, 0x0a, 0x05, 0x45,
-	0x6d, 0x70, 0x74, 0x79, 0x32, 0xae, 0x08, 0x0a, 0x16, 0x57, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c,
+	0x6d, 0x70, 0x74, 0x79, 0x32, 0xec, 0x07, 0x0a, 0x16, 0x57, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c,
 	0x65, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x52, 0x50, 0x43, 0x12,
 	0x61, 0x0a, 0x10, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x12, 0x24, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76,
@@ -127,13 +127,9 @@ var file_service_proto_rawDesc = []byte{
 	0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e,
 	0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73,
 	0x57, 0x69, 0x74, 0x68, 0x48, 0x72, 0x65, 0x66, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x09, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65,
-	0x12, 0x1d, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x12, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x19, 0x5a, 0x17, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c,
-	0x65, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x22, 0x00, 0x42, 0x19, 0x5a, 0x17, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x2f,
+	0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72, 0x69, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -161,12 +157,11 @@ var file_service_proto_goTypes = []interface{}{
 	(*UpdateOneParagraphRequest)(nil),          // 8: writable.v1.UpdateOneParagraphRequest
 	(*DeleteParagraphsForChapterRequest)(nil),  // 9: writable.v1.DeleteParagraphsForChapterRequest
 	(*GetParagraphsWithHrefsRequest)(nil),      // 10: writable.v1.GetParagraphsWithHrefsRequest
-	(*UpdateOneRequest)(nil),                   // 11: writable.v1.UpdateOneRequest
-	(*CreateRegulationResponse)(nil),           // 12: writable.v1.CreateRegulationResponse
-	(*CreateChapterResponse)(nil),              // 13: writable.v1.CreateChapterResponse
-	(*GetAllChaptersResponse)(nil),             // 14: writable.v1.GetAllChaptersResponse
-	(*GetRegulationIdByChapterIdResponse)(nil), // 15: writable.v1.GetRegulationIdByChapterIdResponse
-	(*GetParagraphsWithHrefsResponse)(nil),     // 16: writable.v1.GetParagraphsWithHrefsResponse
+	(*CreateRegulationResponse)(nil),           // 11: writable.v1.CreateRegulationResponse
+	(*CreateChapterResponse)(nil),              // 12: writable.v1.CreateChapterResponse
+	(*GetAllChaptersResponse)(nil),             // 13: writable.v1.GetAllChaptersResponse
+	(*GetRegulationIdByChapterIdResponse)(nil), // 14: writable.v1.GetRegulationIdByChapterIdResponse
+	(*GetParagraphsWithHrefsResponse)(nil),     // 15: writable.v1.GetParagraphsWithHrefsResponse
 }
 var file_service_proto_depIdxs = []int32{
 	1,  // 0: writable.v1.WritableRegulationGRPC.CreateRegulation:input_type -> writable.v1.CreateRegulationRequest
@@ -179,20 +174,18 @@ var file_service_proto_depIdxs = []int32{
 	8,  // 7: writable.v1.WritableRegulationGRPC.UpdateOneParagraph:input_type -> writable.v1.UpdateOneParagraphRequest
 	9,  // 8: writable.v1.WritableRegulationGRPC.DeleteParagraphsForChapter:input_type -> writable.v1.DeleteParagraphsForChapterRequest
 	10, // 9: writable.v1.WritableRegulationGRPC.GetParagraphsWithHrefs:input_type -> writable.v1.GetParagraphsWithHrefsRequest
-	11, // 10: writable.v1.WritableRegulationGRPC.UpdateOne:input_type -> writable.v1.UpdateOneRequest
-	12, // 11: writable.v1.WritableRegulationGRPC.CreateRegulation:output_type -> writable.v1.CreateRegulationResponse
-	0,  // 12: writable.v1.WritableRegulationGRPC.DeleteRegulation:output_type -> writable.v1.Empty
-	13, // 13: writable.v1.WritableRegulationGRPC.CreateChapter:output_type -> writable.v1.CreateChapterResponse
-	0,  // 14: writable.v1.WritableRegulationGRPC.DeleteChaptersForRegulation:output_type -> writable.v1.Empty
-	14, // 15: writable.v1.WritableRegulationGRPC.GetAllChapters:output_type -> writable.v1.GetAllChaptersResponse
-	15, // 16: writable.v1.WritableRegulationGRPC.GetRegulationIdByChapterId:output_type -> writable.v1.GetRegulationIdByChapterIdResponse
-	0,  // 17: writable.v1.WritableRegulationGRPC.CreateAllParagraphs:output_type -> writable.v1.Empty
-	0,  // 18: writable.v1.WritableRegulationGRPC.UpdateOneParagraph:output_type -> writable.v1.Empty
-	0,  // 19: writable.v1.WritableRegulationGRPC.DeleteParagraphsForChapter:output_type -> writable.v1.Empty
-	16, // 20: writable.v1.WritableRegulationGRPC.GetParagraphsWithHrefs:output_type -> writable.v1.GetParagraphsWithHrefsResponse
-	0,  // 21: writable.v1.WritableRegulationGRPC.UpdateOne:output_type -> writable.v1.Empty
-	11, // [11:22] is the sub-list for method output_type
-	0,  // [0:11] is the sub-list for method input_type
+	11, // 10: writable.v1.WritableRegulationGRPC.CreateRegulation:output_type -> writable.v1.CreateRegulationResponse
+	0,  // 11: writable.v1.WritableRegulationGRPC.DeleteRegulation:output_type -> writable.v1.Empty
+	12, // 12: writable.v1.WritableRegulationGRPC.CreateChapter:output_type -> writable.v1.CreateChapterResponse
+	0,  // 13: writable.v1.WritableRegulationGRPC.DeleteChaptersForRegulation:output_type -> writable.v1.Empty
+	13, // 14: writable.v1.WritableRegulationGRPC.GetAllChapters:output_type -> writable.v1.GetAllChaptersResponse
+	14, // 15: writable.v1.WritableRegulationGRPC.GetRegulationIdByChapterId:output_type -> writable.v1.GetRegulationIdByChapterIdResponse
+	0,  // 16: writable.v1.WritableRegulationGRPC.CreateAllParagraphs:output_type -> writable.v1.Empty
+	0,  // 17: writable.v1.WritableRegulationGRPC.UpdateOneParagraph:output_type -> writable.v1.Empty
+	0,  // 18: writable.v1.WritableRegulationGRPC.DeleteParagraphsForChapter:output_type -> writable.v1.Empty
+	15, // 19: writable.v1.WritableRegulationGRPC.GetParagraphsWithHrefs:output_type -> writable.v1.GetParagraphsWithHrefsResponse
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

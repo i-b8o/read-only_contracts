@@ -21,5 +21,4 @@ service WritableRegulationGRPC {
     rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (Empty) {};
     rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (Empty) {};
     rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
-    rpc UpdateOne(UpdateOneRequest) returns (Empty) {};
 }
