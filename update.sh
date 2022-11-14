@@ -8,8 +8,8 @@ cd ../regulations_writable_service/app
 function_get $tag "writable"
 cd ../../regulations_read_only_service/app
 function_get $tag "read only"
-cd ../../regulations_supreme_service/app
-function_get $tag "supreme"
+cd ../../regulations_master_service/app
+function_get $tag "master"
 cd ../../regulations_mobile_service/app
 function_get $tag "mobile"
 cd ../../regulations_http_server/app

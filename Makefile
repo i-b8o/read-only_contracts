@@ -6,10 +6,13 @@ gen:
 	protoc --go-grpc_out=pb/ proto/writable/*.proto -I=proto/writable
 	protoc -I=proto/supreme --go_out=pb/ proto/supreme/*.proto
 	protoc --go-grpc_out=pb/ proto/supreme/*.proto -I=proto/supreme
-	
-update:
-	$(MAKE) gen
+
+git:
 	git add .
 	git commit -a -m '$m' || true
 	git push -u origin main || true
+
+update:
+	$(MAKE) gen
+	$(MAKE) git
 	./update.sh

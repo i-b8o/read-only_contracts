@@ -18,8 +18,8 @@ cd ../regulations_writable_service/
 function_push "writable"
 cd ../regulations_read_only_service/
 function_push "read-only"
-cd ../regulations_supreme_service/
-function_push "supreme"
+cd ../regulations_master_service/
+function_push "master"
 cd ../regulations_mobile_service/
 function_push "mobile"
 cd ../regulations_http_server/
