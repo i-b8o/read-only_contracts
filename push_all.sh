@@ -14,6 +14,7 @@ function_push() {
     fi
 }
 
+function_push "contracts"
 cd ../read-only_writer_service/
 function_push "writer"
 cd ../read-only_reader_service/

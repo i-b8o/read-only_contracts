@@ -1,1 +1,44 @@
-version: 'version'
+version: "3"
+services:
+  reader:
+    build: ../read-only_reader_service/
+    ports:
+      - "30000:30000"
+    command: ./read-only-service
+    depends_on:
+      - reader_db
+    environment:
+      - DB_PASSWORD=031501
+
+  reader_db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=031501
+    ports:
+      - 5436:5432
+
+# version: "3.8"
+
+# services:
+#   read-only_reader:
+#     build: ../read-only_reader_service/
+#     command: ./read-only-service
+#     ports:
+#       - 30000:30000
+#     depends_on:
+#       - read-only_reader_db
+#     enviroment:
+#       - DB_PASSWORD=031501
+
+# read-only_reader_db:
+#   restart: always
+#   image: postgres:latest
+#   volumes:
+#     - ./.database/data:/var/lib/postgresql/data
+#   enviroment:
+#     - POSTGRES_PASSWORD=031501
+#   ports:
+#     -5436:5432
