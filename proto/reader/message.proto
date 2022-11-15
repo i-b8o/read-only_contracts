@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package read_only.v1;
+package reader.v1;
 
-option go_package = "read_only/v1;pb_read_only";
+option go_package = "reader/v1;pb_reader";
 
-message ReadOnlyParagraph {
+message ReaderParagraph {
     uint64 ID        = 1;
     uint32 Num       = 2;
     bool HasLinks    = 3;
@@ -17,13 +17,13 @@ message ReadOnlyParagraph {
 
 
 
-message ReadOnlyChapter {
+message ReaderChapter {
     uint64 ID                     = 1;
     string Name                   = 2;
     string Num                    = 3;
     uint64 RegulationID           = 4;
     uint32 OrderNum               = 5;
-    repeated ReadOnlyParagraph Paragraphs = 6;
+    repeated ReaderParagraph Paragraphs = 6;
     string UpdatedAt              = 7;
 }
 
@@ -48,7 +48,7 @@ message GetChapterResponse {
     string Num                    = 3;
     uint64 RegulationID           = 4;
     uint32 OrderNum               = 5;
-    repeated ReadOnlyParagraph Paragraphs = 6;
+    repeated ReaderParagraph Paragraphs = 6;
     string UpdatedAt              = 7;
 }
 
@@ -57,7 +57,7 @@ message GetAllChaptersRequest {
 }
 
 message GetAllChaptersResponse {
-    repeated ReadOnlyChapter Chapters = 1;
+    repeated ReaderChapter Chapters = 1;
 }
 
 message GetParagraphsRequest {
@@ -65,26 +65,5 @@ message GetParagraphsRequest {
 }
 
 message GetParagraphsResponse {
-    repeated ReadOnlyParagraph Paragraphs = 1;
-}
-
-message SearchRequest {
-    string SearchQuery = 1;
-    string Limit       = 2;
-    string Offset      = 3;
-}
-
-message SearchResponse {
-    string RID       = 1;
-    string RName     = 2;
-    string CID       = 3;
-    string CName     = 4;
-    string UpdatedAt = 5;
-    string PID       = 6;
-    string Text      = 7;
-    string Count     = 8;
-}
-
-message SearchResponseMessage {
-   repeated SearchResponse response = 1;
+    repeated ReaderParagraph Paragraphs = 1;
 }

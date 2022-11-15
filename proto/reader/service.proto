@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package reader.v1;
+
+option go_package = "reader/v1;pb_reader";
+
+import "message.proto";
+
+service ReaderGRPC {
+    rpc GetRegulation(GetRegulationRequest) returns (GetRegulationResponse) {};
+    rpc GetChapter(GetChapterRequest) returns (GetChapterResponse) {};
+    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc GetParagraphs(GetParagraphsRequest) returns (GetParagraphsResponse) {};
+}

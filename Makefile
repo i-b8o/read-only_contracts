@@ -1,11 +1,13 @@
 gen:
 	rm -rf pb/* || true
-	protoc -I=proto/read_only --go_out=pb/ proto/read_only/*.proto
-	protoc --go-grpc_out=pb/ proto/read_only/*.proto -I=proto/read_only
-	protoc -I=proto/writable --go_out=pb/ proto/writable/*.proto
-	protoc --go-grpc_out=pb/ proto/writable/*.proto -I=proto/writable
-	protoc -I=proto/supreme --go_out=pb/ proto/supreme/*.proto
-	protoc --go-grpc_out=pb/ proto/supreme/*.proto -I=proto/supreme
+	protoc -I=proto/reader --go_out=pb/ proto/reader/*.proto
+	protoc --go-grpc_out=pb/ proto/reader/*.proto -I=proto/reader
+	protoc -I=proto/writer --go_out=pb/ proto/writer/*.proto
+	protoc --go-grpc_out=pb/ proto/writer/*.proto -I=proto/writer
+	protoc -I=proto/master --go_out=pb/ proto/master/*.proto
+	protoc --go-grpc_out=pb/ proto/master/*.proto -I=proto/master
+	protoc -I=proto/searcher --go_out=pb/ proto/searcher/*.proto
+	protoc --go-grpc_out=pb/ proto/searcher/*.proto -I=proto/searcher
 
 git:
 	git add .

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package searcher.v1;
+
+option go_package = "searcher/v1;pb_searcher";
+
+message SearchRequest {
+    string SearchQuery = 1;
+    string Limit       = 2;
+    string Offset      = 3;
+}
+
+message SearchResponse {
+    string RID       = 1;
+    string RName     = 2;
+    string CID       = 3;
+    string CName     = 4;
+    string UpdatedAt = 5;
+    string PID       = 6;
+    string Text      = 7;
+    string Count     = 8;
+}
+
+message SearchResponseMessage {
+   repeated SearchResponse response = 1;
+}

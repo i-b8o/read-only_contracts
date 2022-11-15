@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package writable.v1;
+package writer.v1;
 
-option go_package = "writable/v1;pb_writable";
+option go_package = "writer/v1;pb_writer";
 
 
-message WritableParagraph {
+message WriterParagraph {
     uint64 ID        = 1;
     uint32 Num       = 2;
     bool HasLinks    = 3;
@@ -41,7 +41,7 @@ message CreateChapterRequest {
     string Num                            = 3;
     uint64 RegulationID                   = 4;
     uint32 OrderNum                       = 5;
-    repeated WritableParagraph Paragraphs = 6;
+    repeated WriterParagraph Paragraphs = 6;
     string UpdatedAt                      = 7;
 }
 
@@ -54,7 +54,7 @@ message DeleteChaptersForRegulationRequest {
 }
 
 message CreateAllParagraphsRequest {
-    repeated WritableParagraph Paragraphs = 1;
+    repeated WriterParagraph Paragraphs = 1;
 }
 
 message UpdateOneParagraphRequest {
@@ -71,25 +71,25 @@ message GetParagraphsWithHrefsRequest {
 }
 
 message GetParagraphsWithHrefsResponse {
-     repeated WritableParagraph Paragraphs = 1;
+     repeated WriterParagraph Paragraphs = 1;
 }
 
 message GetAllChaptersRequest {
     uint64 ID = 1;
 }
 
-message WritableChapter {
+message WriterChapter {
     uint64 ID                     = 1;
     string Name                   = 2;
     string Num                    = 3;
     uint64 RegulationID           = 4;
     uint32 OrderNum               = 5;
-    repeated WritableParagraph Paragraphs = 6;
+    repeated WriterParagraph Paragraphs = 6;
     string UpdatedAt              = 7;
 }
 
 message GetAllChaptersResponse {
-    repeated WritableChapter Chapters = 1;
+    repeated WriterChapter Chapters = 1;
 }
 
 message GetRegulationIdByChapterIdRequest {

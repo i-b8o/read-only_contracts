@@ -14,15 +14,17 @@ function_push() {
     fi
 }
 
-cd ../regulations_writable_service/
-function_push "writable"
-cd ../regulations_read_only_service/
-function_push "read-only"
-cd ../regulations_master_service/
+cd ../read-only_writer_service/
+function_push "writer"
+cd ../read-only_reader_service/
+function_push "reader"
+cd ../read-only_master_service/
 function_push "master"
-cd ../regulations_mobile_service/
+cd ../read-only_mobile_service/
 function_push "mobile"
-cd ../regulations_http_server/
+cd ../read-only_http_server/
 function_push "http"
-cd ../regulations_parser/
+cd ../read-only_parser/
 function_push "parser"
+cd ../read-only_searcher_server/
+function_push "searcher"

@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-package writable.v1;
+package writer.v1;
 
-option go_package = "writable/v1;pb_writable";
+option go_package = "writer/v1;pb_writer";
 
 import "message.proto";
 
 message Empty {}
 
-service WritableRegulationGRPC {
+service WriterGRPC {
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
     
