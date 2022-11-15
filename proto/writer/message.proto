@@ -79,7 +79,7 @@ message GetAllChaptersRequest {
 }
 
 message WriterChapter {
-    uint64 ID                     = 1;
+    uint64 ID                          = 1;
     string Name                   = 2;
     string Num                    = 3;
     uint64 RegulationID           = 4;
