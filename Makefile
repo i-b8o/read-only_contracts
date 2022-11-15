@@ -15,6 +15,5 @@ git:
 	git push -u origin main || true
 
 update:
-	$(MAKE) gen
 	$(MAKE) git
 	./update.sh

@@ -6,15 +6,15 @@ function_get() {
 read -p "Enter a tag: " tag
 cd ../read-only_writer_service
 function_get $tag "writer"
-cd ../../read-only_reader_service
+cd ../read-only_reader_service
 function_get $tag "reader"
-cd ../../read-only_master_service
+cd ../read-only_master_service
 function_get $tag "master"
-# cd ../../read-only_searcher_service
+# cd ../read-only_searcher_service
 # function_get $tag "searcher"
-cd ../../read-only_mobile_service
+cd ../read-only_mobile_service
 function_get $tag "mobile"
-cd ../../read-only_http_server
+cd ../read-only_http_server
 function_get $tag "http"
-cd ../../read-only_parser
+cd ../read-only_parser
 function_get $tag "parser"

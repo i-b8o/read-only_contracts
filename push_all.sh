@@ -26,5 +26,5 @@ cd ../read-only_http_server/
 function_push "http"
 cd ../read-only_parser/
 function_push "parser"
-cd ../read-only_searcher_server/
-function_push "searcher"
+# cd ../read-only_searcher_server/
+# function_push "searcher"
