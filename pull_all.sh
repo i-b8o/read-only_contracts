@@ -1,4 +1,5 @@
 #!/bin/bash
+git pull origin main
 cd ../read-only_writer_service/
 git pull origin main
 cd ../read-only_master_service/
