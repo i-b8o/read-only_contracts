@@ -56,3 +56,11 @@ message GetAllChaptersByRegulationIdRequest {
 message GetAllChaptersByRegulationIdResponse {
     repeated ReaderChapter Chapters = 1;
 }
+
+message GetAllParagraphsByChapterIdRequest {
+    uint64 ID = 1;
+}
+
+message GetAllParagraphsByChapterIdResponse {
+    repeated ReaderParagraph Paragraphs = 1;
+}
