@@ -10,5 +10,4 @@ service ReaderGRPC {
     rpc GetRegulation(GetRegulationRequest) returns (GetRegulationResponse) {};
     rpc GetChapter(GetChapterRequest) returns (GetChapterResponse) {};
     rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
-    rpc GetParagraphs(GetParagraphsRequest) returns (GetParagraphsResponse) {};
 }

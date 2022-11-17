@@ -25,7 +25,6 @@ type ReaderGRPCClient interface {
 	GetRegulation(ctx context.Context, in *GetRegulationRequest, opts ...grpc.CallOption) (*GetRegulationResponse, error)
 	GetChapter(ctx context.Context, in *GetChapterRequest, opts ...grpc.CallOption) (*GetChapterResponse, error)
 	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
-	GetParagraphs(ctx context.Context, in *GetParagraphsRequest, opts ...grpc.CallOption) (*GetParagraphsResponse, error)
 }
 
 type readerGRPCClient struct {
@@ -63,15 +62,6 @@ func (c *readerGRPCClient) GetAllChapters(ctx context.Context, in *GetAllChapter
 	return out, nil
 }
 
-func (c *readerGRPCClient) GetParagraphs(ctx context.Context, in *GetParagraphsRequest, opts ...grpc.CallOption) (*GetParagraphsResponse, error) {
-	out := new(GetParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/reader.v1.ReaderGRPC/GetParagraphs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ReaderGRPCServer is the server API for ReaderGRPC service.
 // All implementations must embed UnimplementedReaderGRPCServer
 // for forward compatibility
@@ -79,7 +69,6 @@ type ReaderGRPCServer interface {
 	GetRegulation(context.Context, *GetRegulationRequest) (*GetRegulationResponse, error)
 	GetChapter(context.Context, *GetChapterRequest) (*GetChapterResponse, error)
 	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
-	GetParagraphs(context.Context, *GetParagraphsRequest) (*GetParagraphsResponse, error)
 	mustEmbedUnimplementedReaderGRPCServer()
 }
 
@@ -95,9 +84,6 @@ func (UnimplementedReaderGRPCServer) GetChapter(context.Context, *GetChapterRequ
 }
 func (UnimplementedReaderGRPCServer) GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllChapters not implemented")
-}
-func (UnimplementedReaderGRPCServer) GetParagraphs(context.Context, *GetParagraphsRequest) (*GetParagraphsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetParagraphs not implemented")
 }
 func (UnimplementedReaderGRPCServer) mustEmbedUnimplementedReaderGRPCServer() {}
 
@@ -166,24 +152,6 @@ func _ReaderGRPC_GetAllChapters_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ReaderGRPC_GetParagraphs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetParagraphsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ReaderGRPCServer).GetParagraphs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/reader.v1.ReaderGRPC/GetParagraphs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReaderGRPCServer).GetParagraphs(ctx, req.(*GetParagraphsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // ReaderGRPC_ServiceDesc is the grpc.ServiceDesc for ReaderGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -202,10 +170,6 @@ var ReaderGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllChapters",
 			Handler:    _ReaderGRPC_GetAllChapters_Handler,
-		},
-		{
-			MethodName: "GetParagraphs",
-			Handler:    _ReaderGRPC_GetParagraphs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

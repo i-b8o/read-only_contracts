@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package reader.v1;
+import "google/protobuf/timestamp.proto";
 
 option go_package = "reader/v1;pb_reader";
 
@@ -14,19 +15,6 @@ message ReaderParagraph {
     string Content   = 7;
     uint64 ChapterID = 8;
 }
-
-
-
-message ReaderChapter {
-    uint64 ID                     = 1;
-    string Name                   = 2;
-    string Num                    = 3;
-    uint64 RegulationID           = 4;
-    uint32 OrderNum               = 5;
-    repeated ReaderParagraph Paragraphs = 6;
-    string UpdatedAt              = 7;
-}
-
 
 message GetRegulationRequest {
     uint64 ID = 1;
@@ -49,7 +37,7 @@ message GetChapterResponse {
     uint64 RegulationID           = 4;
     uint32 OrderNum               = 5;
     repeated ReaderParagraph Paragraphs = 6;
-    string UpdatedAt              = 7;
+    google.protobuf.Timestamp UpdatedAt              = 7;
 }
 
 message GetAllChaptersRequest {
@@ -57,13 +45,10 @@ message GetAllChaptersRequest {
 }
 
 message GetAllChaptersResponse {
-    repeated ReaderChapter Chapters = 1;
-}
-
-message GetParagraphsRequest {
-    uint64 ID = 1;
-}
-
-message GetParagraphsResponse {
-    repeated ReaderParagraph Paragraphs = 1;
+    uint64 ID                     = 1;
+    string Name                   = 2;
+    string Num                    = 3;
+    uint64 RegulationID           = 4;
+    uint32 OrderNum               = 5;
+    string UpdatedAt              = 6;
 }
