@@ -61,6 +61,6 @@ FROM paragraph AS p INNER JOIN chapter AS c ON p.c_id= c.id INNER JOIN regulatio
 
 create index idx_search on reg_search using GIN(ts);
 
-INSERT INTO regulation ("name", "abbreviation", "title", "created_at") VALUES ('Имя первой записи', 'Аббревиатура первой записи', 'Заголовок первой записи', '2022-12-31 23:23:59+02');
-INSERT INTO chapter ("name", "num", "order_num","r_id", "updated_at") VALUES ('Имя первой записи в главы','I',1,1, '2022-12-31 23:23:59+02');
+INSERT INTO regulation ("name", "abbreviation", "title", "created_at") VALUES ('Имя первой записи', 'Аббревиатура первой записи', 'Заголовок первой записи', '2023-01-01 00:00:00');
+INSERT INTO chapter ("name", "num", "order_num","r_id", "updated_at") VALUES ('Имя первой записи','I',1,1, '2023-01-01 00:00:00'), ('Имя второй записи','II',2,1, '2023-01-01 00:00:00'), ('Имя третьей записи','III',3,1, '2023-01-01 00:00:00');
 INSERT INTO paragraph ("paragraph_id","order_num","is_table","is_nft","has_links","class","content","c_id") VALUES (1,1,false,false,false,'any-class','Содержимое первого параграфа', 1), (2,2,true,true,true,'any-class','Содержимое второго параграфа', 1), (3,3,false,false,false,'any-class','Содержимое третьего параграфа', 1);
