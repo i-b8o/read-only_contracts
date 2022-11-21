@@ -8,7 +8,9 @@ import "message.proto";
 
 service ReaderGRPC {
     rpc GetOneRegulation(GetOneRegulationRequest) returns (GetOneRegulationResponse) {};
+    
     rpc GetOneChapter(GetOneChapterRequest) returns (GetOneChapterResponse) {};
     rpc GetAllChaptersByRegulationId(GetAllChaptersByRegulationIdRequest) returns (GetAllChaptersByRegulationIdResponse) {};
+    
     rpc GetAllParagraphsByChapterId(GetAllParagraphsByChapterIdRequest) returns (GetAllParagraphsByChapterIdResponse) {};
 }
