@@ -49,7 +49,7 @@ message CreateChapterResponse {
     uint64 ID = 1;
 }
 
-message DeleteChaptersForRegulationRequest {
+message DeleteChaptersAndParagraphsForRegulationRequest {
     uint64 ID = 1;
 }
 
