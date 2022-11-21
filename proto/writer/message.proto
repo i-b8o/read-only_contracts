@@ -74,22 +74,12 @@ message GetParagraphsWithHrefsResponse {
      repeated WriterParagraph Paragraphs = 1;
 }
 
-message GetAllChaptersRequest {
+message GetAllChaptersIdsRequest {
     uint64 ID = 1;
 }
 
-message WriterChapter {
-    uint64 ID                           = 1;
-    string Name                         = 2;
-    string Num                          = 3;
-    uint64 RegulationID                 = 4;
-    uint32 OrderNum                     = 5;
-    repeated WriterParagraph Paragraphs = 6;
-    google.protobuf.Timestamp UpdatedAt                    = 7;
-}
-
-message GetAllChaptersResponse {
-    repeated WriterChapter Chapters = 1;
+message GetAllChaptersIdsResponse {
+    repeated uint64 IDs = 1;
 }
 
 message GetRegulationIdByChapterIdRequest {
