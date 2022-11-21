@@ -49,10 +49,6 @@ message CreateChapterResponse {
     uint64 ID = 1;
 }
 
-message DeleteChaptersAndParagraphsForRegulationRequest {
-    uint64 ID = 1;
-}
-
 message CreateAllParagraphsRequest {
     repeated WriterParagraph Paragraphs = 1;
 }

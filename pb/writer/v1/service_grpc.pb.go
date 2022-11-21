@@ -25,7 +25,6 @@ type WriterGRPCClient interface {
 	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
 	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
-	DeleteChaptersAndParagraphsForRegulation(ctx context.Context, in *DeleteChaptersAndParagraphsForRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetAllChaptersIds(ctx context.Context, in *GetAllChaptersIdsRequest, opts ...grpc.CallOption) (*GetAllChaptersIdsResponse, error)
 	GetRegulationIdByChapterId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error)
 	CreateAllParagraphs(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
@@ -63,15 +62,6 @@ func (c *writerGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegul
 func (c *writerGRPCClient) CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
 	out := new(CreateChapterResponse)
 	err := c.cc.Invoke(ctx, "/writer.v1.WriterGRPC/CreateChapter", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *writerGRPCClient) DeleteChaptersAndParagraphsForRegulation(ctx context.Context, in *DeleteChaptersAndParagraphsForRegulationRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/writer.v1.WriterGRPC/DeleteChaptersAndParagraphsForRegulation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +129,6 @@ type WriterGRPCServer interface {
 	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
 	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*Empty, error)
 	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
-	DeleteChaptersAndParagraphsForRegulation(context.Context, *DeleteChaptersAndParagraphsForRegulationRequest) (*Empty, error)
 	GetAllChaptersIds(context.Context, *GetAllChaptersIdsRequest) (*GetAllChaptersIdsResponse, error)
 	GetRegulationIdByChapterId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error)
 	CreateAllParagraphs(context.Context, *CreateAllParagraphsRequest) (*Empty, error)
@@ -161,9 +150,6 @@ func (UnimplementedWriterGRPCServer) DeleteRegulation(context.Context, *DeleteRe
 }
 func (UnimplementedWriterGRPCServer) CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateChapter not implemented")
-}
-func (UnimplementedWriterGRPCServer) DeleteChaptersAndParagraphsForRegulation(context.Context, *DeleteChaptersAndParagraphsForRegulationRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteChaptersAndParagraphsForRegulation not implemented")
 }
 func (UnimplementedWriterGRPCServer) GetAllChaptersIds(context.Context, *GetAllChaptersIdsRequest) (*GetAllChaptersIdsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllChaptersIds not implemented")
@@ -246,24 +232,6 @@ func _WriterGRPC_CreateChapter_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WriterGRPCServer).CreateChapter(ctx, req.(*CreateChapterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WriterGRPC_DeleteChaptersAndParagraphsForRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteChaptersAndParagraphsForRegulationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WriterGRPCServer).DeleteChaptersAndParagraphsForRegulation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/writer.v1.WriterGRPC/DeleteChaptersAndParagraphsForRegulation",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WriterGRPCServer).DeleteChaptersAndParagraphsForRegulation(ctx, req.(*DeleteChaptersAndParagraphsForRegulationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -394,10 +362,6 @@ var WriterGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateChapter",
 			Handler:    _WriterGRPC_CreateChapter_Handler,
-		},
-		{
-			MethodName: "DeleteChaptersAndParagraphsForRegulation",
-			Handler:    _WriterGRPC_DeleteChaptersAndParagraphsForRegulation_Handler,
 		},
 		{
 			MethodName: "GetAllChaptersIds",

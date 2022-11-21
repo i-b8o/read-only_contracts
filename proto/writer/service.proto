@@ -13,7 +13,6 @@ service WriterGRPC {
     rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
     
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc DeleteChaptersAndParagraphsForRegulation(DeleteChaptersAndParagraphsForRegulationRequest) returns (Empty) {};
     rpc GetAllChaptersIds(GetAllChaptersIdsRequest) returns (GetAllChaptersIdsResponse) {};
     rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
     

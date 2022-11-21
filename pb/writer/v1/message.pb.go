@@ -477,53 +477,6 @@ func (x *CreateChapterResponse) GetID() uint64 {
 	return 0
 }
 
-type DeleteChaptersAndParagraphsForRegulationRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
-}
-
-func (x *DeleteChaptersAndParagraphsForRegulationRequest) Reset() {
-	*x = DeleteChaptersAndParagraphsForRegulationRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeleteChaptersAndParagraphsForRegulationRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteChaptersAndParagraphsForRegulationRequest) ProtoMessage() {}
-
-func (x *DeleteChaptersAndParagraphsForRegulationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteChaptersAndParagraphsForRegulationRequest.ProtoReflect.Descriptor instead.
-func (*DeleteChaptersAndParagraphsForRegulationRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DeleteChaptersAndParagraphsForRegulationRequest) GetID() uint64 {
-	if x != nil {
-		return x.ID
-	}
-	return 0
-}
-
 type CreateAllParagraphsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -535,7 +488,7 @@ type CreateAllParagraphsRequest struct {
 func (x *CreateAllParagraphsRequest) Reset() {
 	*x = CreateAllParagraphsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[8]
+		mi := &file_message_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -548,7 +501,7 @@ func (x *CreateAllParagraphsRequest) String() string {
 func (*CreateAllParagraphsRequest) ProtoMessage() {}
 
 func (x *CreateAllParagraphsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[8]
+	mi := &file_message_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -561,7 +514,7 @@ func (x *CreateAllParagraphsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAllParagraphsRequest.ProtoReflect.Descriptor instead.
 func (*CreateAllParagraphsRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{8}
+	return file_message_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateAllParagraphsRequest) GetParagraphs() []*WriterParagraph {
@@ -583,7 +536,7 @@ type UpdateOneParagraphRequest struct {
 func (x *UpdateOneParagraphRequest) Reset() {
 	*x = UpdateOneParagraphRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[9]
+		mi := &file_message_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -596,7 +549,7 @@ func (x *UpdateOneParagraphRequest) String() string {
 func (*UpdateOneParagraphRequest) ProtoMessage() {}
 
 func (x *UpdateOneParagraphRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[9]
+	mi := &file_message_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,7 +562,7 @@ func (x *UpdateOneParagraphRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOneParagraphRequest.ProtoReflect.Descriptor instead.
 func (*UpdateOneParagraphRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{9}
+	return file_message_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateOneParagraphRequest) GetID() uint64 {
@@ -637,7 +590,7 @@ type DeleteParagraphsForChapterRequest struct {
 func (x *DeleteParagraphsForChapterRequest) Reset() {
 	*x = DeleteParagraphsForChapterRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[10]
+		mi := &file_message_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -650,7 +603,7 @@ func (x *DeleteParagraphsForChapterRequest) String() string {
 func (*DeleteParagraphsForChapterRequest) ProtoMessage() {}
 
 func (x *DeleteParagraphsForChapterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[10]
+	mi := &file_message_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -663,7 +616,7 @@ func (x *DeleteParagraphsForChapterRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use DeleteParagraphsForChapterRequest.ProtoReflect.Descriptor instead.
 func (*DeleteParagraphsForChapterRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{10}
+	return file_message_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteParagraphsForChapterRequest) GetID() uint64 {
@@ -684,7 +637,7 @@ type GetParagraphsWithHrefsRequest struct {
 func (x *GetParagraphsWithHrefsRequest) Reset() {
 	*x = GetParagraphsWithHrefsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[11]
+		mi := &file_message_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -697,7 +650,7 @@ func (x *GetParagraphsWithHrefsRequest) String() string {
 func (*GetParagraphsWithHrefsRequest) ProtoMessage() {}
 
 func (x *GetParagraphsWithHrefsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[11]
+	mi := &file_message_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -710,7 +663,7 @@ func (x *GetParagraphsWithHrefsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetParagraphsWithHrefsRequest.ProtoReflect.Descriptor instead.
 func (*GetParagraphsWithHrefsRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{11}
+	return file_message_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetParagraphsWithHrefsRequest) GetID() uint64 {
@@ -731,7 +684,7 @@ type GetParagraphsWithHrefsResponse struct {
 func (x *GetParagraphsWithHrefsResponse) Reset() {
 	*x = GetParagraphsWithHrefsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[12]
+		mi := &file_message_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -744,7 +697,7 @@ func (x *GetParagraphsWithHrefsResponse) String() string {
 func (*GetParagraphsWithHrefsResponse) ProtoMessage() {}
 
 func (x *GetParagraphsWithHrefsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[12]
+	mi := &file_message_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -757,7 +710,7 @@ func (x *GetParagraphsWithHrefsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetParagraphsWithHrefsResponse.ProtoReflect.Descriptor instead.
 func (*GetParagraphsWithHrefsResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{12}
+	return file_message_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetParagraphsWithHrefsResponse) GetParagraphs() []*WriterParagraph {
@@ -778,7 +731,7 @@ type GetAllChaptersIdsRequest struct {
 func (x *GetAllChaptersIdsRequest) Reset() {
 	*x = GetAllChaptersIdsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[13]
+		mi := &file_message_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -791,7 +744,7 @@ func (x *GetAllChaptersIdsRequest) String() string {
 func (*GetAllChaptersIdsRequest) ProtoMessage() {}
 
 func (x *GetAllChaptersIdsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[13]
+	mi := &file_message_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -804,7 +757,7 @@ func (x *GetAllChaptersIdsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllChaptersIdsRequest.ProtoReflect.Descriptor instead.
 func (*GetAllChaptersIdsRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{13}
+	return file_message_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetAllChaptersIdsRequest) GetID() uint64 {
@@ -825,7 +778,7 @@ type GetAllChaptersIdsResponse struct {
 func (x *GetAllChaptersIdsResponse) Reset() {
 	*x = GetAllChaptersIdsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[14]
+		mi := &file_message_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -838,7 +791,7 @@ func (x *GetAllChaptersIdsResponse) String() string {
 func (*GetAllChaptersIdsResponse) ProtoMessage() {}
 
 func (x *GetAllChaptersIdsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[14]
+	mi := &file_message_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -851,7 +804,7 @@ func (x *GetAllChaptersIdsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllChaptersIdsResponse.ProtoReflect.Descriptor instead.
 func (*GetAllChaptersIdsResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{14}
+	return file_message_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetAllChaptersIdsResponse) GetIDs() []uint64 {
@@ -872,7 +825,7 @@ type GetRegulationIdByChapterIdRequest struct {
 func (x *GetRegulationIdByChapterIdRequest) Reset() {
 	*x = GetRegulationIdByChapterIdRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[15]
+		mi := &file_message_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -885,7 +838,7 @@ func (x *GetRegulationIdByChapterIdRequest) String() string {
 func (*GetRegulationIdByChapterIdRequest) ProtoMessage() {}
 
 func (x *GetRegulationIdByChapterIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[15]
+	mi := &file_message_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -898,7 +851,7 @@ func (x *GetRegulationIdByChapterIdRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetRegulationIdByChapterIdRequest.ProtoReflect.Descriptor instead.
 func (*GetRegulationIdByChapterIdRequest) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{15}
+	return file_message_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetRegulationIdByChapterIdRequest) GetID() uint64 {
@@ -919,7 +872,7 @@ type GetRegulationIdByChapterIdResponse struct {
 func (x *GetRegulationIdByChapterIdResponse) Reset() {
 	*x = GetRegulationIdByChapterIdResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_message_proto_msgTypes[16]
+		mi := &file_message_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -932,7 +885,7 @@ func (x *GetRegulationIdByChapterIdResponse) String() string {
 func (*GetRegulationIdByChapterIdResponse) ProtoMessage() {}
 
 func (x *GetRegulationIdByChapterIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_message_proto_msgTypes[16]
+	mi := &file_message_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -945,7 +898,7 @@ func (x *GetRegulationIdByChapterIdResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetRegulationIdByChapterIdResponse.ProtoReflect.Descriptor instead.
 func (*GetRegulationIdByChapterIdResponse) Descriptor() ([]byte, []int) {
-	return file_message_proto_rawDescGZIP(), []int{16}
+	return file_message_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetRegulationIdByChapterIdResponse) GetID() uint64 {
@@ -1006,47 +959,43 @@ var file_message_proto_rawDesc = []byte{
 	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x27, 0x0a, 0x15, 0x43, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02,
-	0x49, 0x44, 0x22, 0x41, 0x0a, 0x2f, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x68, 0x61, 0x70,
-	0x74, 0x65, 0x72, 0x73, 0x41, 0x6e, 0x64, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68,
-	0x73, 0x46, 0x6f, 0x72, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x58, 0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41,
-	0x6c, 0x6c, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x12, 0x3a, 0x0a, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68,
-	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72,
-	0x2e, 0x76, 0x31, 0x2e, 0x57, 0x72, 0x69, 0x74, 0x65, 0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72,
-	0x61, 0x70, 0x68, 0x52, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22,
-	0x45, 0x0a, 0x19, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x50, 0x61, 0x72, 0x61,
-	0x67, 0x72, 0x61, 0x70, 0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
-	0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x12, 0x18, 0x0a, 0x07,
-	0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x43,
-	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x22, 0x33, 0x0a, 0x21, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x46, 0x6f, 0x72, 0x43, 0x68, 0x61,
-	0x70, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49,
-	0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x2f, 0x0a, 0x1d, 0x47,
-	0x65, 0x74, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74, 0x68,
-	0x48, 0x72, 0x65, 0x66, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
-	0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x5c, 0x0a, 0x1e,
-	0x47, 0x65, 0x74, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74,
-	0x68, 0x48, 0x72, 0x65, 0x66, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a,
-	0x0a, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x01, 0x20, 0x03,
-	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x57,
-	0x72, 0x69, 0x74, 0x65, 0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x52, 0x0a,
-	0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22, 0x2a, 0x0a, 0x18, 0x47, 0x65,
-	0x74, 0x41, 0x6c, 0x6c, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73, 0x49, 0x64, 0x73, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x2d, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c,
-	0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73, 0x49, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x49, 0x44, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x04,
-	0x52, 0x03, 0x49, 0x44, 0x73, 0x22, 0x33, 0x0a, 0x21, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x75,
-	0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
-	0x72, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x34, 0x0a, 0x22, 0x47, 0x65,
-	0x74, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43,
-	0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44,
-	0x42, 0x15, 0x5a, 0x13, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62,
-	0x5f, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x49, 0x44, 0x22, 0x58, 0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x6c, 0x6c, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x3a, 0x0a, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2e, 0x76, 0x31,
+	0x2e, 0x57, 0x72, 0x69, 0x74, 0x65, 0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68,
+	0x52, 0x0a, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22, 0x45, 0x0a, 0x19,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x6e, 0x65, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61,
+	0x70, 0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x12, 0x18, 0x0a, 0x07, 0x43, 0x6f, 0x6e,
+	0x74, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x43, 0x6f, 0x6e, 0x74,
+	0x65, 0x6e, 0x74, 0x22, 0x33, 0x0a, 0x21, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x61, 0x72,
+	0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x46, 0x6f, 0x72, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x2f, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74, 0x68, 0x48, 0x72, 0x65,
+	0x66, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x5c, 0x0a, 0x1e, 0x47, 0x65, 0x74,
+	0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x57, 0x69, 0x74, 0x68, 0x48, 0x72,
+	0x65, 0x66, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a, 0x0a, 0x0a, 0x50,
+	0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x1a, 0x2e, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x57, 0x72, 0x69, 0x74,
+	0x65, 0x72, 0x50, 0x61, 0x72, 0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x52, 0x0a, 0x50, 0x61, 0x72,
+	0x61, 0x67, 0x72, 0x61, 0x70, 0x68, 0x73, 0x22, 0x2a, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x41, 0x6c,
+	0x6c, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x73, 0x49, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52,
+	0x02, 0x49, 0x44, 0x22, 0x2d, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x43, 0x68, 0x61,
+	0x70, 0x74, 0x65, 0x72, 0x73, 0x49, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x10, 0x0a, 0x03, 0x49, 0x44, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x04, 0x52, 0x03, 0x49,
+	0x44, 0x73, 0x22, 0x33, 0x0a, 0x21, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x64,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x34, 0x0a, 0x22, 0x47, 0x65, 0x74, 0x52, 0x65,
+	0x67, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70,
+	0x74, 0x65, 0x72, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a,
+	0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x42, 0x15, 0x5a,
+	0x13, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72,
+	0x69, 0x74, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1061,25 +1010,24 @@ func file_message_proto_rawDescGZIP() []byte {
 	return file_message_proto_rawDescData
 }
 
-var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_message_proto_goTypes = []interface{}{
-	(*WriterParagraph)(nil),                                 // 0: writer.v1.WriterParagraph
-	(*UpdateOneRequestMesssage)(nil),                        // 1: writer.v1.UpdateOneRequestMesssage
-	(*CreateRegulationRequest)(nil),                         // 2: writer.v1.CreateRegulationRequest
-	(*CreateRegulationResponse)(nil),                        // 3: writer.v1.CreateRegulationResponse
-	(*DeleteRegulationRequest)(nil),                         // 4: writer.v1.DeleteRegulationRequest
-	(*CreateChapterRequest)(nil),                            // 5: writer.v1.CreateChapterRequest
-	(*CreateChapterResponse)(nil),                           // 6: writer.v1.CreateChapterResponse
-	(*DeleteChaptersAndParagraphsForRegulationRequest)(nil), // 7: writer.v1.DeleteChaptersAndParagraphsForRegulationRequest
-	(*CreateAllParagraphsRequest)(nil),                      // 8: writer.v1.CreateAllParagraphsRequest
-	(*UpdateOneParagraphRequest)(nil),                       // 9: writer.v1.UpdateOneParagraphRequest
-	(*DeleteParagraphsForChapterRequest)(nil),               // 10: writer.v1.DeleteParagraphsForChapterRequest
-	(*GetParagraphsWithHrefsRequest)(nil),                   // 11: writer.v1.GetParagraphsWithHrefsRequest
-	(*GetParagraphsWithHrefsResponse)(nil),                  // 12: writer.v1.GetParagraphsWithHrefsResponse
-	(*GetAllChaptersIdsRequest)(nil),                        // 13: writer.v1.GetAllChaptersIdsRequest
-	(*GetAllChaptersIdsResponse)(nil),                       // 14: writer.v1.GetAllChaptersIdsResponse
-	(*GetRegulationIdByChapterIdRequest)(nil),               // 15: writer.v1.GetRegulationIdByChapterIdRequest
-	(*GetRegulationIdByChapterIdResponse)(nil),              // 16: writer.v1.GetRegulationIdByChapterIdResponse
+	(*WriterParagraph)(nil),                    // 0: writer.v1.WriterParagraph
+	(*UpdateOneRequestMesssage)(nil),           // 1: writer.v1.UpdateOneRequestMesssage
+	(*CreateRegulationRequest)(nil),            // 2: writer.v1.CreateRegulationRequest
+	(*CreateRegulationResponse)(nil),           // 3: writer.v1.CreateRegulationResponse
+	(*DeleteRegulationRequest)(nil),            // 4: writer.v1.DeleteRegulationRequest
+	(*CreateChapterRequest)(nil),               // 5: writer.v1.CreateChapterRequest
+	(*CreateChapterResponse)(nil),              // 6: writer.v1.CreateChapterResponse
+	(*CreateAllParagraphsRequest)(nil),         // 7: writer.v1.CreateAllParagraphsRequest
+	(*UpdateOneParagraphRequest)(nil),          // 8: writer.v1.UpdateOneParagraphRequest
+	(*DeleteParagraphsForChapterRequest)(nil),  // 9: writer.v1.DeleteParagraphsForChapterRequest
+	(*GetParagraphsWithHrefsRequest)(nil),      // 10: writer.v1.GetParagraphsWithHrefsRequest
+	(*GetParagraphsWithHrefsResponse)(nil),     // 11: writer.v1.GetParagraphsWithHrefsResponse
+	(*GetAllChaptersIdsRequest)(nil),           // 12: writer.v1.GetAllChaptersIdsRequest
+	(*GetAllChaptersIdsResponse)(nil),          // 13: writer.v1.GetAllChaptersIdsResponse
+	(*GetRegulationIdByChapterIdRequest)(nil),  // 14: writer.v1.GetRegulationIdByChapterIdRequest
+	(*GetRegulationIdByChapterIdResponse)(nil), // 15: writer.v1.GetRegulationIdByChapterIdResponse
 }
 var file_message_proto_depIdxs = []int32{
 	0, // 0: writer.v1.CreateChapterRequest.Paragraphs:type_name -> writer.v1.WriterParagraph
@@ -1183,18 +1131,6 @@ func file_message_proto_init() {
 			}
 		}
 		file_message_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteChaptersAndParagraphsForRegulationRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_message_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateAllParagraphsRequest); i {
 			case 0:
 				return &v.state
@@ -1206,7 +1142,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateOneParagraphRequest); i {
 			case 0:
 				return &v.state
@@ -1218,7 +1154,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteParagraphsForChapterRequest); i {
 			case 0:
 				return &v.state
@@ -1230,7 +1166,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetParagraphsWithHrefsRequest); i {
 			case 0:
 				return &v.state
@@ -1242,7 +1178,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetParagraphsWithHrefsResponse); i {
 			case 0:
 				return &v.state
@@ -1254,7 +1190,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetAllChaptersIdsRequest); i {
 			case 0:
 				return &v.state
@@ -1266,7 +1202,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetAllChaptersIdsResponse); i {
 			case 0:
 				return &v.state
@@ -1278,7 +1214,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetRegulationIdByChapterIdRequest); i {
 			case 0:
 				return &v.state
@@ -1290,7 +1226,7 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
-		file_message_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_message_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetRegulationIdByChapterIdResponse); i {
 			case 0:
 				return &v.state
@@ -1309,7 +1245,7 @@ func file_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
