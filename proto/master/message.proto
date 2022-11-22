@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package supreme.v1;
+package master.v1;
 
-option go_package = "supreme/v1;pb_supreme";
+option go_package = "master/v1;pb_master";
 
 
 message CreateChapterRequest {
