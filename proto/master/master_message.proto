@@ -6,12 +6,11 @@ option go_package = "master/v1;pb_master";
 
 
 message CreateChapterRequest {
-    uint64 ChapterId    = 1;
-	string PseudoId    = 2;
-    uint64 RegulationId = 3;
-	string ChapterName  = 4;
-	string ChapterNum   = 5;
-	uint32 OrderNum     = 6;
+	string PseudoId     = 1;
+    uint64 RegulationId = 2;
+	string ChapterName  = 3;
+	string ChapterNum   = 4;
+	uint32 OrderNum     = 5;
 }
 
 message CreateChapterResponse{
