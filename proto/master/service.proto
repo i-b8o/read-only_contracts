@@ -4,7 +4,7 @@ package master.v1;
 
 option go_package = "master/v1;pb_master";
 
-import "message.proto";
+import "master_message.proto";
 
 message Empty {}
 
