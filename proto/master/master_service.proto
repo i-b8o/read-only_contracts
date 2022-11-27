@@ -4,7 +4,7 @@ package master.v1;
 
 option go_package = "master/v1;pb_master";
 
-import "master_message.proto";
+// import "master_message.proto";
 
 message Empty {}
 
@@ -14,4 +14,53 @@ service MasterGRPC {
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
     rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
+}
+
+message CreateChapterRequest {
+	string PseudoId     = 1;
+    uint64 RegulationId = 2;
+	string ChapterName  = 3;
+	string ChapterNum   = 4;
+	uint32 OrderNum     = 5;
+}
+
+message CreateChapterResponse{
+    uint64 ID = 1;
+}
+
+message Paragraph {
+    uint64    ParagraphId       = 1;
+    uint32    ParagraphOrderNum = 2;
+    bool      IsTable           = 3;
+    bool      IsNFT             = 4;
+    bool      HasLinks          = 5;
+    string    ParagraphClass    = 6;
+    string    ParagraphText     = 7;
+    uint64    ChapterId         = 8;
+}
+
+message CreateParagraphsRequest {
+    repeated Paragraph paragraphs = 1;
+}
+
+
+message CreateRegulationRequest {
+    string PseudoId      = 1;
+    string RegulationName = 2;
+    string Abbreviation   = 3;
+    string Title          = 4;
+}
+message CreateRegulationResponse {
+    uint64 ID = 1;
+}
+
+message GenerateLinksRequest {
+    uint64 ID = 1;
+}
+message GenerateLinksResponse {
+    uint64 ID = 1;
+}
+
+message DeleteRegulationRequest {
+    uint64 ID = 1;
 }
