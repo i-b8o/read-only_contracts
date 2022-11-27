@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS paragraph;
 DROP TABLE IF EXISTS chapter;
 DROP TABLE IF EXISTS regulation;
 
+
 CREATE TABLE regulation (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
@@ -65,6 +66,39 @@ FROM paragraph AS p INNER JOIN chapter AS c ON p.c_id= c.id INNER JOIN regulatio
 
 create index idx_search on reg_search using GIN(ts);
 
+CREATE TABLE pseudo_regulation (
+    r_id integer,
+    pseudo TEXT NOT NULL CHECK (pseudo != '')
+);
+
+CREATE TABLE pseudo_chapter (
+    c_id integer,
+    pseudo TEXT NOT NULL CHECK (pseudo != '')
+);
+
+CREATE TABLE absent_reg (
+    id SERIAL PRIMARY KEY,
+    pseudo TEXT NOT NULL CHECK (pseudo != ''),
+    done BOOLEAN NOT NULL DEFAULT false,
+    paragraph_id integer  
+);
+
+CREATE TABLE link (
+    id INT NOT NULL UNIQUE,
+    paragraph_num INT NOT NULL CHECK (paragraph_num >= 0),
+    c_id integer,
+    r_id integer
+);
+
+CREATE TABLE speech (
+    id SERIAL PRIMARY KEY,
+    order_num INT NOT NULL CHECK (order_num >= 0),
+    content TEXT,
+    paragraph_id INT NOT NULL CHECK (paragraph_id >= 0)
+);
+
 INSERT INTO regulation ("name", "abbreviation", "title", "created_at") VALUES ('Имя первой записи', 'Аббревиатура первой записи', 'Заголовок первой записи', '2023-01-01 00:00:00');
 INSERT INTO chapter ("name", "num", "order_num","r_id", "updated_at") VALUES ('Имя первой записи','I',1,1, '2023-01-01 00:00:00'), ('Имя второй записи','II',2,1, '2023-01-01 00:00:00'), ('Имя третьей записи','III',3,1, '2023-01-01 00:00:00');
-INSERT INTO paragraph ("paragraph_id","order_num","is_table","is_nft","has_links","class","content","c_id") VALUES (1,1,false,false,false,'any-class','Содержимое первого параграфа', 1), (2,2,true,true,true,'any-class','Содержимое второго <a href=''372952/4e92c731969781306ebd1095867d2385f83ac7af/335104''>пункта 5.14</a> параграфа', 1), (3,3,false,false,false,'any-class',' <a id=''335050''></a>Содержимое третьего параграфа<a href=''372952/4e92c731969781306ebd1095867d2385f83ac7af/335065''>таблицей N 2</a>.', 1);
+INSERT INTO paragraph ("paragraph_id","order_num","is_table","is_nft","has_links","class","content","c_id") VALUES (1,1,false,false,true,'any-class','Содержимое <a id="dst101675"></a> первого <a href=''11111/a3a3a3/111''>параграфа</a>', 1), (2,2,true,true,true,'any-class','Содержимое второго <a href=''372952/4e92c731969781306ebd1095867d2385f83ac7af/335104''>пункта 5.14</a> параграфа', 1), (3,3,false,false,true,'any-class','<a id=''335050''></a>Содержимое третьего параграфа<a href=''/document/cons_doc_LAW_2875/''>таблицей N 2</a>.', 1);
+INSERT INTO pseudo_regulation ("r_id", "pseudo") VALUES (1, 11111);
+INSERT INTO pseudo_chapter ("c_id", "pseudo") VALUES (3, 'a3a3a3');
