@@ -3,7 +3,7 @@
 //  source: master/master_service.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -15,6 +15,28 @@ const Empty$json = const {
 
 /// Descriptor for `Empty`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode('CgVFbXB0eQ==');
+@$core.Deprecated('Use regulationDescriptor instead')
+const Regulation$json = const {
+  '1': 'Regulation',
+  '2': const [
+    const {'1': 'RegulationName', '3': 1, '4': 1, '5': 9, '10': 'RegulationName'},
+    const {'1': 'Abbreviation', '3': 2, '4': 1, '5': 9, '10': 'Abbreviation'},
+    const {'1': 'Title', '3': 3, '4': 1, '5': 9, '10': 'Title'},
+  ],
+};
+
+/// Descriptor for `Regulation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List regulationDescriptor = $convert.base64Decode('CgpSZWd1bGF0aW9uEiYKDlJlZ3VsYXRpb25OYW1lGAEgASgJUg5SZWd1bGF0aW9uTmFtZRIiCgxBYmJyZXZpYXRpb24YAiABKAlSDEFiYnJldmlhdGlvbhIUCgVUaXRsZRgDIAEoCVIFVGl0bGU=');
+@$core.Deprecated('Use getAllRegulationsResponseDescriptor instead')
+const GetAllRegulationsResponse$json = const {
+  '1': 'GetAllRegulationsResponse',
+  '2': const [
+    const {'1': 'Regulations', '3': 1, '4': 3, '5': 11, '6': '.master.v1.Regulation', '10': 'Regulations'},
+  ],
+};
+
+/// Descriptor for `GetAllRegulationsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllRegulationsResponseDescriptor = $convert.base64Decode('ChlHZXRBbGxSZWd1bGF0aW9uc1Jlc3BvbnNlEjcKC1JlZ3VsYXRpb25zGAEgAygLMhUubWFzdGVyLnYxLlJlZ3VsYXRpb25SC1JlZ3VsYXRpb25z');
 @$core.Deprecated('Use createChapterRequestDescriptor instead')
 const CreateChapterRequest$json = const {
   '1': 'CreateChapterRequest',

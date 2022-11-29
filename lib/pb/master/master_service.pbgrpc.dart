@@ -3,7 +3,7 @@
 //  source: master/master_service.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:async' as $async;
 
@@ -14,6 +14,12 @@ import 'master_service.pb.dart' as $0;
 export 'master_service.pb.dart';
 
 class MasterGRPCClient extends $grpc.Client {
+  static final _$getAllRegulations =
+      $grpc.ClientMethod<$0.Empty, $0.GetAllRegulationsResponse>(
+          '/master.v1.MasterGRPC/GetAllRegulations',
+          ($0.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.GetAllRegulationsResponse.fromBuffer(value));
   static final _$createChapter =
       $grpc.ClientMethod<$0.CreateChapterRequest, $0.CreateChapterResponse>(
           '/master.v1.MasterGRPC/CreateChapter',
@@ -47,6 +53,12 @@ class MasterGRPCClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.GetAllRegulationsResponse> getAllRegulations(
+      $0.Empty request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllRegulations, request, options: options);
+  }
 
   $grpc.ResponseFuture<$0.CreateChapterResponse> createChapter(
       $0.CreateChapterRequest request,
@@ -83,6 +95,13 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
   $core.String get $name => 'master.v1.MasterGRPC';
 
   MasterGRPCServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.GetAllRegulationsResponse>(
+        'GetAllRegulations',
+        getAllRegulations_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.GetAllRegulationsResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$0.CreateChapterRequest, $0.CreateChapterResponse>(
             'CreateChapter',
@@ -128,6 +147,11 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
         ($0.Empty value) => value.writeToBuffer()));
   }
 
+  $async.Future<$0.GetAllRegulationsResponse> getAllRegulations_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAllRegulations(call, await request);
+  }
+
   $async.Future<$0.CreateChapterResponse> createChapter_Pre(
       $grpc.ServiceCall call,
       $async.Future<$0.CreateChapterRequest> request) async {
@@ -156,6 +180,8 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
     return deleteRegulation(call, await request);
   }
 
+  $async.Future<$0.GetAllRegulationsResponse> getAllRegulations(
+      $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.CreateChapterResponse> createChapter(
       $grpc.ServiceCall call, $0.CreateChapterRequest request);
   $async.Future<$0.Empty> createParagraphs(

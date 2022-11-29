@@ -3,7 +3,7 @@
 //  source: master/master_service.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -37,6 +37,122 @@ class Empty extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static Empty getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Empty>(create);
   static Empty? _defaultInstance;
+}
+
+class Regulation extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Regulation', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'master.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RegulationName', protoName: 'RegulationName')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Abbreviation', protoName: 'Abbreviation')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
+    ..hasRequiredFields = false
+  ;
+
+  Regulation._() : super();
+  factory Regulation({
+    $core.String? regulationName,
+    $core.String? abbreviation,
+    $core.String? title,
+  }) {
+    final _result = create();
+    if (regulationName != null) {
+      _result.regulationName = regulationName;
+    }
+    if (abbreviation != null) {
+      _result.abbreviation = abbreviation;
+    }
+    if (title != null) {
+      _result.title = title;
+    }
+    return _result;
+  }
+  factory Regulation.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Regulation.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Regulation clone() => Regulation()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Regulation copyWith(void Function(Regulation) updates) => super.copyWith((message) => updates(message as Regulation)) as Regulation; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Regulation create() => Regulation._();
+  Regulation createEmptyInstance() => create();
+  static $pb.PbList<Regulation> createRepeated() => $pb.PbList<Regulation>();
+  @$core.pragma('dart2js:noInline')
+  static Regulation getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Regulation>(create);
+  static Regulation? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get regulationName => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set regulationName($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRegulationName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRegulationName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get abbreviation => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set abbreviation($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAbbreviation() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAbbreviation() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get title => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set title($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTitle() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTitle() => clearField(3);
+}
+
+class GetAllRegulationsResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetAllRegulationsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'master.v1'), createEmptyInstance: create)
+    ..pc<Regulation>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Regulations', $pb.PbFieldType.PM, protoName: 'Regulations', subBuilder: Regulation.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetAllRegulationsResponse._() : super();
+  factory GetAllRegulationsResponse({
+    $core.Iterable<Regulation>? regulations,
+  }) {
+    final _result = create();
+    if (regulations != null) {
+      _result.regulations.addAll(regulations);
+    }
+    return _result;
+  }
+  factory GetAllRegulationsResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetAllRegulationsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetAllRegulationsResponse clone() => GetAllRegulationsResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetAllRegulationsResponse copyWith(void Function(GetAllRegulationsResponse) updates) => super.copyWith((message) => updates(message as GetAllRegulationsResponse)) as GetAllRegulationsResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAllRegulationsResponse create() => GetAllRegulationsResponse._();
+  GetAllRegulationsResponse createEmptyInstance() => create();
+  static $pb.PbList<GetAllRegulationsResponse> createRepeated() => $pb.PbList<GetAllRegulationsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetAllRegulationsResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetAllRegulationsResponse>(create);
+  static GetAllRegulationsResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Regulation> get regulations => $_getList(0);
 }
 
 class CreateChapterRequest extends $pb.GeneratedMessage {

@@ -9,11 +9,22 @@ option go_package = "master/v1;pb_master";
 message Empty {}
 
 service MasterGRPC {
+    rpc GetAllRegulations(Empty) returns (GetAllRegulationsResponse) {};
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc CreateParagraphs(CreateParagraphsRequest) returns (Empty) {};
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
     rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
+}
+
+message Regulation {
+    string RegulationName = 1;
+    string Abbreviation   = 2;
+    string Title          = 3;
+}
+
+message GetAllRegulationsResponse {
+    repeated Regulation Regulations = 1;
 }
 
 message CreateChapterRequest {
