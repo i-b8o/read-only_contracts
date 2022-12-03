@@ -10,7 +10,7 @@ message WriterRegulation {
     string Title = 3;
 }
 message GetRegulationsResponse {
-    
+    repeated WriterRegulation regulations = 1;
 }
 
 message WriterParagraph {
