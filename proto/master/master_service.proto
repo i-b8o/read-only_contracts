@@ -17,20 +17,14 @@ service MasterRegulationGRPC {
 service MasterChapterGRPC{
     rpc Create(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc GetAll(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc UpdateAbsent(UpdateAbsentRequest) returns (Empty) {};
+    rpc UpdateLinks(UpdateLinksRequest) returns (UpdateLinksResponse) {};
 }
 
 service MasterParagraphGRPC{
     rpc Create(CreateParagraphsRequest) returns (Empty) {};
     rpc GetAll(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
-}
-
-service MasterLinkGRPC {
-    rpc Update(UpdateLinksRequest) returns (UpdateLinksResponse) {};
-}
-
-service MasterAbsentGRPC {
-    rpc Update(UpdateAbsentRequest) returns (Empty) {};
 }
 
 message Regulation {
