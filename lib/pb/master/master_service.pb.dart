@@ -41,19 +41,24 @@ class Empty extends $pb.GeneratedMessage {
 
 class Regulation extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Regulation', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'master.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RegulationName', protoName: 'RegulationName')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Abbreviation', protoName: 'Abbreviation')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
+    ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.OU6, protoName: 'ID', defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RegulationName', protoName: 'RegulationName')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Abbreviation', protoName: 'Abbreviation')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..hasRequiredFields = false
   ;
 
   Regulation._() : super();
   factory Regulation({
+    $fixnum.Int64? iD,
     $core.String? regulationName,
     $core.String? abbreviation,
     $core.String? title,
   }) {
     final _result = create();
+    if (iD != null) {
+      _result.iD = iD;
+    }
     if (regulationName != null) {
       _result.regulationName = regulationName;
     }
@@ -87,31 +92,40 @@ class Regulation extends $pb.GeneratedMessage {
   static Regulation? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get regulationName => $_getSZ(0);
+  $fixnum.Int64 get iD => $_getI64(0);
   @$pb.TagNumber(1)
-  set regulationName($core.String v) { $_setString(0, v); }
+  set iD($fixnum.Int64 v) { $_setInt64(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasRegulationName() => $_has(0);
+  $core.bool hasID() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRegulationName() => clearField(1);
+  void clearID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get abbreviation => $_getSZ(1);
+  $core.String get regulationName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set abbreviation($core.String v) { $_setString(1, v); }
+  set regulationName($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasAbbreviation() => $_has(1);
+  $core.bool hasRegulationName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearAbbreviation() => clearField(2);
+  void clearRegulationName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get title => $_getSZ(2);
+  $core.String get abbreviation => $_getSZ(2);
   @$pb.TagNumber(3)
-  set title($core.String v) { $_setString(2, v); }
+  set abbreviation($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasTitle() => $_has(2);
+  $core.bool hasAbbreviation() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTitle() => clearField(3);
+  void clearAbbreviation() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get title => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set title($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTitle() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTitle() => clearField(4);
 }
 
 class GetAllRegulationsResponse extends $pb.GeneratedMessage {

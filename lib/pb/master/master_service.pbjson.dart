@@ -19,14 +19,15 @@ final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode('CgVFbXB0eQ=
 const Regulation$json = const {
   '1': 'Regulation',
   '2': const [
-    const {'1': 'RegulationName', '3': 1, '4': 1, '5': 9, '10': 'RegulationName'},
-    const {'1': 'Abbreviation', '3': 2, '4': 1, '5': 9, '10': 'Abbreviation'},
-    const {'1': 'Title', '3': 3, '4': 1, '5': 9, '10': 'Title'},
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+    const {'1': 'RegulationName', '3': 2, '4': 1, '5': 9, '10': 'RegulationName'},
+    const {'1': 'Abbreviation', '3': 3, '4': 1, '5': 9, '10': 'Abbreviation'},
+    const {'1': 'Title', '3': 4, '4': 1, '5': 9, '10': 'Title'},
   ],
 };
 
 /// Descriptor for `Regulation`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List regulationDescriptor = $convert.base64Decode('CgpSZWd1bGF0aW9uEiYKDlJlZ3VsYXRpb25OYW1lGAEgASgJUg5SZWd1bGF0aW9uTmFtZRIiCgxBYmJyZXZpYXRpb24YAiABKAlSDEFiYnJldmlhdGlvbhIUCgVUaXRsZRgDIAEoCVIFVGl0bGU=');
+final $typed_data.Uint8List regulationDescriptor = $convert.base64Decode('CgpSZWd1bGF0aW9uEg4KAklEGAEgASgEUgJJRBImCg5SZWd1bGF0aW9uTmFtZRgCIAEoCVIOUmVndWxhdGlvbk5hbWUSIgoMQWJicmV2aWF0aW9uGAMgASgJUgxBYmJyZXZpYXRpb24SFAoFVGl0bGUYBCABKAlSBVRpdGxl');
 @$core.Deprecated('Use getAllRegulationsResponseDescriptor instead')
 const GetAllRegulationsResponse$json = const {
   '1': 'GetAllRegulationsResponse',
