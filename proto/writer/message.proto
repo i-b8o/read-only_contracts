@@ -5,9 +5,10 @@ package writer.v1;
 option go_package = "writer/v1;pb_writer";
 
 message WriterRegulation {
-    string Name = 1;
-    string Abbreviation = 2;
-    string Title = 3;
+    uint64 ID = 1;
+    string Name = 2;
+    string Abbreviation = 3;
+    string Title = 4;
 }
 message GetRegulationsResponse {
     repeated WriterRegulation regulations = 1;
