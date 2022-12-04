@@ -9,18 +9,20 @@ option go_package = "master/v1;pb_master";
 message Empty {}
 
 service MasterGRPC {
+    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc GetAllRegulations(Empty) returns (GetAllRegulationsResponse) {};
+    rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
     
     rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
-    rpc GetAllParagraphs(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
-    rpc UpdateParagraph(UpdateParagraphRequest) returns (Empty) {};
-    rpc EditAbsent(EditAbsentRequest) returns (Empty) {};
-
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
+    
+    rpc GetAllParagraphs(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
     rpc CreateParagraphs(CreateParagraphsRequest) returns (Empty) {};
-    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
+    rpc UpdateParagraph(UpdateParagraphRequest) returns (Empty) {};
+    
     rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
+    
+    rpc EditAbsent(EditAbsentRequest) returns (Empty) {};
 }
 
 message Regulation {
