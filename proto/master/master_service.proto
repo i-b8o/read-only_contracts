@@ -13,7 +13,7 @@ service MasterGRPC {
     
     rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
     rpc GetAllParagraphs(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
-    rpc EditParagraph(EditParagraphRequest) returns (Empty) {};
+    rpc UpdateParagraph(UpdateParagraphRequest) returns (Empty) {};
     rpc EditAbsent(EditAbsentRequest) returns (Empty) {};
 
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
@@ -119,7 +119,7 @@ message GetAllParagraphsResponse {
     repeated MasterParagraph paragraphs = 1;
 }
 
-message EditParagraphRequest {
+message UpdateParagraphRequest {
     uint64 ID        = 1;
     string Content   = 2;
 }

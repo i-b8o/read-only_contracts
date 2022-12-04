@@ -25,7 +25,7 @@ type MasterGRPCClient interface {
 	GetAllRegulations(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error)
 	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
 	GetAllParagraphs(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
-	EditParagraph(ctx context.Context, in *EditParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
+	UpdateParagraph(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
 	EditAbsent(ctx context.Context, in *EditAbsentRequest, opts ...grpc.CallOption) (*Empty, error)
 	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
 	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
@@ -69,9 +69,9 @@ func (c *masterGRPCClient) GetAllParagraphs(ctx context.Context, in *GetAllParag
 	return out, nil
 }
 
-func (c *masterGRPCClient) EditParagraph(ctx context.Context, in *EditParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *masterGRPCClient) UpdateParagraph(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/EditParagraph", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/UpdateParagraph", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ type MasterGRPCServer interface {
 	GetAllRegulations(context.Context, *Empty) (*GetAllRegulationsResponse, error)
 	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
 	GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
-	EditParagraph(context.Context, *EditParagraphRequest) (*Empty, error)
+	UpdateParagraph(context.Context, *UpdateParagraphRequest) (*Empty, error)
 	EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error)
 	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
 	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error)
@@ -162,8 +162,8 @@ func (UnimplementedMasterGRPCServer) GetAllChapters(context.Context, *GetAllChap
 func (UnimplementedMasterGRPCServer) GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllParagraphs not implemented")
 }
-func (UnimplementedMasterGRPCServer) EditParagraph(context.Context, *EditParagraphRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditParagraph not implemented")
+func (UnimplementedMasterGRPCServer) UpdateParagraph(context.Context, *UpdateParagraphRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateParagraph not implemented")
 }
 func (UnimplementedMasterGRPCServer) EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EditAbsent not implemented")
@@ -250,20 +250,20 @@ func _MasterGRPC_GetAllParagraphs_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MasterGRPC_EditParagraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditParagraphRequest)
+func _MasterGRPC_UpdateParagraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateParagraphRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MasterGRPCServer).EditParagraph(ctx, in)
+		return srv.(MasterGRPCServer).UpdateParagraph(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/EditParagraph",
+		FullMethod: "/master.v1.MasterGRPC/UpdateParagraph",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).EditParagraph(ctx, req.(*EditParagraphRequest))
+		return srv.(MasterGRPCServer).UpdateParagraph(ctx, req.(*UpdateParagraphRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -396,8 +396,8 @@ var MasterGRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MasterGRPC_GetAllParagraphs_Handler,
 		},
 		{
-			MethodName: "EditParagraph",
-			Handler:    _MasterGRPC_EditParagraph_Handler,
+			MethodName: "UpdateParagraph",
+			Handler:    _MasterGRPC_UpdateParagraph_Handler,
 		},
 		{
 			MethodName: "EditAbsent",
