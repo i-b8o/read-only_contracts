@@ -8,21 +8,29 @@ option go_package = "master/v1;pb_master";
 
 message Empty {}
 
-service MasterGRPC {
-    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc GetAllRegulations(Empty) returns (GetAllRegulationsResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
-    
-    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
-    rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    
-    rpc GetAllParagraphs(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
-    rpc CreateParagraphs(CreateParagraphsRequest) returns (Empty) {};
-    rpc UpdateParagraph(UpdateParagraphRequest) returns (Empty) {};
-    
-    rpc GenerateLinks(GenerateLinksRequest) returns (GenerateLinksResponse) {};
-    
-    rpc EditAbsent(EditAbsentRequest) returns (Empty) {};
+service MasterRegulationGRPC {
+    rpc Create(CreateRegulationRequest) returns (CreateRegulationResponse) {};
+    rpc GetAll(Empty) returns (GetAllRegulationsResponse) {};
+    rpc Delete(DeleteRegulationRequest) returns (Empty) {};
+}
+
+service MasterChapterGRPC{
+    rpc Create(CreateChapterRequest) returns (CreateChapterResponse) {};
+    rpc GetAll(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+}
+
+service MasterParagraphGRPC{
+    rpc Create(CreateParagraphsRequest) returns (Empty) {};
+    rpc GetAll(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
+    rpc Update(UpdateParagraphRequest) returns (Empty) {};
+}
+
+service MasterLinkGRPC {
+    rpc Update(UpdateLinksRequest) returns (UpdateLinksResponse) {};
+}
+
+service MasterAbsentGRPC {
+    rpc Update(UpdateAbsentRequest) returns (Empty) {};
 }
 
 message Regulation {
@@ -74,10 +82,10 @@ message CreateRegulationResponse {
     uint64 ID = 1;
 }
 
-message GenerateLinksRequest {
+message UpdateLinksRequest {
     uint64 ID = 1;
 }
-message GenerateLinksResponse {
+message UpdateLinksResponse {
     uint64 ID = 1;
 }
 
@@ -126,7 +134,7 @@ message UpdateParagraphRequest {
     string Content   = 2;
 }
 
-message EditAbsentRequest {
+message UpdateAbsentRequest {
     uint64 ID = 1;
     bool done = 2;
 }

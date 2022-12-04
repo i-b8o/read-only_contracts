@@ -18,410 +18,610 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// MasterGRPCClient is the client API for MasterGRPC service.
+// MasterRegulationGRPCClient is the client API for MasterRegulationGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MasterGRPCClient interface {
-	GetAllRegulations(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error)
-	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
-	GetAllParagraphs(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
-	UpdateParagraph(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
-	EditAbsent(ctx context.Context, in *EditAbsentRequest, opts ...grpc.CallOption) (*Empty, error)
-	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
-	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
-	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
-	GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error)
-	DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
+type MasterRegulationGRPCClient interface {
+	Create(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
+	GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error)
+	Delete(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
-type masterGRPCClient struct {
+type masterRegulationGRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMasterGRPCClient(cc grpc.ClientConnInterface) MasterGRPCClient {
-	return &masterGRPCClient{cc}
+func NewMasterRegulationGRPCClient(cc grpc.ClientConnInterface) MasterRegulationGRPCClient {
+	return &masterRegulationGRPCClient{cc}
 }
 
-func (c *masterGRPCClient) GetAllRegulations(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error) {
-	out := new(GetAllRegulationsResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllRegulations", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error) {
-	out := new(GetAllChaptersResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllChapters", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) GetAllParagraphs(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error) {
-	out := new(GetAllParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllParagraphs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) UpdateParagraph(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/UpdateParagraph", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) EditAbsent(ctx context.Context, in *EditAbsentRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/EditAbsent", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
-	out := new(CreateChapterResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/CreateChapter", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/CreateParagraphs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *masterGRPCClient) CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error) {
+func (c *masterRegulationGRPCClient) Create(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error) {
 	out := new(CreateRegulationResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/CreateRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterRegulationGRPC/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *masterGRPCClient) GenerateLinks(ctx context.Context, in *GenerateLinksRequest, opts ...grpc.CallOption) (*GenerateLinksResponse, error) {
-	out := new(GenerateLinksResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GenerateLinks", in, out, opts...)
+func (c *masterRegulationGRPCClient) GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error) {
+	out := new(GetAllRegulationsResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterRegulationGRPC/GetAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *masterGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error) {
+func (c *masterRegulationGRPCClient) Delete(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/DeleteRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterRegulationGRPC/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// MasterGRPCServer is the server API for MasterGRPC service.
-// All implementations must embed UnimplementedMasterGRPCServer
+// MasterRegulationGRPCServer is the server API for MasterRegulationGRPC service.
+// All implementations must embed UnimplementedMasterRegulationGRPCServer
 // for forward compatibility
-type MasterGRPCServer interface {
-	GetAllRegulations(context.Context, *Empty) (*GetAllRegulationsResponse, error)
-	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
-	GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
-	UpdateParagraph(context.Context, *UpdateParagraphRequest) (*Empty, error)
-	EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error)
-	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
-	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error)
-	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
-	GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error)
-	DeleteRegulation(context.Context, *DeleteRegulationRequest) (*Empty, error)
-	mustEmbedUnimplementedMasterGRPCServer()
+type MasterRegulationGRPCServer interface {
+	Create(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
+	GetAll(context.Context, *Empty) (*GetAllRegulationsResponse, error)
+	Delete(context.Context, *DeleteRegulationRequest) (*Empty, error)
+	mustEmbedUnimplementedMasterRegulationGRPCServer()
 }
 
-// UnimplementedMasterGRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedMasterGRPCServer struct {
+// UnimplementedMasterRegulationGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedMasterRegulationGRPCServer struct {
 }
 
-func (UnimplementedMasterGRPCServer) GetAllRegulations(context.Context, *Empty) (*GetAllRegulationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllRegulations not implemented")
+func (UnimplementedMasterRegulationGRPCServer) Create(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedMasterGRPCServer) GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllChapters not implemented")
+func (UnimplementedMasterRegulationGRPCServer) GetAll(context.Context, *Empty) (*GetAllRegulationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
-func (UnimplementedMasterGRPCServer) GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllParagraphs not implemented")
+func (UnimplementedMasterRegulationGRPCServer) Delete(context.Context, *DeleteRegulationRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedMasterGRPCServer) UpdateParagraph(context.Context, *UpdateParagraphRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateParagraph not implemented")
-}
-func (UnimplementedMasterGRPCServer) EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditAbsent not implemented")
-}
-func (UnimplementedMasterGRPCServer) CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateChapter not implemented")
-}
-func (UnimplementedMasterGRPCServer) CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateParagraphs not implemented")
-}
-func (UnimplementedMasterGRPCServer) CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateRegulation not implemented")
-}
-func (UnimplementedMasterGRPCServer) GenerateLinks(context.Context, *GenerateLinksRequest) (*GenerateLinksResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinks not implemented")
-}
-func (UnimplementedMasterGRPCServer) DeleteRegulation(context.Context, *DeleteRegulationRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteRegulation not implemented")
-}
-func (UnimplementedMasterGRPCServer) mustEmbedUnimplementedMasterGRPCServer() {}
+func (UnimplementedMasterRegulationGRPCServer) mustEmbedUnimplementedMasterRegulationGRPCServer() {}
 
-// UnsafeMasterGRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to MasterGRPCServer will
+// UnsafeMasterRegulationGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MasterRegulationGRPCServer will
 // result in compilation errors.
-type UnsafeMasterGRPCServer interface {
-	mustEmbedUnimplementedMasterGRPCServer()
+type UnsafeMasterRegulationGRPCServer interface {
+	mustEmbedUnimplementedMasterRegulationGRPCServer()
 }
 
-func RegisterMasterGRPCServer(s grpc.ServiceRegistrar, srv MasterGRPCServer) {
-	s.RegisterService(&MasterGRPC_ServiceDesc, srv)
+func RegisterMasterRegulationGRPCServer(s grpc.ServiceRegistrar, srv MasterRegulationGRPCServer) {
+	s.RegisterService(&MasterRegulationGRPC_ServiceDesc, srv)
 }
 
-func _MasterGRPC_GetAllRegulations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).GetAllRegulations(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/GetAllRegulations",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).GetAllRegulations(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_GetAllChapters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllChaptersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).GetAllChapters(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/GetAllChapters",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).GetAllChapters(ctx, req.(*GetAllChaptersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_GetAllParagraphs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllParagraphsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).GetAllParagraphs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/GetAllParagraphs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).GetAllParagraphs(ctx, req.(*GetAllParagraphsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_UpdateParagraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateParagraphRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).UpdateParagraph(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/UpdateParagraph",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).UpdateParagraph(ctx, req.(*UpdateParagraphRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_EditAbsent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditAbsentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).EditAbsent(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/EditAbsent",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).EditAbsent(ctx, req.(*EditAbsentRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_CreateChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateChapterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).CreateChapter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/CreateChapter",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).CreateChapter(ctx, req.(*CreateChapterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_CreateParagraphs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateParagraphsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterGRPCServer).CreateParagraphs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/CreateParagraphs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).CreateParagraphs(ctx, req.(*CreateParagraphsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MasterGRPC_CreateRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MasterRegulationGRPC_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateRegulationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MasterGRPCServer).CreateRegulation(ctx, in)
+		return srv.(MasterRegulationGRPCServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/CreateRegulation",
+		FullMethod: "/master.v1.MasterRegulationGRPC/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).CreateRegulation(ctx, req.(*CreateRegulationRequest))
+		return srv.(MasterRegulationGRPCServer).Create(ctx, req.(*CreateRegulationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MasterGRPC_GenerateLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateLinksRequest)
+func _MasterRegulationGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MasterGRPCServer).GenerateLinks(ctx, in)
+		return srv.(MasterRegulationGRPCServer).GetAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/GenerateLinks",
+		FullMethod: "/master.v1.MasterRegulationGRPC/GetAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).GenerateLinks(ctx, req.(*GenerateLinksRequest))
+		return srv.(MasterRegulationGRPCServer).GetAll(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MasterGRPC_DeleteRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _MasterRegulationGRPC_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteRegulationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MasterGRPCServer).DeleteRegulation(ctx, in)
+		return srv.(MasterRegulationGRPCServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/master.v1.MasterGRPC/DeleteRegulation",
+		FullMethod: "/master.v1.MasterRegulationGRPC/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterGRPCServer).DeleteRegulation(ctx, req.(*DeleteRegulationRequest))
+		return srv.(MasterRegulationGRPCServer).Delete(ctx, req.(*DeleteRegulationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// MasterGRPC_ServiceDesc is the grpc.ServiceDesc for MasterGRPC service.
+// MasterRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for MasterRegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var MasterGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "master.v1.MasterGRPC",
-	HandlerType: (*MasterGRPCServer)(nil),
+var MasterRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "master.v1.MasterRegulationGRPC",
+	HandlerType: (*MasterRegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetAllRegulations",
-			Handler:    _MasterGRPC_GetAllRegulations_Handler,
+			MethodName: "Create",
+			Handler:    _MasterRegulationGRPC_Create_Handler,
 		},
 		{
-			MethodName: "GetAllChapters",
-			Handler:    _MasterGRPC_GetAllChapters_Handler,
+			MethodName: "GetAll",
+			Handler:    _MasterRegulationGRPC_GetAll_Handler,
 		},
 		{
-			MethodName: "GetAllParagraphs",
-			Handler:    _MasterGRPC_GetAllParagraphs_Handler,
+			MethodName: "Delete",
+			Handler:    _MasterRegulationGRPC_Delete_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "master_service.proto",
+}
+
+// MasterChapterGRPCClient is the client API for MasterChapterGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MasterChapterGRPCClient interface {
+	Create(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
+	GetAll(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
+}
+
+type masterChapterGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMasterChapterGRPCClient(cc grpc.ClientConnInterface) MasterChapterGRPCClient {
+	return &masterChapterGRPCClient{cc}
+}
+
+func (c *masterChapterGRPCClient) Create(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error) {
+	out := new(CreateChapterResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterChapterGRPC/Create", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterChapterGRPCClient) GetAll(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error) {
+	out := new(GetAllChaptersResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterChapterGRPC/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MasterChapterGRPCServer is the server API for MasterChapterGRPC service.
+// All implementations must embed UnimplementedMasterChapterGRPCServer
+// for forward compatibility
+type MasterChapterGRPCServer interface {
+	Create(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
+	GetAll(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
+	mustEmbedUnimplementedMasterChapterGRPCServer()
+}
+
+// UnimplementedMasterChapterGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedMasterChapterGRPCServer struct {
+}
+
+func (UnimplementedMasterChapterGRPCServer) Create(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedMasterChapterGRPCServer) GetAll(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedMasterChapterGRPCServer) mustEmbedUnimplementedMasterChapterGRPCServer() {}
+
+// UnsafeMasterChapterGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MasterChapterGRPCServer will
+// result in compilation errors.
+type UnsafeMasterChapterGRPCServer interface {
+	mustEmbedUnimplementedMasterChapterGRPCServer()
+}
+
+func RegisterMasterChapterGRPCServer(s grpc.ServiceRegistrar, srv MasterChapterGRPCServer) {
+	s.RegisterService(&MasterChapterGRPC_ServiceDesc, srv)
+}
+
+func _MasterChapterGRPC_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateChapterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterChapterGRPCServer).Create(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterChapterGRPC/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterChapterGRPCServer).Create(ctx, req.(*CreateChapterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterChapterGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllChaptersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterChapterGRPCServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterChapterGRPC/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterChapterGRPCServer).GetAll(ctx, req.(*GetAllChaptersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MasterChapterGRPC_ServiceDesc is the grpc.ServiceDesc for MasterChapterGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MasterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "master.v1.MasterChapterGRPC",
+	HandlerType: (*MasterChapterGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Create",
+			Handler:    _MasterChapterGRPC_Create_Handler,
 		},
 		{
-			MethodName: "UpdateParagraph",
-			Handler:    _MasterGRPC_UpdateParagraph_Handler,
+			MethodName: "GetAll",
+			Handler:    _MasterChapterGRPC_GetAll_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "master_service.proto",
+}
+
+// MasterParagraphGRPCClient is the client API for MasterParagraphGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MasterParagraphGRPCClient interface {
+	Create(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
+	GetAll(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
+	Update(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
+}
+
+type masterParagraphGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMasterParagraphGRPCClient(cc grpc.ClientConnInterface) MasterParagraphGRPCClient {
+	return &masterParagraphGRPCClient{cc}
+}
+
+func (c *masterParagraphGRPCClient) Create(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/Create", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterParagraphGRPCClient) GetAll(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error) {
+	out := new(GetAllParagraphsResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterParagraphGRPCClient) Update(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MasterParagraphGRPCServer is the server API for MasterParagraphGRPC service.
+// All implementations must embed UnimplementedMasterParagraphGRPCServer
+// for forward compatibility
+type MasterParagraphGRPCServer interface {
+	Create(context.Context, *CreateParagraphsRequest) (*Empty, error)
+	GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
+	Update(context.Context, *UpdateParagraphRequest) (*Empty, error)
+	mustEmbedUnimplementedMasterParagraphGRPCServer()
+}
+
+// UnimplementedMasterParagraphGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedMasterParagraphGRPCServer struct {
+}
+
+func (UnimplementedMasterParagraphGRPCServer) Create(context.Context, *CreateParagraphsRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedMasterParagraphGRPCServer) GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedMasterParagraphGRPCServer) Update(context.Context, *UpdateParagraphRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedMasterParagraphGRPCServer) mustEmbedUnimplementedMasterParagraphGRPCServer() {}
+
+// UnsafeMasterParagraphGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MasterParagraphGRPCServer will
+// result in compilation errors.
+type UnsafeMasterParagraphGRPCServer interface {
+	mustEmbedUnimplementedMasterParagraphGRPCServer()
+}
+
+func RegisterMasterParagraphGRPCServer(s grpc.ServiceRegistrar, srv MasterParagraphGRPCServer) {
+	s.RegisterService(&MasterParagraphGRPC_ServiceDesc, srv)
+}
+
+func _MasterParagraphGRPC_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateParagraphsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterParagraphGRPCServer).Create(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterParagraphGRPC/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterParagraphGRPCServer).Create(ctx, req.(*CreateParagraphsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterParagraphGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllParagraphsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterParagraphGRPCServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterParagraphGRPC/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterParagraphGRPCServer).GetAll(ctx, req.(*GetAllParagraphsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterParagraphGRPC_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateParagraphRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterParagraphGRPCServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterParagraphGRPC/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterParagraphGRPCServer).Update(ctx, req.(*UpdateParagraphRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MasterParagraphGRPC_ServiceDesc is the grpc.ServiceDesc for MasterParagraphGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MasterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "master.v1.MasterParagraphGRPC",
+	HandlerType: (*MasterParagraphGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Create",
+			Handler:    _MasterParagraphGRPC_Create_Handler,
 		},
 		{
-			MethodName: "EditAbsent",
-			Handler:    _MasterGRPC_EditAbsent_Handler,
+			MethodName: "GetAll",
+			Handler:    _MasterParagraphGRPC_GetAll_Handler,
 		},
 		{
-			MethodName: "CreateChapter",
-			Handler:    _MasterGRPC_CreateChapter_Handler,
+			MethodName: "Update",
+			Handler:    _MasterParagraphGRPC_Update_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "master_service.proto",
+}
+
+// MasterLinkGRPCClient is the client API for MasterLinkGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MasterLinkGRPCClient interface {
+	Update(ctx context.Context, in *UpdateLinksRequest, opts ...grpc.CallOption) (*UpdateLinksResponse, error)
+}
+
+type masterLinkGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMasterLinkGRPCClient(cc grpc.ClientConnInterface) MasterLinkGRPCClient {
+	return &masterLinkGRPCClient{cc}
+}
+
+func (c *masterLinkGRPCClient) Update(ctx context.Context, in *UpdateLinksRequest, opts ...grpc.CallOption) (*UpdateLinksResponse, error) {
+	out := new(UpdateLinksResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterLinkGRPC/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MasterLinkGRPCServer is the server API for MasterLinkGRPC service.
+// All implementations must embed UnimplementedMasterLinkGRPCServer
+// for forward compatibility
+type MasterLinkGRPCServer interface {
+	Update(context.Context, *UpdateLinksRequest) (*UpdateLinksResponse, error)
+	mustEmbedUnimplementedMasterLinkGRPCServer()
+}
+
+// UnimplementedMasterLinkGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedMasterLinkGRPCServer struct {
+}
+
+func (UnimplementedMasterLinkGRPCServer) Update(context.Context, *UpdateLinksRequest) (*UpdateLinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedMasterLinkGRPCServer) mustEmbedUnimplementedMasterLinkGRPCServer() {}
+
+// UnsafeMasterLinkGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MasterLinkGRPCServer will
+// result in compilation errors.
+type UnsafeMasterLinkGRPCServer interface {
+	mustEmbedUnimplementedMasterLinkGRPCServer()
+}
+
+func RegisterMasterLinkGRPCServer(s grpc.ServiceRegistrar, srv MasterLinkGRPCServer) {
+	s.RegisterService(&MasterLinkGRPC_ServiceDesc, srv)
+}
+
+func _MasterLinkGRPC_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLinksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterLinkGRPCServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterLinkGRPC/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterLinkGRPCServer).Update(ctx, req.(*UpdateLinksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MasterLinkGRPC_ServiceDesc is the grpc.ServiceDesc for MasterLinkGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MasterLinkGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "master.v1.MasterLinkGRPC",
+	HandlerType: (*MasterLinkGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateParagraphs",
-			Handler:    _MasterGRPC_CreateParagraphs_Handler,
+			MethodName: "Update",
+			Handler:    _MasterLinkGRPC_Update_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "master_service.proto",
+}
+
+// MasterAbsentGRPCClient is the client API for MasterAbsentGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MasterAbsentGRPCClient interface {
+	Update(ctx context.Context, in *UpdateAbsentRequest, opts ...grpc.CallOption) (*Empty, error)
+}
+
+type masterAbsentGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMasterAbsentGRPCClient(cc grpc.ClientConnInterface) MasterAbsentGRPCClient {
+	return &masterAbsentGRPCClient{cc}
+}
+
+func (c *masterAbsentGRPCClient) Update(ctx context.Context, in *UpdateAbsentRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterAbsentGRPC/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MasterAbsentGRPCServer is the server API for MasterAbsentGRPC service.
+// All implementations must embed UnimplementedMasterAbsentGRPCServer
+// for forward compatibility
+type MasterAbsentGRPCServer interface {
+	Update(context.Context, *UpdateAbsentRequest) (*Empty, error)
+	mustEmbedUnimplementedMasterAbsentGRPCServer()
+}
+
+// UnimplementedMasterAbsentGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedMasterAbsentGRPCServer struct {
+}
+
+func (UnimplementedMasterAbsentGRPCServer) Update(context.Context, *UpdateAbsentRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+func (UnimplementedMasterAbsentGRPCServer) mustEmbedUnimplementedMasterAbsentGRPCServer() {}
+
+// UnsafeMasterAbsentGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MasterAbsentGRPCServer will
+// result in compilation errors.
+type UnsafeMasterAbsentGRPCServer interface {
+	mustEmbedUnimplementedMasterAbsentGRPCServer()
+}
+
+func RegisterMasterAbsentGRPCServer(s grpc.ServiceRegistrar, srv MasterAbsentGRPCServer) {
+	s.RegisterService(&MasterAbsentGRPC_ServiceDesc, srv)
+}
+
+func _MasterAbsentGRPC_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAbsentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterAbsentGRPCServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterAbsentGRPC/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterAbsentGRPCServer).Update(ctx, req.(*UpdateAbsentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MasterAbsentGRPC_ServiceDesc is the grpc.ServiceDesc for MasterAbsentGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MasterAbsentGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "master.v1.MasterAbsentGRPC",
+	HandlerType: (*MasterAbsentGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateRegulation",
-			Handler:    _MasterGRPC_CreateRegulation_Handler,
-		},
-		{
-			MethodName: "GenerateLinks",
-			Handler:    _MasterGRPC_GenerateLinks_Handler,
-		},
-		{
-			MethodName: "DeleteRegulation",
-			Handler:    _MasterGRPC_DeleteRegulation_Handler,
+			MethodName: "Update",
+			Handler:    _MasterAbsentGRPC_Update_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
