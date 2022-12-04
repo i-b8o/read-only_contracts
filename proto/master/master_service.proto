@@ -10,6 +10,12 @@ message Empty {}
 
 service MasterGRPC {
     rpc GetAllRegulations(Empty) returns (GetAllRegulationsResponse) {};
+    
+    rpc GetAllChapters(GetAllChaptersRequest) returns (GetAllChaptersResponse) {};
+    rpc GetAllParagraphs(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
+    rpc EditParagraph(EditParagraphRequest) returns (Empty) {};
+    rpc EditAbsent(EditAbsentRequest) returns (Empty) {};
+
     rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc CreateParagraphs(CreateParagraphsRequest) returns (Empty) {};
     rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
@@ -75,4 +81,50 @@ message GenerateLinksResponse {
 
 message DeleteRegulationRequest {
     uint64 ID = 1;
+}
+
+message MasterChapter {
+    uint64 ID                           = 1;
+    string Name                         = 2;
+    string Num                          = 3;
+    uint64 RegulationID                 = 4;
+    uint32 OrderNum                     = 5;
+}
+
+
+message GetAllChaptersRequest {
+    uint64 ID = 1;
+}
+
+message GetAllChaptersResponse {
+    repeated MasterChapter Chapters = 1;
+}
+
+message MasterParagraph {
+    uint64 ID        = 1;
+    uint32 Num       = 2;
+    bool HasLinks    = 3;
+    bool IsTable     = 4;
+    bool IsNFT       = 5;
+    string Class     = 6;
+    string Content   = 7;
+    uint64 ChapterID = 8;
+}
+
+message GetAllParagraphsRequest {
+    uint64 ID = 1;
+}
+
+message GetAllParagraphsResponse {
+    repeated MasterParagraph paragraphs = 1;
+}
+
+message EditParagraphRequest {
+    uint64 ID        = 1;
+    string Content   = 2;
+}
+
+message EditAbsentRequest {
+    uint64 ID = 1;
+    bool done = 2;
 }

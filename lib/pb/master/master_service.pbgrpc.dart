@@ -20,6 +20,28 @@ class MasterGRPCClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.GetAllRegulationsResponse.fromBuffer(value));
+  static final _$getAllChapters =
+      $grpc.ClientMethod<$0.GetAllChaptersRequest, $0.GetAllChaptersResponse>(
+          '/master.v1.MasterGRPC/GetAllChapters',
+          ($0.GetAllChaptersRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.GetAllChaptersResponse.fromBuffer(value));
+  static final _$getAllParagraphs = $grpc.ClientMethod<
+          $0.GetAllParagraphsRequest, $0.GetAllParagraphsResponse>(
+      '/master.v1.MasterGRPC/GetAllParagraphs',
+      ($0.GetAllParagraphsRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $0.GetAllParagraphsResponse.fromBuffer(value));
+  static final _$editParagraph =
+      $grpc.ClientMethod<$0.EditParagraphRequest, $0.Empty>(
+          '/master.v1.MasterGRPC/EditParagraph',
+          ($0.EditParagraphRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$editAbsent =
+      $grpc.ClientMethod<$0.EditAbsentRequest, $0.Empty>(
+          '/master.v1.MasterGRPC/EditAbsent',
+          ($0.EditAbsentRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$createChapter =
       $grpc.ClientMethod<$0.CreateChapterRequest, $0.CreateChapterResponse>(
           '/master.v1.MasterGRPC/CreateChapter',
@@ -58,6 +80,28 @@ class MasterGRPCClient extends $grpc.Client {
       $0.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getAllRegulations, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetAllChaptersResponse> getAllChapters(
+      $0.GetAllChaptersRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllChapters, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.GetAllParagraphsResponse> getAllParagraphs(
+      $0.GetAllParagraphsRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAllParagraphs, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> editParagraph($0.EditParagraphRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$editParagraph, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> editAbsent($0.EditAbsentRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$editAbsent, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.CreateChapterResponse> createChapter(
@@ -102,6 +146,39 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($0.GetAllRegulationsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.GetAllChaptersRequest,
+            $0.GetAllChaptersResponse>(
+        'GetAllChapters',
+        getAllChapters_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.GetAllChaptersRequest.fromBuffer(value),
+        ($0.GetAllChaptersResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.GetAllParagraphsRequest,
+            $0.GetAllParagraphsResponse>(
+        'GetAllParagraphs',
+        getAllParagraphs_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.GetAllParagraphsRequest.fromBuffer(value),
+        ($0.GetAllParagraphsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.EditParagraphRequest, $0.Empty>(
+        'EditParagraph',
+        editParagraph_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.EditParagraphRequest.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.EditAbsentRequest, $0.Empty>(
+        'EditAbsent',
+        editAbsent_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.EditAbsentRequest.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$0.CreateChapterRequest, $0.CreateChapterResponse>(
             'CreateChapter',
@@ -152,6 +229,28 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
     return getAllRegulations(call, await request);
   }
 
+  $async.Future<$0.GetAllChaptersResponse> getAllChapters_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.GetAllChaptersRequest> request) async {
+    return getAllChapters(call, await request);
+  }
+
+  $async.Future<$0.GetAllParagraphsResponse> getAllParagraphs_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.GetAllParagraphsRequest> request) async {
+    return getAllParagraphs(call, await request);
+  }
+
+  $async.Future<$0.Empty> editParagraph_Pre($grpc.ServiceCall call,
+      $async.Future<$0.EditParagraphRequest> request) async {
+    return editParagraph(call, await request);
+  }
+
+  $async.Future<$0.Empty> editAbsent_Pre($grpc.ServiceCall call,
+      $async.Future<$0.EditAbsentRequest> request) async {
+    return editAbsent(call, await request);
+  }
+
   $async.Future<$0.CreateChapterResponse> createChapter_Pre(
       $grpc.ServiceCall call,
       $async.Future<$0.CreateChapterRequest> request) async {
@@ -182,6 +281,14 @@ abstract class MasterGRPCServiceBase extends $grpc.Service {
 
   $async.Future<$0.GetAllRegulationsResponse> getAllRegulations(
       $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$0.GetAllChaptersResponse> getAllChapters(
+      $grpc.ServiceCall call, $0.GetAllChaptersRequest request);
+  $async.Future<$0.GetAllParagraphsResponse> getAllParagraphs(
+      $grpc.ServiceCall call, $0.GetAllParagraphsRequest request);
+  $async.Future<$0.Empty> editParagraph(
+      $grpc.ServiceCall call, $0.EditParagraphRequest request);
+  $async.Future<$0.Empty> editAbsent(
+      $grpc.ServiceCall call, $0.EditAbsentRequest request);
   $async.Future<$0.CreateChapterResponse> createChapter(
       $grpc.ServiceCall call, $0.CreateChapterRequest request);
   $async.Future<$0.Empty> createParagraphs(

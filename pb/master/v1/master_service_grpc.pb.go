@@ -23,6 +23,10 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MasterGRPCClient interface {
 	GetAllRegulations(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error)
+	GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error)
+	GetAllParagraphs(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
+	EditParagraph(ctx context.Context, in *EditParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
+	EditAbsent(ctx context.Context, in *EditAbsentRequest, opts ...grpc.CallOption) (*Empty, error)
 	CreateChapter(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
 	CreateParagraphs(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
 	CreateRegulation(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
@@ -41,6 +45,42 @@ func NewMasterGRPCClient(cc grpc.ClientConnInterface) MasterGRPCClient {
 func (c *masterGRPCClient) GetAllRegulations(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error) {
 	out := new(GetAllRegulationsResponse)
 	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllRegulations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterGRPCClient) GetAllChapters(ctx context.Context, in *GetAllChaptersRequest, opts ...grpc.CallOption) (*GetAllChaptersResponse, error) {
+	out := new(GetAllChaptersResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllChapters", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterGRPCClient) GetAllParagraphs(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error) {
+	out := new(GetAllParagraphsResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/GetAllParagraphs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterGRPCClient) EditParagraph(ctx context.Context, in *EditParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/EditParagraph", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterGRPCClient) EditAbsent(ctx context.Context, in *EditAbsentRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterGRPC/EditAbsent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,6 +137,10 @@ func (c *masterGRPCClient) DeleteRegulation(ctx context.Context, in *DeleteRegul
 // for forward compatibility
 type MasterGRPCServer interface {
 	GetAllRegulations(context.Context, *Empty) (*GetAllRegulationsResponse, error)
+	GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error)
+	GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
+	EditParagraph(context.Context, *EditParagraphRequest) (*Empty, error)
+	EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error)
 	CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
 	CreateParagraphs(context.Context, *CreateParagraphsRequest) (*Empty, error)
 	CreateRegulation(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
@@ -111,6 +155,18 @@ type UnimplementedMasterGRPCServer struct {
 
 func (UnimplementedMasterGRPCServer) GetAllRegulations(context.Context, *Empty) (*GetAllRegulationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllRegulations not implemented")
+}
+func (UnimplementedMasterGRPCServer) GetAllChapters(context.Context, *GetAllChaptersRequest) (*GetAllChaptersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllChapters not implemented")
+}
+func (UnimplementedMasterGRPCServer) GetAllParagraphs(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllParagraphs not implemented")
+}
+func (UnimplementedMasterGRPCServer) EditParagraph(context.Context, *EditParagraphRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EditParagraph not implemented")
+}
+func (UnimplementedMasterGRPCServer) EditAbsent(context.Context, *EditAbsentRequest) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EditAbsent not implemented")
 }
 func (UnimplementedMasterGRPCServer) CreateChapter(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateChapter not implemented")
@@ -154,6 +210,78 @@ func _MasterGRPC_GetAllRegulations_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MasterGRPCServer).GetAllRegulations(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterGRPC_GetAllChapters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllChaptersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterGRPCServer).GetAllChapters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterGRPC/GetAllChapters",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterGRPCServer).GetAllChapters(ctx, req.(*GetAllChaptersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterGRPC_GetAllParagraphs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllParagraphsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterGRPCServer).GetAllParagraphs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterGRPC/GetAllParagraphs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterGRPCServer).GetAllParagraphs(ctx, req.(*GetAllParagraphsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterGRPC_EditParagraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EditParagraphRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterGRPCServer).EditParagraph(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterGRPC/EditParagraph",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterGRPCServer).EditParagraph(ctx, req.(*EditParagraphRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterGRPC_EditAbsent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EditAbsentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterGRPCServer).EditAbsent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterGRPC/EditAbsent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterGRPCServer).EditAbsent(ctx, req.(*EditAbsentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -258,6 +386,22 @@ var MasterGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllRegulations",
 			Handler:    _MasterGRPC_GetAllRegulations_Handler,
+		},
+		{
+			MethodName: "GetAllChapters",
+			Handler:    _MasterGRPC_GetAllChapters_Handler,
+		},
+		{
+			MethodName: "GetAllParagraphs",
+			Handler:    _MasterGRPC_GetAllParagraphs_Handler,
+		},
+		{
+			MethodName: "EditParagraph",
+			Handler:    _MasterGRPC_EditParagraph_Handler,
+		},
+		{
+			MethodName: "EditAbsent",
+			Handler:    _MasterGRPC_EditAbsent_Handler,
 		},
 		{
 			MethodName: "CreateChapter",

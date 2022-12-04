@@ -142,3 +142,96 @@ const DeleteRegulationRequest$json = const {
 
 /// Descriptor for `DeleteRegulationRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteRegulationRequestDescriptor = $convert.base64Decode('ChdEZWxldGVSZWd1bGF0aW9uUmVxdWVzdBIOCgJJRBgBIAEoBFICSUQ=');
+@$core.Deprecated('Use masterChapterDescriptor instead')
+const MasterChapter$json = const {
+  '1': 'MasterChapter',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+    const {'1': 'Name', '3': 2, '4': 1, '5': 9, '10': 'Name'},
+    const {'1': 'Num', '3': 3, '4': 1, '5': 9, '10': 'Num'},
+    const {'1': 'RegulationID', '3': 4, '4': 1, '5': 4, '10': 'RegulationID'},
+    const {'1': 'OrderNum', '3': 5, '4': 1, '5': 13, '10': 'OrderNum'},
+  ],
+};
+
+/// Descriptor for `MasterChapter`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List masterChapterDescriptor = $convert.base64Decode('Cg1NYXN0ZXJDaGFwdGVyEg4KAklEGAEgASgEUgJJRBISCgROYW1lGAIgASgJUgROYW1lEhAKA051bRgDIAEoCVIDTnVtEiIKDFJlZ3VsYXRpb25JRBgEIAEoBFIMUmVndWxhdGlvbklEEhoKCE9yZGVyTnVtGAUgASgNUghPcmRlck51bQ==');
+@$core.Deprecated('Use getAllChaptersRequestDescriptor instead')
+const GetAllChaptersRequest$json = const {
+  '1': 'GetAllChaptersRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+  ],
+};
+
+/// Descriptor for `GetAllChaptersRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllChaptersRequestDescriptor = $convert.base64Decode('ChVHZXRBbGxDaGFwdGVyc1JlcXVlc3QSDgoCSUQYASABKARSAklE');
+@$core.Deprecated('Use getAllChaptersResponseDescriptor instead')
+const GetAllChaptersResponse$json = const {
+  '1': 'GetAllChaptersResponse',
+  '2': const [
+    const {'1': 'Chapters', '3': 1, '4': 3, '5': 11, '6': '.master.v1.MasterChapter', '10': 'Chapters'},
+  ],
+};
+
+/// Descriptor for `GetAllChaptersResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllChaptersResponseDescriptor = $convert.base64Decode('ChZHZXRBbGxDaGFwdGVyc1Jlc3BvbnNlEjQKCENoYXB0ZXJzGAEgAygLMhgubWFzdGVyLnYxLk1hc3RlckNoYXB0ZXJSCENoYXB0ZXJz');
+@$core.Deprecated('Use masterParagraphDescriptor instead')
+const MasterParagraph$json = const {
+  '1': 'MasterParagraph',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+    const {'1': 'Num', '3': 2, '4': 1, '5': 13, '10': 'Num'},
+    const {'1': 'HasLinks', '3': 3, '4': 1, '5': 8, '10': 'HasLinks'},
+    const {'1': 'IsTable', '3': 4, '4': 1, '5': 8, '10': 'IsTable'},
+    const {'1': 'IsNFT', '3': 5, '4': 1, '5': 8, '10': 'IsNFT'},
+    const {'1': 'Class', '3': 6, '4': 1, '5': 9, '10': 'Class'},
+    const {'1': 'Content', '3': 7, '4': 1, '5': 9, '10': 'Content'},
+    const {'1': 'ChapterID', '3': 8, '4': 1, '5': 4, '10': 'ChapterID'},
+  ],
+};
+
+/// Descriptor for `MasterParagraph`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List masterParagraphDescriptor = $convert.base64Decode('Cg9NYXN0ZXJQYXJhZ3JhcGgSDgoCSUQYASABKARSAklEEhAKA051bRgCIAEoDVIDTnVtEhoKCEhhc0xpbmtzGAMgASgIUghIYXNMaW5rcxIYCgdJc1RhYmxlGAQgASgIUgdJc1RhYmxlEhQKBUlzTkZUGAUgASgIUgVJc05GVBIUCgVDbGFzcxgGIAEoCVIFQ2xhc3MSGAoHQ29udGVudBgHIAEoCVIHQ29udGVudBIcCglDaGFwdGVySUQYCCABKARSCUNoYXB0ZXJJRA==');
+@$core.Deprecated('Use getAllParagraphsRequestDescriptor instead')
+const GetAllParagraphsRequest$json = const {
+  '1': 'GetAllParagraphsRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+  ],
+};
+
+/// Descriptor for `GetAllParagraphsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllParagraphsRequestDescriptor = $convert.base64Decode('ChdHZXRBbGxQYXJhZ3JhcGhzUmVxdWVzdBIOCgJJRBgBIAEoBFICSUQ=');
+@$core.Deprecated('Use getAllParagraphsResponseDescriptor instead')
+const GetAllParagraphsResponse$json = const {
+  '1': 'GetAllParagraphsResponse',
+  '2': const [
+    const {'1': 'paragraphs', '3': 1, '4': 3, '5': 11, '6': '.master.v1.MasterParagraph', '10': 'paragraphs'},
+  ],
+};
+
+/// Descriptor for `GetAllParagraphsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAllParagraphsResponseDescriptor = $convert.base64Decode('ChhHZXRBbGxQYXJhZ3JhcGhzUmVzcG9uc2USOgoKcGFyYWdyYXBocxgBIAMoCzIaLm1hc3Rlci52MS5NYXN0ZXJQYXJhZ3JhcGhSCnBhcmFncmFwaHM=');
+@$core.Deprecated('Use editParagraphRequestDescriptor instead')
+const EditParagraphRequest$json = const {
+  '1': 'EditParagraphRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+    const {'1': 'Content', '3': 2, '4': 1, '5': 9, '10': 'Content'},
+  ],
+};
+
+/// Descriptor for `EditParagraphRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List editParagraphRequestDescriptor = $convert.base64Decode('ChRFZGl0UGFyYWdyYXBoUmVxdWVzdBIOCgJJRBgBIAEoBFICSUQSGAoHQ29udGVudBgCIAEoCVIHQ29udGVudA==');
+@$core.Deprecated('Use editAbsentRequestDescriptor instead')
+const EditAbsentRequest$json = const {
+  '1': 'EditAbsentRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 4, '10': 'ID'},
+    const {'1': 'done', '3': 2, '4': 1, '5': 8, '10': 'done'},
+  ],
+};
+
+/// Descriptor for `EditAbsentRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List editAbsentRequestDescriptor = $convert.base64Decode('ChFFZGl0QWJzZW50UmVxdWVzdBIOCgJJRBgBIAEoBFICSUQSEgoEZG9uZRgCIAEoCFIEZG9uZQ==');
