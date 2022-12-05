@@ -13,7 +13,7 @@ service MasterRegulationGRPC {
     rpc GetAll(Empty) returns (GetAllRegulationsResponse) {};
     rpc Delete(DeleteRegulationRequest) returns (Empty) {};
     rpc UpdateLinks(UpdateLinksRequest) returns (UpdateLinksResponse) {};
-    rpc UpdateAbsent(UpdateAbsentRequest) returns (Empty) {};
+    rpc GetAbsents(GetAbsentsRequest) returns (GetAbsentsResponse) {};
 }
 
 service MasterChapterGRPC{
@@ -128,7 +128,18 @@ message UpdateParagraphRequest {
     string Content   = 2;
 }
 
-message UpdateAbsentRequest {
+message GetAbsentsRequest {
     uint64 ID = 1;
     bool done = 2;
+}
+
+message MasterAbsent {
+    uint64 ID           = 1;
+    string Pseudo       = 2;
+    bool Done           = 3;
+    uint64 Paragraph_id = 4;
+}
+
+message GetAbsentsResponse {
+    repeated MasterAbsent Absents = 1;
 }

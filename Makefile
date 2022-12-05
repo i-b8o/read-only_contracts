@@ -8,7 +8,7 @@ gen:
 	protoc --go-grpc_out=pb/ proto/master/*.proto -I=proto/master
 	protoc -I=proto/searcher --go_out=pb/ proto/searcher/*.proto
 	protoc --go-grpc_out=pb/ proto/searcher/*.proto -I=proto/searcher
-	protoc --dart_out=grpc:../read_only_dashboar/lib/pb/ -Iproto proto/master/*.proto
+	protoc --dart_out=grpc:../read_only_dashboard/lib/pb/ -Iproto proto/master/*.proto
 
 git:
 	git add .
