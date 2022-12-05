@@ -340,7 +340,6 @@ var WriterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 type WriterParagraphGRPCClient interface {
 	CreateAll(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
 	Update(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
-	DeleteForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error)
 }
 
@@ -370,15 +369,6 @@ func (c *writerParagraphGRPCClient) Update(ctx context.Context, in *UpdateOnePar
 	return out, nil
 }
 
-func (c *writerParagraphGRPCClient) DeleteForChapter(ctx context.Context, in *DeleteParagraphsForChapterRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/writer.v1.WriterParagraphGRPC/DeleteForChapter", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *writerParagraphGRPCClient) GetWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error) {
 	out := new(GetParagraphsWithHrefsResponse)
 	err := c.cc.Invoke(ctx, "/writer.v1.WriterParagraphGRPC/GetWithHrefs", in, out, opts...)
@@ -394,7 +384,6 @@ func (c *writerParagraphGRPCClient) GetWithHrefs(ctx context.Context, in *GetPar
 type WriterParagraphGRPCServer interface {
 	CreateAll(context.Context, *CreateAllParagraphsRequest) (*Empty, error)
 	Update(context.Context, *UpdateOneParagraphRequest) (*Empty, error)
-	DeleteForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*Empty, error)
 	GetWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error)
 	mustEmbedUnimplementedWriterParagraphGRPCServer()
 }
@@ -408,9 +397,6 @@ func (UnimplementedWriterParagraphGRPCServer) CreateAll(context.Context, *Create
 }
 func (UnimplementedWriterParagraphGRPCServer) Update(context.Context, *UpdateOneParagraphRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
-}
-func (UnimplementedWriterParagraphGRPCServer) DeleteForChapter(context.Context, *DeleteParagraphsForChapterRequest) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteForChapter not implemented")
 }
 func (UnimplementedWriterParagraphGRPCServer) GetWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWithHrefs not implemented")
@@ -464,24 +450,6 @@ func _WriterParagraphGRPC_Update_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WriterParagraphGRPC_DeleteForChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteParagraphsForChapterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WriterParagraphGRPCServer).DeleteForChapter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/writer.v1.WriterParagraphGRPC/DeleteForChapter",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WriterParagraphGRPCServer).DeleteForChapter(ctx, req.(*DeleteParagraphsForChapterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _WriterParagraphGRPC_GetWithHrefs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetParagraphsWithHrefsRequest)
 	if err := dec(in); err != nil {
@@ -514,10 +482,6 @@ var WriterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Update",
 			Handler:    _WriterParagraphGRPC_Update_Handler,
-		},
-		{
-			MethodName: "DeleteForChapter",
-			Handler:    _WriterParagraphGRPC_DeleteForChapter_Handler,
 		},
 		{
 			MethodName: "GetWithHrefs",

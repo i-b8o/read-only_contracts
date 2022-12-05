@@ -23,6 +23,5 @@ service WriterChapterGRPC {
 service WriterParagraphGRPC {
     rpc CreateAll(CreateAllParagraphsRequest) returns (Empty) {};
     rpc Update(UpdateOneParagraphRequest) returns (Empty) {};
-    rpc DeleteForChapter(DeleteParagraphsForChapterRequest) returns (Empty) {};
     rpc GetWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
 }
