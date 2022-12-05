@@ -8,17 +8,21 @@ import "message.proto";
 
 message Empty {}
 
-service WriterGRPC {
-    rpc CreateRegulation(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc DeleteRegulation(DeleteRegulationRequest) returns (Empty) {};
-    rpc GetRegulations(Empty) returns (GetRegulationsResponse) {};
-    
-    rpc CreateChapter(CreateChapterRequest) returns (CreateChapterResponse) {};
-    rpc GetAllChaptersIds(GetAllChaptersIdsRequest) returns (GetAllChaptersIdsResponse) {};
-    rpc GetRegulationIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
-    
-    rpc CreateAllParagraphs(CreateAllParagraphsRequest) returns (Empty) {};
-    rpc UpdateOneParagraph(UpdateOneParagraphRequest) returns (Empty) {};
-    rpc DeleteParagraphsForChapter(DeleteParagraphsForChapterRequest) returns (Empty) {};
-    rpc GetParagraphsWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
+service WriterRegulationGRPC {
+    rpc Create(CreateRegulationRequest) returns (CreateRegulationResponse) {};
+    rpc Delete(DeleteRegulationRequest) returns (Empty) {};
+    rpc GetAll(Empty) returns (GetRegulationsResponse) {};
+    rpc GetIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
+}
+
+service WriterChapterGRPC {
+    rpc Create(CreateChapterRequest) returns (CreateChapterResponse) {};
+    rpc GetAll(GetAllChaptersIdsRequest) returns (GetAllChaptersIdsResponse) {};
+}
+
+service WriterParagraphGRPC {
+    rpc CreateAll(CreateAllParagraphsRequest) returns (Empty) {};
+    rpc Update(UpdateOneParagraphRequest) returns (Empty) {};
+    rpc DeleteForChapter(DeleteParagraphsForChapterRequest) returns (Empty) {};
+    rpc GetWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
 }

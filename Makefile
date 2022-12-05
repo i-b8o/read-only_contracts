@@ -16,5 +16,5 @@ git:
 	git push -u origin main || true
 	
 
-update contracts:
+update_contracts:
 	go get -u github.com/i-b8o/read-only_contracts@$m
