@@ -12,12 +12,12 @@ service WriterRegulationGRPC {
     rpc Create(CreateRegulationRequest) returns (CreateRegulationResponse) {};
     rpc Delete(DeleteRegulationRequest) returns (Empty) {};
     rpc GetAll(Empty) returns (GetRegulationsResponse) {};
-    rpc GetIdByChapterId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
 }
 
 service WriterChapterGRPC {
     rpc Create(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc GetAll(GetAllChaptersIdsRequest) returns (GetAllChaptersIdsResponse) {};
+    rpc GetRegulationId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
 }
 
 service WriterParagraphGRPC {

@@ -25,7 +25,6 @@ type WriterRegulationGRPCClient interface {
 	Create(ctx context.Context, in *CreateRegulationRequest, opts ...grpc.CallOption) (*CreateRegulationResponse, error)
 	Delete(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetRegulationsResponse, error)
-	GetIdByChapterId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error)
 }
 
 type writerRegulationGRPCClient struct {
@@ -63,15 +62,6 @@ func (c *writerRegulationGRPCClient) GetAll(ctx context.Context, in *Empty, opts
 	return out, nil
 }
 
-func (c *writerRegulationGRPCClient) GetIdByChapterId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error) {
-	out := new(GetRegulationIdByChapterIdResponse)
-	err := c.cc.Invoke(ctx, "/writer.v1.WriterRegulationGRPC/GetIdByChapterId", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // WriterRegulationGRPCServer is the server API for WriterRegulationGRPC service.
 // All implementations must embed UnimplementedWriterRegulationGRPCServer
 // for forward compatibility
@@ -79,7 +69,6 @@ type WriterRegulationGRPCServer interface {
 	Create(context.Context, *CreateRegulationRequest) (*CreateRegulationResponse, error)
 	Delete(context.Context, *DeleteRegulationRequest) (*Empty, error)
 	GetAll(context.Context, *Empty) (*GetRegulationsResponse, error)
-	GetIdByChapterId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error)
 	mustEmbedUnimplementedWriterRegulationGRPCServer()
 }
 
@@ -95,9 +84,6 @@ func (UnimplementedWriterRegulationGRPCServer) Delete(context.Context, *DeleteRe
 }
 func (UnimplementedWriterRegulationGRPCServer) GetAll(context.Context, *Empty) (*GetRegulationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
-}
-func (UnimplementedWriterRegulationGRPCServer) GetIdByChapterId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetIdByChapterId not implemented")
 }
 func (UnimplementedWriterRegulationGRPCServer) mustEmbedUnimplementedWriterRegulationGRPCServer() {}
 
@@ -166,24 +152,6 @@ func _WriterRegulationGRPC_GetAll_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WriterRegulationGRPC_GetIdByChapterId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRegulationIdByChapterIdRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WriterRegulationGRPCServer).GetIdByChapterId(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/writer.v1.WriterRegulationGRPC/GetIdByChapterId",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WriterRegulationGRPCServer).GetIdByChapterId(ctx, req.(*GetRegulationIdByChapterIdRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // WriterRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for WriterRegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -203,10 +171,6 @@ var WriterRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "GetAll",
 			Handler:    _WriterRegulationGRPC_GetAll_Handler,
 		},
-		{
-			MethodName: "GetIdByChapterId",
-			Handler:    _WriterRegulationGRPC_GetIdByChapterId_Handler,
-		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
@@ -218,6 +182,7 @@ var WriterRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
 type WriterChapterGRPCClient interface {
 	Create(ctx context.Context, in *CreateChapterRequest, opts ...grpc.CallOption) (*CreateChapterResponse, error)
 	GetAll(ctx context.Context, in *GetAllChaptersIdsRequest, opts ...grpc.CallOption) (*GetAllChaptersIdsResponse, error)
+	GetRegulationId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error)
 }
 
 type writerChapterGRPCClient struct {
@@ -246,12 +211,22 @@ func (c *writerChapterGRPCClient) GetAll(ctx context.Context, in *GetAllChapters
 	return out, nil
 }
 
+func (c *writerChapterGRPCClient) GetRegulationId(ctx context.Context, in *GetRegulationIdByChapterIdRequest, opts ...grpc.CallOption) (*GetRegulationIdByChapterIdResponse, error) {
+	out := new(GetRegulationIdByChapterIdResponse)
+	err := c.cc.Invoke(ctx, "/writer.v1.WriterChapterGRPC/GetRegulationId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WriterChapterGRPCServer is the server API for WriterChapterGRPC service.
 // All implementations must embed UnimplementedWriterChapterGRPCServer
 // for forward compatibility
 type WriterChapterGRPCServer interface {
 	Create(context.Context, *CreateChapterRequest) (*CreateChapterResponse, error)
 	GetAll(context.Context, *GetAllChaptersIdsRequest) (*GetAllChaptersIdsResponse, error)
+	GetRegulationId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error)
 	mustEmbedUnimplementedWriterChapterGRPCServer()
 }
 
@@ -264,6 +239,9 @@ func (UnimplementedWriterChapterGRPCServer) Create(context.Context, *CreateChapt
 }
 func (UnimplementedWriterChapterGRPCServer) GetAll(context.Context, *GetAllChaptersIdsRequest) (*GetAllChaptersIdsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedWriterChapterGRPCServer) GetRegulationId(context.Context, *GetRegulationIdByChapterIdRequest) (*GetRegulationIdByChapterIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegulationId not implemented")
 }
 func (UnimplementedWriterChapterGRPCServer) mustEmbedUnimplementedWriterChapterGRPCServer() {}
 
@@ -314,6 +292,24 @@ func _WriterChapterGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WriterChapterGRPC_GetRegulationId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRegulationIdByChapterIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WriterChapterGRPCServer).GetRegulationId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/writer.v1.WriterChapterGRPC/GetRegulationId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WriterChapterGRPCServer).GetRegulationId(ctx, req.(*GetRegulationIdByChapterIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WriterChapterGRPC_ServiceDesc is the grpc.ServiceDesc for WriterChapterGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -328,6 +324,10 @@ var WriterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAll",
 			Handler:    _WriterChapterGRPC_GetAll_Handler,
+		},
+		{
+			MethodName: "GetRegulationId",
+			Handler:    _WriterChapterGRPC_GetRegulationId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
