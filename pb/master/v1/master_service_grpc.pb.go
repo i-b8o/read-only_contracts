@@ -26,7 +26,7 @@ type MasterRegulationGRPCClient interface {
 	GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllRegulationsResponse, error)
 	Delete(ctx context.Context, in *DeleteRegulationRequest, opts ...grpc.CallOption) (*Empty, error)
 	UpdateLinks(ctx context.Context, in *UpdateLinksRequest, opts ...grpc.CallOption) (*UpdateLinksResponse, error)
-	GetAbsents(ctx context.Context, in *GetAbsentsRequest, opts ...grpc.CallOption) (*GetAbsentsResponse, error)
+	GetAbsents(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAbsentsResponse, error)
 }
 
 type masterRegulationGRPCClient struct {
@@ -73,7 +73,7 @@ func (c *masterRegulationGRPCClient) UpdateLinks(ctx context.Context, in *Update
 	return out, nil
 }
 
-func (c *masterRegulationGRPCClient) GetAbsents(ctx context.Context, in *GetAbsentsRequest, opts ...grpc.CallOption) (*GetAbsentsResponse, error) {
+func (c *masterRegulationGRPCClient) GetAbsents(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAbsentsResponse, error) {
 	out := new(GetAbsentsResponse)
 	err := c.cc.Invoke(ctx, "/master.v1.MasterRegulationGRPC/GetAbsents", in, out, opts...)
 	if err != nil {
@@ -90,7 +90,7 @@ type MasterRegulationGRPCServer interface {
 	GetAll(context.Context, *Empty) (*GetAllRegulationsResponse, error)
 	Delete(context.Context, *DeleteRegulationRequest) (*Empty, error)
 	UpdateLinks(context.Context, *UpdateLinksRequest) (*UpdateLinksResponse, error)
-	GetAbsents(context.Context, *GetAbsentsRequest) (*GetAbsentsResponse, error)
+	GetAbsents(context.Context, *Empty) (*GetAbsentsResponse, error)
 	mustEmbedUnimplementedMasterRegulationGRPCServer()
 }
 
@@ -110,7 +110,7 @@ func (UnimplementedMasterRegulationGRPCServer) Delete(context.Context, *DeleteRe
 func (UnimplementedMasterRegulationGRPCServer) UpdateLinks(context.Context, *UpdateLinksRequest) (*UpdateLinksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLinks not implemented")
 }
-func (UnimplementedMasterRegulationGRPCServer) GetAbsents(context.Context, *GetAbsentsRequest) (*GetAbsentsResponse, error) {
+func (UnimplementedMasterRegulationGRPCServer) GetAbsents(context.Context, *Empty) (*GetAbsentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAbsents not implemented")
 }
 func (UnimplementedMasterRegulationGRPCServer) mustEmbedUnimplementedMasterRegulationGRPCServer() {}
@@ -199,7 +199,7 @@ func _MasterRegulationGRPC_UpdateLinks_Handler(srv interface{}, ctx context.Cont
 }
 
 func _MasterRegulationGRPC_GetAbsents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAbsentsRequest)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -211,7 +211,7 @@ func _MasterRegulationGRPC_GetAbsents_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/master.v1.MasterRegulationGRPC/GetAbsents",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterRegulationGRPCServer).GetAbsents(ctx, req.(*GetAbsentsRequest))
+		return srv.(MasterRegulationGRPCServer).GetAbsents(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

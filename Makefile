@@ -14,3 +14,7 @@ git:
 	git add .
 	git commit -a -m '$m' || true
 	git push -u origin main || true
+	
+
+update contracts:
+	go get -u github.com/i-b8o/read-only_contracts@$m
