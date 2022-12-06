@@ -18,3 +18,6 @@ git:
 
 update_contracts:
 	go get -u github.com/i-b8o/read-only_contracts@$m
+
+test_db:
+	sudo docker compose up --build test
