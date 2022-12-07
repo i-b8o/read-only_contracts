@@ -376,7 +376,6 @@ var MasterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 type MasterParagraphGRPCClient interface {
 	Create(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetOne(ctx context.Context, in *GetOneParagraphRequest, opts ...grpc.CallOption) (*GetOneParagraphResponse, error)
-	GetAll(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
 	Update(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
 }
 
@@ -406,15 +405,6 @@ func (c *masterParagraphGRPCClient) GetOne(ctx context.Context, in *GetOneParagr
 	return out, nil
 }
 
-func (c *masterParagraphGRPCClient) GetAll(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error) {
-	out := new(GetAllParagraphsResponse)
-	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/GetAll", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *masterParagraphGRPCClient) Update(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/Update", in, out, opts...)
@@ -430,7 +420,6 @@ func (c *masterParagraphGRPCClient) Update(ctx context.Context, in *UpdateParagr
 type MasterParagraphGRPCServer interface {
 	Create(context.Context, *CreateParagraphsRequest) (*Empty, error)
 	GetOne(context.Context, *GetOneParagraphRequest) (*GetOneParagraphResponse, error)
-	GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
 	Update(context.Context, *UpdateParagraphRequest) (*Empty, error)
 	mustEmbedUnimplementedMasterParagraphGRPCServer()
 }
@@ -444,9 +433,6 @@ func (UnimplementedMasterParagraphGRPCServer) Create(context.Context, *CreatePar
 }
 func (UnimplementedMasterParagraphGRPCServer) GetOne(context.Context, *GetOneParagraphRequest) (*GetOneParagraphResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
-}
-func (UnimplementedMasterParagraphGRPCServer) GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (UnimplementedMasterParagraphGRPCServer) Update(context.Context, *UpdateParagraphRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
@@ -500,24 +486,6 @@ func _MasterParagraphGRPC_GetOne_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MasterParagraphGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllParagraphsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MasterParagraphGRPCServer).GetAll(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/master.v1.MasterParagraphGRPC/GetAll",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MasterParagraphGRPCServer).GetAll(ctx, req.(*GetAllParagraphsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _MasterParagraphGRPC_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateParagraphRequest)
 	if err := dec(in); err != nil {
@@ -550,10 +518,6 @@ var MasterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetOne",
 			Handler:    _MasterParagraphGRPC_GetOne_Handler,
-		},
-		{
-			MethodName: "GetAll",
-			Handler:    _MasterParagraphGRPC_GetAll_Handler,
 		},
 		{
 			MethodName: "Update",

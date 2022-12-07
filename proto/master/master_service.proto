@@ -24,7 +24,6 @@ service MasterChapterGRPC{
 service MasterParagraphGRPC{
     rpc Create(CreateParagraphsRequest) returns (Empty) {};
     rpc GetOne(GetOneParagraphRequest) returns (GetOneParagraphResponse) {};
-    rpc GetAll(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
 }
 
@@ -103,25 +102,6 @@ message GetAllChaptersRequest {
 
 message GetAllChaptersResponse {
     repeated MasterChapter Chapters = 1;
-}
-
-message MasterParagraph {
-    uint64 ID        = 1;
-    uint32 Num       = 2;
-    bool HasLinks    = 3;
-    bool IsTable     = 4;
-    bool IsNFT       = 5;
-    string Class     = 6;
-    string Content   = 7;
-    uint64 ChapterID = 8;
-}
-
-message GetAllParagraphsRequest {
-    uint64 ID = 1;
-}
-
-message GetAllParagraphsResponse {
-    repeated MasterParagraph paragraphs = 1;
 }
 
 message UpdateParagraphRequest {
