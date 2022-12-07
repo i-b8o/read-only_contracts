@@ -96,10 +96,10 @@ message GetRegulationIdByChapterIdResponse {
     uint64 ID = 1;
 }
 
-message GetOneRequest {
+message GetOneParagraphRequest {
     uint64 ID = 1;
 }
 
-message GetOneResponse {
+message GetOneParagraphResponse {
     string Content = 1;
 }

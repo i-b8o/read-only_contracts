@@ -21,7 +21,7 @@ service WriterChapterGRPC {
 }
 
 service WriterParagraphGRPC {
-    rpc GetOne(GetOneRequest) returns (GetOneResponse){};
+    rpc GetOne(GetOneParagraphRequest) returns (GetOneParagraphResponse){};
     rpc CreateAll(CreateAllParagraphsRequest) returns (Empty) {};
     rpc Update(UpdateOneParagraphRequest) returns (Empty) {};
     rpc GetWithHrefs(GetParagraphsWithHrefsRequest) returns (GetParagraphsWithHrefsResponse) {};
