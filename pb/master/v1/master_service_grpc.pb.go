@@ -375,6 +375,7 @@ var MasterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MasterParagraphGRPCClient interface {
 	Create(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
+	GetOne(ctx context.Context, in *GetOneParagraphRequest, opts ...grpc.CallOption) (*GetOneParagraphResponse, error)
 	GetAll(ctx context.Context, in *GetAllParagraphsRequest, opts ...grpc.CallOption) (*GetAllParagraphsResponse, error)
 	Update(ctx context.Context, in *UpdateParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
 }
@@ -390,6 +391,15 @@ func NewMasterParagraphGRPCClient(cc grpc.ClientConnInterface) MasterParagraphGR
 func (c *masterParagraphGRPCClient) Create(ctx context.Context, in *CreateParagraphsRequest, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/Create", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *masterParagraphGRPCClient) GetOne(ctx context.Context, in *GetOneParagraphRequest, opts ...grpc.CallOption) (*GetOneParagraphResponse, error) {
+	out := new(GetOneParagraphResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterParagraphGRPC/GetOne", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -419,6 +429,7 @@ func (c *masterParagraphGRPCClient) Update(ctx context.Context, in *UpdateParagr
 // for forward compatibility
 type MasterParagraphGRPCServer interface {
 	Create(context.Context, *CreateParagraphsRequest) (*Empty, error)
+	GetOne(context.Context, *GetOneParagraphRequest) (*GetOneParagraphResponse, error)
 	GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error)
 	Update(context.Context, *UpdateParagraphRequest) (*Empty, error)
 	mustEmbedUnimplementedMasterParagraphGRPCServer()
@@ -430,6 +441,9 @@ type UnimplementedMasterParagraphGRPCServer struct {
 
 func (UnimplementedMasterParagraphGRPCServer) Create(context.Context, *CreateParagraphsRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedMasterParagraphGRPCServer) GetOne(context.Context, *GetOneParagraphRequest) (*GetOneParagraphResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
 }
 func (UnimplementedMasterParagraphGRPCServer) GetAll(context.Context, *GetAllParagraphsRequest) (*GetAllParagraphsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
@@ -464,6 +478,24 @@ func _MasterParagraphGRPC_Create_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MasterParagraphGRPCServer).Create(ctx, req.(*CreateParagraphsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MasterParagraphGRPC_GetOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOneParagraphRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterParagraphGRPCServer).GetOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterParagraphGRPC/GetOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterParagraphGRPCServer).GetOne(ctx, req.(*GetOneParagraphRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -514,6 +546,10 @@ var MasterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _MasterParagraphGRPC_Create_Handler,
+		},
+		{
+			MethodName: "GetOne",
+			Handler:    _MasterParagraphGRPC_GetOne_Handler,
 		},
 		{
 			MethodName: "GetAll",

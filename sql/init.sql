@@ -1,9 +1,7 @@
 DROP TABLE IF EXISTS absent_reg;
 DROP TABLE IF EXISTS pseudo_chapter;
 DROP TABLE IF EXISTS pseudo_regulation;
-DROP TABLE IF EXISTS speech;
 DROP TABLE IF EXISTS link;
-DROP TABLE IF EXISTS speech;
 DROP MATERIALIZED VIEW IF EXISTS reg_search;
 DROP INDEX IF EXISTS idx_search;
 DROP TABLE IF EXISTS paragraph;
@@ -88,13 +86,6 @@ CREATE TABLE link (
     paragraph_num INT NOT NULL CHECK (paragraph_num >= 0),
     c_id integer,
     r_id integer
-);
-
-CREATE TABLE speech (
-    id SERIAL PRIMARY KEY,
-    order_num INT NOT NULL CHECK (order_num >= 0),
-    content TEXT,
-    paragraph_id INT NOT NULL CHECK (paragraph_id >= 0)
 );
 
 INSERT INTO regulation ("name", "abbreviation", "title", "created_at") VALUES ('Имя первой записи', 'Аббревиатура первой записи', 'Заголовок первой записи', '2023-01-01 00:00:00');

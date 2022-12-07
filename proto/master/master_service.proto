@@ -23,6 +23,7 @@ service MasterChapterGRPC{
 
 service MasterParagraphGRPC{
     rpc Create(CreateParagraphsRequest) returns (Empty) {};
+    rpc GetOne(GetOneParagraphRequest) returns (GetOneParagraphResponse) {};
     rpc GetAll(GetAllParagraphsRequest) returns (GetAllParagraphsResponse) {};
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
 }
@@ -137,4 +138,12 @@ message MasterAbsent {
 
 message GetAbsentsResponse {
     repeated MasterAbsent Absents = 1;
+}
+
+message GetOneParagraphRequest {
+    uint64 ID = 1;
+}
+
+message GetOneParagraphResponse {
+    string Content = 1;
 }
