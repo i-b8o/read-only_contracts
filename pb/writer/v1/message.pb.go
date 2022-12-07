@@ -1026,6 +1026,100 @@ func (x *GetRegulationIdByChapterIdResponse) GetID() uint64 {
 	return 0
 }
 
+type GetOneRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID uint64 `protobuf:"varint,1,opt,name=ID,proto3" json:"ID,omitempty"`
+}
+
+func (x *GetOneRequest) Reset() {
+	*x = GetOneRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetOneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOneRequest) ProtoMessage() {}
+
+func (x *GetOneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOneRequest.ProtoReflect.Descriptor instead.
+func (*GetOneRequest) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetOneRequest) GetID() uint64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+type GetOneResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Content string `protobuf:"bytes,1,opt,name=Content,proto3" json:"Content,omitempty"`
+}
+
+func (x *GetOneResponse) Reset() {
+	*x = GetOneResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_message_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetOneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOneResponse) ProtoMessage() {}
+
+func (x *GetOneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_message_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOneResponse.ProtoReflect.Descriptor instead.
+func (*GetOneResponse) Descriptor() ([]byte, []int) {
+	return file_message_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetOneResponse) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
 var File_message_proto protoreflect.FileDescriptor
 
 var file_message_proto_rawDesc = []byte{
@@ -1124,9 +1218,14 @@ var file_message_proto_rawDesc = []byte{
 	0x49, 0x44, 0x22, 0x34, 0x0a, 0x22, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x75, 0x6c, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0x79, 0x43, 0x68, 0x61, 0x70, 0x74, 0x65, 0x72, 0x49, 0x64,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x42, 0x15, 0x5a, 0x13, 0x77, 0x72, 0x69, 0x74,
-	0x65, 0x72, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x1f, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x4f,
+	0x6e, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x22, 0x2a, 0x0a, 0x0e, 0x47, 0x65, 0x74,
+	0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x43,
+	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x43, 0x6f,
+	0x6e, 0x74, 0x65, 0x6e, 0x74, 0x42, 0x15, 0x5a, 0x13, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x2f,
+	0x76, 0x31, 0x3b, 0x70, 0x62, 0x5f, 0x77, 0x72, 0x69, 0x74, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1141,7 +1240,7 @@ func file_message_proto_rawDescGZIP() []byte {
 	return file_message_proto_rawDescData
 }
 
-var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_message_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_message_proto_goTypes = []interface{}{
 	(*WriterRegulation)(nil),                   // 0: writer.v1.WriterRegulation
 	(*GetRegulationsResponse)(nil),             // 1: writer.v1.GetRegulationsResponse
@@ -1161,6 +1260,8 @@ var file_message_proto_goTypes = []interface{}{
 	(*GetAllChaptersIdsResponse)(nil),          // 15: writer.v1.GetAllChaptersIdsResponse
 	(*GetRegulationIdByChapterIdRequest)(nil),  // 16: writer.v1.GetRegulationIdByChapterIdRequest
 	(*GetRegulationIdByChapterIdResponse)(nil), // 17: writer.v1.GetRegulationIdByChapterIdResponse
+	(*GetOneRequest)(nil),                      // 18: writer.v1.GetOneRequest
+	(*GetOneResponse)(nil),                     // 19: writer.v1.GetOneResponse
 }
 var file_message_proto_depIdxs = []int32{
 	0, // 0: writer.v1.GetRegulationsResponse.regulations:type_name -> writer.v1.WriterRegulation
@@ -1396,6 +1497,30 @@ func file_message_proto_init() {
 				return nil
 			}
 		}
+		file_message_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetOneRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_message_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetOneResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1403,7 +1528,7 @@ func file_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

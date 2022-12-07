@@ -338,6 +338,7 @@ var WriterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WriterParagraphGRPCClient interface {
+	GetOne(ctx context.Context, in *GetOneRequest, opts ...grpc.CallOption) (*GetOneResponse, error)
 	CreateAll(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*Empty, error)
 	Update(ctx context.Context, in *UpdateOneParagraphRequest, opts ...grpc.CallOption) (*Empty, error)
 	GetWithHrefs(ctx context.Context, in *GetParagraphsWithHrefsRequest, opts ...grpc.CallOption) (*GetParagraphsWithHrefsResponse, error)
@@ -349,6 +350,15 @@ type writerParagraphGRPCClient struct {
 
 func NewWriterParagraphGRPCClient(cc grpc.ClientConnInterface) WriterParagraphGRPCClient {
 	return &writerParagraphGRPCClient{cc}
+}
+
+func (c *writerParagraphGRPCClient) GetOne(ctx context.Context, in *GetOneRequest, opts ...grpc.CallOption) (*GetOneResponse, error) {
+	out := new(GetOneResponse)
+	err := c.cc.Invoke(ctx, "/writer.v1.WriterParagraphGRPC/GetOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *writerParagraphGRPCClient) CreateAll(ctx context.Context, in *CreateAllParagraphsRequest, opts ...grpc.CallOption) (*Empty, error) {
@@ -382,6 +392,7 @@ func (c *writerParagraphGRPCClient) GetWithHrefs(ctx context.Context, in *GetPar
 // All implementations must embed UnimplementedWriterParagraphGRPCServer
 // for forward compatibility
 type WriterParagraphGRPCServer interface {
+	GetOne(context.Context, *GetOneRequest) (*GetOneResponse, error)
 	CreateAll(context.Context, *CreateAllParagraphsRequest) (*Empty, error)
 	Update(context.Context, *UpdateOneParagraphRequest) (*Empty, error)
 	GetWithHrefs(context.Context, *GetParagraphsWithHrefsRequest) (*GetParagraphsWithHrefsResponse, error)
@@ -392,6 +403,9 @@ type WriterParagraphGRPCServer interface {
 type UnimplementedWriterParagraphGRPCServer struct {
 }
 
+func (UnimplementedWriterParagraphGRPCServer) GetOne(context.Context, *GetOneRequest) (*GetOneResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
+}
 func (UnimplementedWriterParagraphGRPCServer) CreateAll(context.Context, *CreateAllParagraphsRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAll not implemented")
 }
@@ -412,6 +426,24 @@ type UnsafeWriterParagraphGRPCServer interface {
 
 func RegisterWriterParagraphGRPCServer(s grpc.ServiceRegistrar, srv WriterParagraphGRPCServer) {
 	s.RegisterService(&WriterParagraphGRPC_ServiceDesc, srv)
+}
+
+func _WriterParagraphGRPC_GetOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WriterParagraphGRPCServer).GetOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/writer.v1.WriterParagraphGRPC/GetOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WriterParagraphGRPCServer).GetOne(ctx, req.(*GetOneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _WriterParagraphGRPC_CreateAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -475,6 +507,10 @@ var WriterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "writer.v1.WriterParagraphGRPC",
 	HandlerType: (*WriterParagraphGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetOne",
+			Handler:    _WriterParagraphGRPC_GetOne_Handler,
+		},
 		{
 			MethodName: "CreateAll",
 			Handler:    _WriterParagraphGRPC_CreateAll_Handler,
