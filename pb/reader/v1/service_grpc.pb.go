@@ -18,294 +18,294 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// ReaderRegulationGRPCClient is the client API for ReaderRegulationGRPC service.
+// RegulationGRPCClient is the client API for RegulationGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ReaderRegulationGRPCClient interface {
-	GetOneRegulation(ctx context.Context, in *GetOneRegulationRequest, opts ...grpc.CallOption) (*GetOneRegulationResponse, error)
+type RegulationGRPCClient interface {
+	GetOne(ctx context.Context, in *GetOneRegulationRequest, opts ...grpc.CallOption) (*GetOneRegulationResponse, error)
 }
 
-type readerRegulationGRPCClient struct {
+type regulationGRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewReaderRegulationGRPCClient(cc grpc.ClientConnInterface) ReaderRegulationGRPCClient {
-	return &readerRegulationGRPCClient{cc}
+func NewRegulationGRPCClient(cc grpc.ClientConnInterface) RegulationGRPCClient {
+	return &regulationGRPCClient{cc}
 }
 
-func (c *readerRegulationGRPCClient) GetOneRegulation(ctx context.Context, in *GetOneRegulationRequest, opts ...grpc.CallOption) (*GetOneRegulationResponse, error) {
+func (c *regulationGRPCClient) GetOne(ctx context.Context, in *GetOneRegulationRequest, opts ...grpc.CallOption) (*GetOneRegulationResponse, error) {
 	out := new(GetOneRegulationResponse)
-	err := c.cc.Invoke(ctx, "/reader.v1.ReaderRegulationGRPC/GetOneRegulation", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/reader.v1.RegulationGRPC/GetOne", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ReaderRegulationGRPCServer is the server API for ReaderRegulationGRPC service.
-// All implementations must embed UnimplementedReaderRegulationGRPCServer
+// RegulationGRPCServer is the server API for RegulationGRPC service.
+// All implementations must embed UnimplementedRegulationGRPCServer
 // for forward compatibility
-type ReaderRegulationGRPCServer interface {
-	GetOneRegulation(context.Context, *GetOneRegulationRequest) (*GetOneRegulationResponse, error)
-	mustEmbedUnimplementedReaderRegulationGRPCServer()
+type RegulationGRPCServer interface {
+	GetOne(context.Context, *GetOneRegulationRequest) (*GetOneRegulationResponse, error)
+	mustEmbedUnimplementedRegulationGRPCServer()
 }
 
-// UnimplementedReaderRegulationGRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedReaderRegulationGRPCServer struct {
+// UnimplementedRegulationGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedRegulationGRPCServer struct {
 }
 
-func (UnimplementedReaderRegulationGRPCServer) GetOneRegulation(context.Context, *GetOneRegulationRequest) (*GetOneRegulationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOneRegulation not implemented")
+func (UnimplementedRegulationGRPCServer) GetOne(context.Context, *GetOneRegulationRequest) (*GetOneRegulationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
 }
-func (UnimplementedReaderRegulationGRPCServer) mustEmbedUnimplementedReaderRegulationGRPCServer() {}
+func (UnimplementedRegulationGRPCServer) mustEmbedUnimplementedRegulationGRPCServer() {}
 
-// UnsafeReaderRegulationGRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ReaderRegulationGRPCServer will
+// UnsafeRegulationGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RegulationGRPCServer will
 // result in compilation errors.
-type UnsafeReaderRegulationGRPCServer interface {
-	mustEmbedUnimplementedReaderRegulationGRPCServer()
+type UnsafeRegulationGRPCServer interface {
+	mustEmbedUnimplementedRegulationGRPCServer()
 }
 
-func RegisterReaderRegulationGRPCServer(s grpc.ServiceRegistrar, srv ReaderRegulationGRPCServer) {
-	s.RegisterService(&ReaderRegulationGRPC_ServiceDesc, srv)
+func RegisterRegulationGRPCServer(s grpc.ServiceRegistrar, srv RegulationGRPCServer) {
+	s.RegisterService(&RegulationGRPC_ServiceDesc, srv)
 }
 
-func _ReaderRegulationGRPC_GetOneRegulation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RegulationGRPC_GetOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetOneRegulationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ReaderRegulationGRPCServer).GetOneRegulation(ctx, in)
+		return srv.(RegulationGRPCServer).GetOne(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/reader.v1.ReaderRegulationGRPC/GetOneRegulation",
+		FullMethod: "/reader.v1.RegulationGRPC/GetOne",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReaderRegulationGRPCServer).GetOneRegulation(ctx, req.(*GetOneRegulationRequest))
+		return srv.(RegulationGRPCServer).GetOne(ctx, req.(*GetOneRegulationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ReaderRegulationGRPC_ServiceDesc is the grpc.ServiceDesc for ReaderRegulationGRPC service.
+// RegulationGRPC_ServiceDesc is the grpc.ServiceDesc for RegulationGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ReaderRegulationGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "reader.v1.ReaderRegulationGRPC",
-	HandlerType: (*ReaderRegulationGRPCServer)(nil),
+var RegulationGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "reader.v1.RegulationGRPC",
+	HandlerType: (*RegulationGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetOneRegulation",
-			Handler:    _ReaderRegulationGRPC_GetOneRegulation_Handler,
+			MethodName: "GetOne",
+			Handler:    _RegulationGRPC_GetOne_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
 
-// ReaderChapterGRPCClient is the client API for ReaderChapterGRPC service.
+// ChapterGRPCClient is the client API for ChapterGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ReaderChapterGRPCClient interface {
-	GetOneChapter(ctx context.Context, in *GetOneChapterRequest, opts ...grpc.CallOption) (*GetOneChapterResponse, error)
-	GetAllChaptersByRegulationId(ctx context.Context, in *GetAllChaptersByRegulationIdRequest, opts ...grpc.CallOption) (*GetAllChaptersByRegulationIdResponse, error)
+type ChapterGRPCClient interface {
+	GetOne(ctx context.Context, in *GetOneChapterRequest, opts ...grpc.CallOption) (*GetOneChapterResponse, error)
+	GetAll(ctx context.Context, in *GetAllChaptersByRegulationIdRequest, opts ...grpc.CallOption) (*GetAllChaptersByRegulationIdResponse, error)
 }
 
-type readerChapterGRPCClient struct {
+type chapterGRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewReaderChapterGRPCClient(cc grpc.ClientConnInterface) ReaderChapterGRPCClient {
-	return &readerChapterGRPCClient{cc}
+func NewChapterGRPCClient(cc grpc.ClientConnInterface) ChapterGRPCClient {
+	return &chapterGRPCClient{cc}
 }
 
-func (c *readerChapterGRPCClient) GetOneChapter(ctx context.Context, in *GetOneChapterRequest, opts ...grpc.CallOption) (*GetOneChapterResponse, error) {
+func (c *chapterGRPCClient) GetOne(ctx context.Context, in *GetOneChapterRequest, opts ...grpc.CallOption) (*GetOneChapterResponse, error) {
 	out := new(GetOneChapterResponse)
-	err := c.cc.Invoke(ctx, "/reader.v1.ReaderChapterGRPC/GetOneChapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/reader.v1.ChapterGRPC/GetOne", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *readerChapterGRPCClient) GetAllChaptersByRegulationId(ctx context.Context, in *GetAllChaptersByRegulationIdRequest, opts ...grpc.CallOption) (*GetAllChaptersByRegulationIdResponse, error) {
+func (c *chapterGRPCClient) GetAll(ctx context.Context, in *GetAllChaptersByRegulationIdRequest, opts ...grpc.CallOption) (*GetAllChaptersByRegulationIdResponse, error) {
 	out := new(GetAllChaptersByRegulationIdResponse)
-	err := c.cc.Invoke(ctx, "/reader.v1.ReaderChapterGRPC/GetAllChaptersByRegulationId", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/reader.v1.ChapterGRPC/GetAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ReaderChapterGRPCServer is the server API for ReaderChapterGRPC service.
-// All implementations must embed UnimplementedReaderChapterGRPCServer
+// ChapterGRPCServer is the server API for ChapterGRPC service.
+// All implementations must embed UnimplementedChapterGRPCServer
 // for forward compatibility
-type ReaderChapterGRPCServer interface {
-	GetOneChapter(context.Context, *GetOneChapterRequest) (*GetOneChapterResponse, error)
-	GetAllChaptersByRegulationId(context.Context, *GetAllChaptersByRegulationIdRequest) (*GetAllChaptersByRegulationIdResponse, error)
-	mustEmbedUnimplementedReaderChapterGRPCServer()
+type ChapterGRPCServer interface {
+	GetOne(context.Context, *GetOneChapterRequest) (*GetOneChapterResponse, error)
+	GetAll(context.Context, *GetAllChaptersByRegulationIdRequest) (*GetAllChaptersByRegulationIdResponse, error)
+	mustEmbedUnimplementedChapterGRPCServer()
 }
 
-// UnimplementedReaderChapterGRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedReaderChapterGRPCServer struct {
+// UnimplementedChapterGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedChapterGRPCServer struct {
 }
 
-func (UnimplementedReaderChapterGRPCServer) GetOneChapter(context.Context, *GetOneChapterRequest) (*GetOneChapterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetOneChapter not implemented")
+func (UnimplementedChapterGRPCServer) GetOne(context.Context, *GetOneChapterRequest) (*GetOneChapterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOne not implemented")
 }
-func (UnimplementedReaderChapterGRPCServer) GetAllChaptersByRegulationId(context.Context, *GetAllChaptersByRegulationIdRequest) (*GetAllChaptersByRegulationIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllChaptersByRegulationId not implemented")
+func (UnimplementedChapterGRPCServer) GetAll(context.Context, *GetAllChaptersByRegulationIdRequest) (*GetAllChaptersByRegulationIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
-func (UnimplementedReaderChapterGRPCServer) mustEmbedUnimplementedReaderChapterGRPCServer() {}
+func (UnimplementedChapterGRPCServer) mustEmbedUnimplementedChapterGRPCServer() {}
 
-// UnsafeReaderChapterGRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ReaderChapterGRPCServer will
+// UnsafeChapterGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ChapterGRPCServer will
 // result in compilation errors.
-type UnsafeReaderChapterGRPCServer interface {
-	mustEmbedUnimplementedReaderChapterGRPCServer()
+type UnsafeChapterGRPCServer interface {
+	mustEmbedUnimplementedChapterGRPCServer()
 }
 
-func RegisterReaderChapterGRPCServer(s grpc.ServiceRegistrar, srv ReaderChapterGRPCServer) {
-	s.RegisterService(&ReaderChapterGRPC_ServiceDesc, srv)
+func RegisterChapterGRPCServer(s grpc.ServiceRegistrar, srv ChapterGRPCServer) {
+	s.RegisterService(&ChapterGRPC_ServiceDesc, srv)
 }
 
-func _ReaderChapterGRPC_GetOneChapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ChapterGRPC_GetOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetOneChapterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ReaderChapterGRPCServer).GetOneChapter(ctx, in)
+		return srv.(ChapterGRPCServer).GetOne(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/reader.v1.ReaderChapterGRPC/GetOneChapter",
+		FullMethod: "/reader.v1.ChapterGRPC/GetOne",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReaderChapterGRPCServer).GetOneChapter(ctx, req.(*GetOneChapterRequest))
+		return srv.(ChapterGRPCServer).GetOne(ctx, req.(*GetOneChapterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ReaderChapterGRPC_GetAllChaptersByRegulationId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ChapterGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAllChaptersByRegulationIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ReaderChapterGRPCServer).GetAllChaptersByRegulationId(ctx, in)
+		return srv.(ChapterGRPCServer).GetAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/reader.v1.ReaderChapterGRPC/GetAllChaptersByRegulationId",
+		FullMethod: "/reader.v1.ChapterGRPC/GetAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReaderChapterGRPCServer).GetAllChaptersByRegulationId(ctx, req.(*GetAllChaptersByRegulationIdRequest))
+		return srv.(ChapterGRPCServer).GetAll(ctx, req.(*GetAllChaptersByRegulationIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ReaderChapterGRPC_ServiceDesc is the grpc.ServiceDesc for ReaderChapterGRPC service.
+// ChapterGRPC_ServiceDesc is the grpc.ServiceDesc for ChapterGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ReaderChapterGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "reader.v1.ReaderChapterGRPC",
-	HandlerType: (*ReaderChapterGRPCServer)(nil),
+var ChapterGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "reader.v1.ChapterGRPC",
+	HandlerType: (*ChapterGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetOneChapter",
-			Handler:    _ReaderChapterGRPC_GetOneChapter_Handler,
+			MethodName: "GetOne",
+			Handler:    _ChapterGRPC_GetOne_Handler,
 		},
 		{
-			MethodName: "GetAllChaptersByRegulationId",
-			Handler:    _ReaderChapterGRPC_GetAllChaptersByRegulationId_Handler,
+			MethodName: "GetAll",
+			Handler:    _ChapterGRPC_GetAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
 
-// ReaderParagraphGRPCClient is the client API for ReaderParagraphGRPC service.
+// ParagraphGRPCClient is the client API for ParagraphGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ReaderParagraphGRPCClient interface {
-	GetAllParagraphsByChapterId(ctx context.Context, in *GetAllParagraphsByChapterIdRequest, opts ...grpc.CallOption) (*GetAllParagraphsByChapterIdResponse, error)
+type ParagraphGRPCClient interface {
+	GetAll(ctx context.Context, in *GetAllParagraphsByChapterIdRequest, opts ...grpc.CallOption) (*GetAllParagraphsByChapterIdResponse, error)
 }
 
-type readerParagraphGRPCClient struct {
+type paragraphGRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewReaderParagraphGRPCClient(cc grpc.ClientConnInterface) ReaderParagraphGRPCClient {
-	return &readerParagraphGRPCClient{cc}
+func NewParagraphGRPCClient(cc grpc.ClientConnInterface) ParagraphGRPCClient {
+	return &paragraphGRPCClient{cc}
 }
 
-func (c *readerParagraphGRPCClient) GetAllParagraphsByChapterId(ctx context.Context, in *GetAllParagraphsByChapterIdRequest, opts ...grpc.CallOption) (*GetAllParagraphsByChapterIdResponse, error) {
+func (c *paragraphGRPCClient) GetAll(ctx context.Context, in *GetAllParagraphsByChapterIdRequest, opts ...grpc.CallOption) (*GetAllParagraphsByChapterIdResponse, error) {
 	out := new(GetAllParagraphsByChapterIdResponse)
-	err := c.cc.Invoke(ctx, "/reader.v1.ReaderParagraphGRPC/GetAllParagraphsByChapterId", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/reader.v1.ParagraphGRPC/GetAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ReaderParagraphGRPCServer is the server API for ReaderParagraphGRPC service.
-// All implementations must embed UnimplementedReaderParagraphGRPCServer
+// ParagraphGRPCServer is the server API for ParagraphGRPC service.
+// All implementations must embed UnimplementedParagraphGRPCServer
 // for forward compatibility
-type ReaderParagraphGRPCServer interface {
-	GetAllParagraphsByChapterId(context.Context, *GetAllParagraphsByChapterIdRequest) (*GetAllParagraphsByChapterIdResponse, error)
-	mustEmbedUnimplementedReaderParagraphGRPCServer()
+type ParagraphGRPCServer interface {
+	GetAll(context.Context, *GetAllParagraphsByChapterIdRequest) (*GetAllParagraphsByChapterIdResponse, error)
+	mustEmbedUnimplementedParagraphGRPCServer()
 }
 
-// UnimplementedReaderParagraphGRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedReaderParagraphGRPCServer struct {
+// UnimplementedParagraphGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedParagraphGRPCServer struct {
 }
 
-func (UnimplementedReaderParagraphGRPCServer) GetAllParagraphsByChapterId(context.Context, *GetAllParagraphsByChapterIdRequest) (*GetAllParagraphsByChapterIdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllParagraphsByChapterId not implemented")
+func (UnimplementedParagraphGRPCServer) GetAll(context.Context, *GetAllParagraphsByChapterIdRequest) (*GetAllParagraphsByChapterIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
-func (UnimplementedReaderParagraphGRPCServer) mustEmbedUnimplementedReaderParagraphGRPCServer() {}
+func (UnimplementedParagraphGRPCServer) mustEmbedUnimplementedParagraphGRPCServer() {}
 
-// UnsafeReaderParagraphGRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ReaderParagraphGRPCServer will
+// UnsafeParagraphGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ParagraphGRPCServer will
 // result in compilation errors.
-type UnsafeReaderParagraphGRPCServer interface {
-	mustEmbedUnimplementedReaderParagraphGRPCServer()
+type UnsafeParagraphGRPCServer interface {
+	mustEmbedUnimplementedParagraphGRPCServer()
 }
 
-func RegisterReaderParagraphGRPCServer(s grpc.ServiceRegistrar, srv ReaderParagraphGRPCServer) {
-	s.RegisterService(&ReaderParagraphGRPC_ServiceDesc, srv)
+func RegisterParagraphGRPCServer(s grpc.ServiceRegistrar, srv ParagraphGRPCServer) {
+	s.RegisterService(&ParagraphGRPC_ServiceDesc, srv)
 }
 
-func _ReaderParagraphGRPC_GetAllParagraphsByChapterId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ParagraphGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAllParagraphsByChapterIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ReaderParagraphGRPCServer).GetAllParagraphsByChapterId(ctx, in)
+		return srv.(ParagraphGRPCServer).GetAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/reader.v1.ReaderParagraphGRPC/GetAllParagraphsByChapterId",
+		FullMethod: "/reader.v1.ParagraphGRPC/GetAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReaderParagraphGRPCServer).GetAllParagraphsByChapterId(ctx, req.(*GetAllParagraphsByChapterIdRequest))
+		return srv.(ParagraphGRPCServer).GetAll(ctx, req.(*GetAllParagraphsByChapterIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ReaderParagraphGRPC_ServiceDesc is the grpc.ServiceDesc for ReaderParagraphGRPC service.
+// ParagraphGRPC_ServiceDesc is the grpc.ServiceDesc for ParagraphGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ReaderParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "reader.v1.ReaderParagraphGRPC",
-	HandlerType: (*ReaderParagraphGRPCServer)(nil),
+var ParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "reader.v1.ParagraphGRPC",
+	HandlerType: (*ParagraphGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetAllParagraphsByChapterId",
-			Handler:    _ReaderParagraphGRPC_GetAllParagraphsByChapterId_Handler,
+			MethodName: "GetAll",
+			Handler:    _ParagraphGRPC_GetAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

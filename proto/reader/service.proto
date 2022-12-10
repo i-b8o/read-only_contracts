@@ -6,15 +6,15 @@ option go_package = "reader/v1;pb_reader";
 
 import "message.proto";
 
-service ReaderRegulationGRPC {
-    rpc GetOneRegulation(GetOneRegulationRequest) returns (GetOneRegulationResponse) {};
+service RegulationGRPC {
+    rpc GetOne(GetOneRegulationRequest) returns (GetOneRegulationResponse) {};
 }
 
-service ReaderChapterGRPC {
-    rpc GetOneChapter(GetOneChapterRequest) returns (GetOneChapterResponse) {};
-    rpc GetAllChaptersByRegulationId(GetAllChaptersByRegulationIdRequest) returns (GetAllChaptersByRegulationIdResponse) {};
+service ChapterGRPC {
+    rpc GetOne(GetOneChapterRequest) returns (GetOneChapterResponse) {};
+    rpc GetAll(GetAllChaptersByRegulationIdRequest) returns (GetAllChaptersByRegulationIdResponse) {};
 }
 
-service ReaderParagraphGRPC {
-    rpc GetAllParagraphsByChapterId(GetAllParagraphsByChapterIdRequest) returns (GetAllParagraphsByChapterIdResponse) {};
+service ParagraphGRPC {
+    rpc GetAll(GetAllParagraphsByChapterIdRequest) returns (GetAllParagraphsByChapterIdResponse) {};
 }
