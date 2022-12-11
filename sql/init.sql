@@ -94,3 +94,15 @@ INSERT INTO paragraph ("paragraph_id","order_num","is_table","is_nft","has_links
 INSERT INTO pseudo_regulation ("r_id", "pseudo") VALUES (1, 11111);
 INSERT INTO pseudo_chapter ("c_id", "pseudo") VALUES (3, 'a3a3a3');
 INSERT INTO absent_reg ("pseudo", "done", "paragraph_id") VALUES ('aaaaa', false, 1), ('bbbbb', true, 2), ('ccccc', false, 3);
+
+CREATE USER reader WITH ENCRYPTED PASSWORD '031501';
+GRANT CONNECT ON DATABASE main TO reader;
+GRANT SELECT ON TABLE regulation TO reader;
+GRANT SELECT ON TABLE chapter TO reader;
+GRANT SELECT ON TABLE paragraph TO reader;
+
+CREATE USER writer WITH ENCRYPTED PASSWORD '031501';
+GRANT CONNECT ON DATABASE main TO writer;
+GRANT ALL PRIVILEGES ON TABLE regulation TO writer;
+GRANT ALL PRIVILEGES ON TABLE chapter TO writer;
+GRANT ALL PRIVILEGES ON TABLE paragraph TO writer;
