@@ -8,6 +8,8 @@ CREATE TABLE regulation (
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
     abbreviation TEXT,
     title TEXT,
+    meta TEXT,
+    keywords TEXT,
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
