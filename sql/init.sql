@@ -1,12 +1,13 @@
-DROP TABLE IF EXISTS paragraph;
-DROP TABLE IF EXISTS chapter;
-DROP TABLE IF EXISTS regulation;
+DROP TABLE IF EXISTS public.paragraph;
+DROP TABLE IF EXISTS public.chapter;
+DROP TABLE IF EXISTS public.regulation;
 
 
-CREATE TABLE regulation (
+CREATE TABLE public.regulation (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
     abbreviation TEXT,
+    header TEXT,
     title TEXT,
     meta TEXT,
     keywords TEXT,
@@ -14,17 +15,20 @@ CREATE TABLE regulation (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE TABLE chapter (
+CREATE TABLE public.chapter (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (name != ''),
+    title TEXT,
+    meta TEXT,
+    keywords TEXT,
     order_num SMALLINT NOT NULL CHECK (order_num >= 0),
     num TEXT,
     r_id integer REFERENCES regulation,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-CREATE INDEX chapter_regulation_idx ON chapter (r_id);
+CREATE INDEX chapter_regulation_idx ON public.chapter (r_id);
 
-CREATE TABLE paragraph (
+CREATE TABLE public.paragraph (
     id SERIAL PRIMARY KEY,
     paragraph_id INT NOT NULL CHECK (paragraph_id >= 0),
     order_num INT NOT NULL CHECK (order_num >= 0),
@@ -35,17 +39,18 @@ CREATE TABLE paragraph (
     content TEXT NOT NULL,
     c_id integer REFERENCES chapter
 );
-CREATE INDEX paragraph_chapter_idx ON paragraph (c_id);
+CREATE INDEX paragraph_chapter_idx ON public.paragraph (c_id);
 
 
 CREATE USER reader WITH ENCRYPTED PASSWORD '031501';
 GRANT CONNECT ON DATABASE main TO reader;
-GRANT SELECT ON TABLE regulation TO reader;
-GRANT SELECT ON TABLE chapter TO reader;
-GRANT SELECT ON TABLE paragraph TO reader;
+GRANT SELECT ON TABLE public.regulation TO reader;
+GRANT SELECT ON TABLE public.chapter TO reader;
+GRANT SELECT ON TABLE public.paragraph TO reader;
 
 CREATE USER writer WITH ENCRYPTED PASSWORD '031501';
 GRANT CONNECT ON DATABASE main TO writer;
-GRANT ALL PRIVILEGES ON TABLE regulation TO writer;
-GRANT ALL PRIVILEGES ON TABLE chapter TO writer;
-GRANT ALL PRIVILEGES ON TABLE paragraph TO writer;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO writer;
+GRANT ALL PRIVILEGES ON TABLE public.regulation TO writer;
+GRANT ALL PRIVILEGES ON TABLE public.chapter TO writer;
+GRANT ALL PRIVILEGES ON TABLE public.paragraph TO writer;
