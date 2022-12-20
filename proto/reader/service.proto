@@ -6,13 +6,13 @@ option go_package = "reader/v1;pb_reader";
 
 import "message.proto";
 
-service RegulationGRPC {
-    rpc GetOne(GetOneRegulationRequest) returns (GetOneRegulationResponse) {};
+service DocGRPC {
+    rpc GetOne(GetOneDocRequest) returns (GetOneDocResponse) {};
 }
 
 service ChapterGRPC {
     rpc GetOne(GetOneChapterRequest) returns (GetOneChapterResponse) {};
-    rpc GetAll(GetAllChaptersByRegulationIdRequest) returns (GetAllChaptersByRegulationIdResponse) {};
+    rpc GetAll(GetAllChaptersByDocIdRequest) returns (GetAllChaptersByDocIdResponse) {};
 }
 
 service ParagraphGRPC {

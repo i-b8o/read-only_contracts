@@ -8,16 +8,16 @@ import "message.proto";
 
 message Empty {}
 
-service WriterRegulationGRPC {
-    rpc Create(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc Delete(DeleteRegulationRequest) returns (Empty) {};
-    rpc GetAll(Empty) returns (GetRegulationsResponse) {};
+service WriterDocGRPC {
+    rpc Create(CreateDocRequest) returns (CreateDocResponse) {};
+    rpc Delete(DeleteDocRequest) returns (Empty) {};
+    rpc GetAll(Empty) returns (GetDocsResponse) {};
 }
 
 service WriterChapterGRPC {
     rpc Create(CreateChapterRequest) returns (CreateChapterResponse) {};
     rpc GetAll(GetAllChaptersIdsRequest) returns (GetAllChaptersIdsResponse) {};
-    rpc GetRegulationId(GetRegulationIdByChapterIdRequest) returns (GetRegulationIdByChapterIdResponse) {};
+    rpc GetDocId(GetDocIdByChapterIdRequest) returns (GetDocIdByChapterIdResponse) {};
 }
 
 service WriterParagraphGRPC {

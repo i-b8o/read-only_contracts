@@ -16,11 +16,11 @@ message ReaderParagraph {
     uint64 ChapterID = 8;
 }
 
-message GetOneRegulationRequest {
+message GetOneDocRequest {
     uint64 ID = 1;
 }
 
-message GetOneRegulationResponse {
+message GetOneDocResponse {
     string Name         = 1;
     string Abbreviation = 2;
     string Title        = 3;
@@ -34,7 +34,7 @@ message GetOneChapterResponse {
     uint64 ID                           = 1;
     string Name                         = 2;
     string Num                          = 3;
-    uint64 RegulationID                 = 4;
+    uint64 DocID                 = 4;
     uint32 OrderNum                     = 5;
     repeated ReaderParagraph Paragraphs = 6;
     google.protobuf.Timestamp UpdatedAt = 7;
@@ -44,16 +44,16 @@ message ReaderChapter {
     uint64 ID                           = 1;
     string Name                         = 2;
     string Num                          = 3;
-    uint64 RegulationID                 = 4;
+    uint64 DocID                 = 4;
     uint32 OrderNum                     = 5;
     google.protobuf.Timestamp UpdatedAt = 6;
 }
 
-message GetAllChaptersByRegulationIdRequest {
+message GetAllChaptersByDocIdRequest {
     uint64 ID = 1;
 }
 
-message GetAllChaptersByRegulationIdResponse {
+message GetAllChaptersByDocIdResponse {
     repeated ReaderChapter Chapters = 1;
 }
 

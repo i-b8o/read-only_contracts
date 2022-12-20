@@ -8,10 +8,10 @@ option go_package = "master/v1;pb_master";
 
 message Empty {}
 
-service MasterRegulationGRPC {
-    rpc Create(CreateRegulationRequest) returns (CreateRegulationResponse) {};
-    rpc GetAll(Empty) returns (GetAllRegulationsResponse) {};
-    rpc Delete(DeleteRegulationRequest) returns (Empty) {};
+service MasterDocGRPC {
+    rpc Create(CreateDocRequest) returns (CreateDocResponse) {};
+    rpc GetAll(Empty) returns (GetAllDocsResponse) {};
+    rpc Delete(DeleteDocRequest) returns (Empty) {};
     rpc UpdateLinks(UpdateLinksRequest) returns (UpdateLinksResponse) {};
     rpc GetAbsents(Empty) returns (GetAbsentsResponse) {};
 }
@@ -27,20 +27,20 @@ service MasterParagraphGRPC{
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
 }
 
-message Regulation {
+message Doc {
     uint64 ID             = 1;
-    string RegulationName = 2;
+    string DocName = 2;
     string Abbreviation   = 3;
     string Title          = 4;
 }
 
-message GetAllRegulationsResponse {
-    repeated Regulation Regulations = 1;
+message GetAllDocsResponse {
+    repeated Doc Docs = 1;
 }
 
 message CreateChapterRequest {
 	string PseudoId     = 1;
-    uint64 RegulationId = 2;
+    uint64 DocId = 2;
 	string ChapterName  = 3;
 	string ChapterNum   = 4;
 	uint32 OrderNum     = 5;
@@ -66,13 +66,13 @@ message CreateParagraphsRequest {
 }
 
 
-message CreateRegulationRequest {
+message CreateDocRequest {
     string PseudoId      = 1;
-    string RegulationName = 2;
+    string DocName = 2;
     string Abbreviation   = 3;
     string Title          = 4;
 }
-message CreateRegulationResponse {
+message CreateDocResponse {
     uint64 ID = 1;
 }
 
@@ -83,7 +83,7 @@ message UpdateLinksResponse {
     uint64 ID = 1;
 }
 
-message DeleteRegulationRequest {
+message DeleteDocRequest {
     uint64 ID = 1;
 }
 
@@ -91,7 +91,7 @@ message MasterChapter {
     uint64 ID                           = 1;
     string Name                         = 2;
     string Num                          = 3;
-    uint64 RegulationID                 = 4;
+    uint64 DocID                 = 4;
     uint32 OrderNum                     = 5;
 }
 

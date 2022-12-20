@@ -4,15 +4,15 @@ package writer.v1;
 
 option go_package = "writer/v1;pb_writer";
 
-message WriterRegulation {
+message WriterDoc {
     uint64 ID = 1;
     string Name = 2;
     string Abbreviation = 3;
     string Title = 4;
 }
 
-message GetRegulationsResponse {
-    repeated WriterRegulation regulations = 1;
+message GetDocsResponse {
+    repeated WriterDoc docs = 1;
 }
 
 message WriterParagraph {
@@ -31,17 +31,17 @@ message UpdateOneRequestMesssage {
     string Content = 2;
 }
 
-message CreateRegulationRequest {
+message CreateDocRequest {
     string Name         = 1;
     string Abbreviation = 2;
     string Title        = 3;
 }
 
-message CreateRegulationResponse {
+message CreateDocResponse {
     uint64 ID = 1;
 }
 
-message DeleteRegulationRequest {
+message DeleteDocRequest {
     uint64 ID = 1;
 }
 
@@ -49,7 +49,7 @@ message CreateChapterRequest {
     uint64 ID                             = 1;
     string Name                           = 2;
     string Num                            = 3;
-    uint64 RegulationID                   = 4;
+    uint64 DocID                   = 4;
     uint32 OrderNum                       = 5;
     repeated WriterParagraph Paragraphs   = 6;
     string UpdatedAt                      = 7;
@@ -88,11 +88,11 @@ message GetAllChaptersIdsResponse {
     repeated uint64 IDs = 1;
 }
 
-message GetRegulationIdByChapterIdRequest {
+message GetDocIdByChapterIdRequest {
     uint64 ID = 1;
 }
 
-message GetRegulationIdByChapterIdResponse {
+message GetDocIdByChapterIdResponse {
     uint64 ID = 1;
 }
 
