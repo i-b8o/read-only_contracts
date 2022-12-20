@@ -24,3 +24,4 @@ test_db:
 
 # TODO Search service
 # TODO add empty string in the title, keywords, description fields 
+# TODO Generate the title, keywords, description fields 
