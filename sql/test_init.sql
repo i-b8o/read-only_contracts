@@ -25,7 +25,7 @@ CREATE TABLE chapter (
     name TEXT NOT NULL CHECK (name != ''),
     order_num SMALLINT NOT NULL CHECK (order_num >= 0),
     num TEXT,
-    r_id integer REFERENCES doc,
+    doc_id integer REFERENCES doc,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 ALTER TABLE chapter
@@ -46,7 +46,7 @@ ALTER TABLE paragraph
 ADD COLUMN ts tsvector GENERATED ALWAYS AS (to_tsvector('russian', content)) STORED;
 CREATE INDEX p_ts_idx ON paragraph USING GIN (ts);
 CREATE MATERIALIZED VIEW reg_search AS
-SELECT r.id AS "r_id",
+SELECT r.id AS "doc_id",
     r.name AS "r_name",
     NULL AS "c_id",
     NULL AS "c_name",
@@ -56,7 +56,7 @@ SELECT r.id AS "r_id",
     to_tsvector('russian', r.name) AS ts
 FROM doc AS r
 UNION
-SELECT NULL AS "r_id",
+SELECT NULL AS "doc_id",
     r.name AS "r_name",
     c.id AS "c_id",
     c.name AS "c_name",
@@ -65,9 +65,9 @@ SELECT NULL AS "r_id",
     c.name AS "text",
     to_tsvector('russian', c.name) AS ts
 FROM chapter AS c
-    INNER JOIN doc AS r ON r.id = c.r_id
+    INNER JOIN doc AS r ON r.id = c.doc_id
 UNION
-SELECT NULL AS "r_id",
+SELECT NULL AS "doc_id",
     r.name AS "r_name",
     c.id AS "c_id",
     c.name AS "c_name",
@@ -77,10 +77,10 @@ SELECT NULL AS "r_id",
     to_tsvector('russian', content) AS ts
 FROM paragraph AS p
     INNER JOIN chapter AS c ON p.c_id = c.id
-    INNER JOIN doc AS r ON c.r_id = r.id;
+    INNER JOIN doc AS r ON c.doc_id = r.id;
 create index idx_search on reg_search using GIN(ts);
 CREATE TABLE pseudo_doc (
-    r_id integer,
+    doc_id integer,
     pseudo TEXT NOT NULL CHECK (pseudo != '')
 );
 CREATE TABLE pseudo_chapter (
@@ -97,7 +97,7 @@ CREATE TABLE link (
     id INT NOT NULL UNIQUE,
     paragraph_num INT NOT NULL CHECK (paragraph_num >= 0),
     c_id integer,
-    r_id integer
+    doc_id integer
 );
 INSERT INTO doc ("name", "abbreviation", "title", "created_at")
 VALUES (
@@ -106,7 +106,13 @@ VALUES (
         'Заголовок первой записи',
         '2023-01-01 00:00:00'
     );
-INSERT INTO chapter ("name", "num", "order_num", "r_id", "updated_at")
+INSERT INTO chapter (
+        "name",
+        "num",
+        "order_num",
+        "doc_id",
+        "updated_at"
+    )
 VALUES (
         'Имя первой записи',
         'I',
@@ -168,7 +174,7 @@ VALUES (
         '<a id=''335050''></a>Содержимое третьего параграфа<a href=''/document/cons_doc_LAW_2875/''>таблицей N 2</a>.',
         1
     );
-INSERT INTO pseudo_doc ("r_id", "pseudo")
+INSERT INTO pseudo_doc ("doc_id", "pseudo")
 VALUES (1, 11111);
 INSERT INTO pseudo_chapter ("c_id", "pseudo")
 VALUES (3, 'a3a3a3');
