@@ -21,3 +21,6 @@ update_contracts:
 
 test_db:
 	sudo docker compose up --build test
+
+# TODO Search service
+# TODO add empty string in the title, keywords, description fields 
