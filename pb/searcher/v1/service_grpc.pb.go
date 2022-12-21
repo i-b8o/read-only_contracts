@@ -209,5 +209,5 @@ var SearcherGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Descriptiondata: "service.proto",
 }

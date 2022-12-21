@@ -101,7 +101,7 @@ var DocGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Descriptiondata: "service.proto",
 }
 
 // ChapterGRPCClient is the client API for ChapterGRPC service.
@@ -223,7 +223,7 @@ var ChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Descriptiondata: "service.proto",
 }
 
 // ParagraphGRPCClient is the client API for ParagraphGRPC service.
@@ -309,5 +309,5 @@ var ParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Descriptiondata: "service.proto",
 }
