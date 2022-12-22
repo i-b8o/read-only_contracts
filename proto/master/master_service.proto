@@ -31,7 +31,7 @@ message Doc {
     uint64 ID             = 1;
     string DocName        = 2;
     string Abbreviation   = 3;
-    string Title          = 4;
+    string Header          = 4;
 }
 
 message GetAllDocsResponse {
