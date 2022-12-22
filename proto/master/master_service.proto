@@ -29,7 +29,7 @@ service MasterParagraphGRPC{
 
 message Doc {
     uint64 ID             = 1;
-    string DocName = 2;
+    string DocName        = 2;
     string Abbreviation   = 3;
     string Title          = 4;
 }
@@ -38,12 +38,28 @@ message GetAllDocsResponse {
     repeated Doc Docs = 1;
 }
 
+message CreateDocRequest {
+    string PseudoId      = 1;
+    string DocName       = 2;
+    string Abbreviation  = 3;
+    string Header        = 4;
+    string Title         = 5;
+    string Description   = 6;
+    string Keywords      = 7;
+}
+message CreateDocResponse {
+    uint64 ID = 1;
+}
+
 message CreateChapterRequest {
 	string PseudoId     = 1;
-    uint64 DocId = 2;
+    uint64 DocId        = 2;
 	string ChapterName  = 3;
 	string ChapterNum   = 4;
 	uint32 OrderNum     = 5;
+    string Title        = 6;
+    string Description  = 7;
+    string Keywords     = 8;
 }
 
 message CreateChapterResponse{
@@ -65,17 +81,6 @@ message CreateParagraphsRequest {
     repeated Paragraph paragraphs = 1;
 }
 
-
-message CreateDocRequest {
-    string PseudoId      = 1;
-    string DocName = 2;
-    string Abbreviation   = 3;
-    string Title          = 4;
-}
-message CreateDocResponse {
-    uint64 ID = 1;
-}
-
 message UpdateLinksRequest {
     uint64 ID = 1;
 }
@@ -88,11 +93,11 @@ message DeleteDocRequest {
 }
 
 message MasterChapter {
-    uint64 ID                           = 1;
-    string Name                         = 2;
-    string Num                          = 3;
-    uint64 DocID                 = 4;
-    uint32 OrderNum                     = 5;
+    uint64 ID       = 1;
+    string Name     = 2;
+    string Num      = 3;
+    uint64 DocID    = 4;
+    uint32 OrderNum = 5;
 }
 
 

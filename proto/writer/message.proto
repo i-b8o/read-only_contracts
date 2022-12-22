@@ -5,10 +5,13 @@ package writer.v1;
 option go_package = "writer/v1;pb_writer";
 
 message WriterDoc {
-    uint64 ID = 1;
-    string Name = 2;
+    uint64 ID           = 1;
+    string Name         = 2;
     string Abbreviation = 3;
-    string Title = 4;
+    string Header       = 4;
+    string Title        = 5;
+    string Description  = 6;
+    string Keywords     = 7;
 }
 
 message GetDocsResponse {
@@ -34,7 +37,10 @@ message UpdateOneRequestMesssage {
 message CreateDocRequest {
     string Name         = 1;
     string Abbreviation = 2;
-    string Title        = 3;
+    string Header       = 3;
+    string Title        = 4;
+    string Description  = 5;
+    string Keywords     = 6;
 }
 
 message CreateDocResponse {
@@ -49,10 +55,13 @@ message CreateChapterRequest {
     uint64 ID                             = 1;
     string Name                           = 2;
     string Num                            = 3;
-    uint64 DocID                   = 4;
-    uint32 OrderNum                       = 5;
-    repeated WriterParagraph Paragraphs   = 6;
-    string UpdatedAt                      = 7;
+    string Title                          = 4;
+    string Description                    = 5;
+    string Keywords                       = 6;
+    uint64 DocID                          = 7;
+    uint32 OrderNum                       = 8;
+    repeated WriterParagraph Paragraphs   = 9;
+    string UpdatedAt                      = 10;
 }
 
 message CreateChapterResponse {

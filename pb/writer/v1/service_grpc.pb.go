@@ -173,7 +173,7 @@ var WriterDocGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "service.proto",
+	Metadata: "service.proto",
 }
 
 // WriterChapterGRPCClient is the client API for WriterChapterGRPC service.
@@ -331,7 +331,7 @@ var WriterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "service.proto",
+	Metadata: "service.proto",
 }
 
 // WriterParagraphGRPCClient is the client API for WriterParagraphGRPC service.
@@ -525,5 +525,5 @@ var WriterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "service.proto",
+	Metadata: "service.proto",
 }

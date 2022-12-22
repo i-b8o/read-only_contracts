@@ -245,7 +245,7 @@ var MasterDocGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "master_service.proto",
+	Metadata: "master_service.proto",
 }
 
 // MasterChapterGRPCClient is the client API for MasterChapterGRPC service.
@@ -367,7 +367,7 @@ var MasterChapterGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "master_service.proto",
+	Metadata: "master_service.proto",
 }
 
 // MasterParagraphGRPCClient is the client API for MasterParagraphGRPC service.
@@ -525,5 +525,5 @@ var MasterParagraphGRPC_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Descriptiondata: "master_service.proto",
+	Metadata: "master_service.proto",
 }
