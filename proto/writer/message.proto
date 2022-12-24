@@ -7,11 +7,12 @@ option go_package = "writer/v1;pb_writer";
 message WriterDoc {
     uint64 ID           = 1;
     string Name         = 2;
-    string Abbreviation = 3;
-    string Header       = 4;
-    string Title        = 5;
-    string Description  = 6;
-    string Keywords     = 7;
+    string Type         = 3;
+    string Abbreviation = 4;
+    string Header       = 5;
+    string Title        = 6;
+    string Description  = 7;
+    string Keywords     = 8;
 }
 
 message GetDocsResponse {
@@ -36,11 +37,12 @@ message UpdateOneRequestMesssage {
 
 message CreateDocRequest {
     string Name         = 1;
-    string Abbreviation = 2;
-    string Header       = 3;
-    string Title        = 4;
-    string Description  = 5;
-    string Keywords     = 6;
+    string Type         = 2;
+    string Abbreviation = 3;
+    string Header       = 4;
+    string Title        = 5;
+    string Description  = 6;
+    string Keywords     = 7;
 }
 
 message CreateDocResponse {

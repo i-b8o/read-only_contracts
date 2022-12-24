@@ -1,9 +1,11 @@
 DROP TABLE IF EXISTS public.paragraph;
 DROP TABLE IF EXISTS public.chapter;
 DROP TABLE IF EXISTS public.doc;
+
 CREATE TABLE public.doc (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
+    type TEXT NOT NULL,
     abbreviation TEXT,
     header TEXT,
     title TEXT DEFAULT ' ' NOT NULL,
