@@ -9,6 +9,7 @@ option go_package = "master/v1;pb_master";
 message Empty {}
 
 service MasterDocGRPC {
+    rpc Exist(ExistRequest) returns (ExistResponse) {};
     rpc Create(CreateDocRequest) returns (CreateDocResponse) {};
     rpc GetAll(Empty) returns (GetAllDocsResponse) {};
     rpc Delete(DeleteDocRequest) returns (Empty) {};
@@ -26,6 +27,16 @@ service MasterParagraphGRPC{
     rpc GetOne(GetOneParagraphRequest) returns (GetOneParagraphResponse) {};
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
 }
+
+
+message ExistRequest {
+    string pseudo_id = 1;
+}
+
+message ExistResponse {
+    bool exist = 1;
+}
+
 
 message Doc {
     uint64 ID             = 1;

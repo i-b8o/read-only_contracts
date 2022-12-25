@@ -22,6 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MasterDocGRPCClient interface {
+	Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error)
 	Create(ctx context.Context, in *CreateDocRequest, opts ...grpc.CallOption) (*CreateDocResponse, error)
 	GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllDocsResponse, error)
 	Delete(ctx context.Context, in *DeleteDocRequest, opts ...grpc.CallOption) (*Empty, error)
@@ -35,6 +36,15 @@ type masterDocGRPCClient struct {
 
 func NewMasterDocGRPCClient(cc grpc.ClientConnInterface) MasterDocGRPCClient {
 	return &masterDocGRPCClient{cc}
+}
+
+func (c *masterDocGRPCClient) Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error) {
+	out := new(ExistResponse)
+	err := c.cc.Invoke(ctx, "/master.v1.MasterDocGRPC/Exist", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *masterDocGRPCClient) Create(ctx context.Context, in *CreateDocRequest, opts ...grpc.CallOption) (*CreateDocResponse, error) {
@@ -86,6 +96,7 @@ func (c *masterDocGRPCClient) GetAbsents(ctx context.Context, in *Empty, opts ..
 // All implementations must embed UnimplementedMasterDocGRPCServer
 // for forward compatibility
 type MasterDocGRPCServer interface {
+	Exist(context.Context, *ExistRequest) (*ExistResponse, error)
 	Create(context.Context, *CreateDocRequest) (*CreateDocResponse, error)
 	GetAll(context.Context, *Empty) (*GetAllDocsResponse, error)
 	Delete(context.Context, *DeleteDocRequest) (*Empty, error)
@@ -98,6 +109,9 @@ type MasterDocGRPCServer interface {
 type UnimplementedMasterDocGRPCServer struct {
 }
 
+func (UnimplementedMasterDocGRPCServer) Exist(context.Context, *ExistRequest) (*ExistResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Exist not implemented")
+}
 func (UnimplementedMasterDocGRPCServer) Create(context.Context, *CreateDocRequest) (*CreateDocResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
@@ -124,6 +138,24 @@ type UnsafeMasterDocGRPCServer interface {
 
 func RegisterMasterDocGRPCServer(s grpc.ServiceRegistrar, srv MasterDocGRPCServer) {
 	s.RegisterService(&MasterDocGRPC_ServiceDesc, srv)
+}
+
+func _MasterDocGRPC_Exist_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExistRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MasterDocGRPCServer).Exist(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/master.v1.MasterDocGRPC/Exist",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MasterDocGRPCServer).Exist(ctx, req.(*ExistRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _MasterDocGRPC_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -223,6 +255,10 @@ var MasterDocGRPC_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "master.v1.MasterDocGRPC",
 	HandlerType: (*MasterDocGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Exist",
+			Handler:    _MasterDocGRPC_Exist_Handler,
+		},
 		{
 			MethodName: "Create",
 			Handler:    _MasterDocGRPC_Create_Handler,
