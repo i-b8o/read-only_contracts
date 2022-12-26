@@ -6,6 +6,7 @@ CREATE TABLE public.doc (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
     type TEXT NOT NULL,
+    subtype TEXT NOT NULL,
     rev TEXT,
     title TEXT DEFAULT ' ' NOT NULL,
     description TEXT DEFAULT ' ' NOT NULL,
