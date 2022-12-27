@@ -17,6 +17,7 @@ CREATE INDEX subtype_type_idx ON public.subtype (type_id);
 CREATE TABLE public.doc (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
+    header TEXT NOT NULL CHECK (NAME != '') UNIQUE,
     subtype_id integer REFERENCES subtype,
     rev TEXT,
     title TEXT DEFAULT ' ' NOT NULL,
