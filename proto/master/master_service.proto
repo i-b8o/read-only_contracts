@@ -41,7 +41,6 @@ message ExistResponse {
 message Doc {
     uint64 ID             = 1;
     string DocName        = 2;
-    string Abbreviation   = 3;
 }
 
 message GetAllDocsResponse {
@@ -51,12 +50,13 @@ message GetAllDocsResponse {
 message CreateDocRequest {
     string PseudoId      = 1;
     string DocName       = 2;
-    string Type          = 3;
-    string SubType       = 4;
-    string Rev           = 5;
-    string Title         = 6;
-    string Description   = 7;
-    string Keywords      = 8;
+    string Header        = 3;
+    string Type          = 4;
+    string SubType       = 5;
+    string Rev           = 6;
+    string Title         = 7;
+    string Description   = 8;
+    string Keywords      = 9;
 }
 message CreateDocResponse {
     uint64 ID = 1;
