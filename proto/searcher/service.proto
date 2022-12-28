@@ -8,7 +8,7 @@ import "message.proto";
 
 service SearcherGRPC {
     rpc General(SearchRequest) returns (SearchResponseMessage) {};
-    rpc Doc(SearchRequest) returns (SearchResponseMessage) {};
-    rpc Chapter(SearchRequest) returns (SearchResponseMessage) {};
-    rpc Pargaraph(SearchRequest) returns (SearchResponseMessage) {};
+    rpc Docs(SearchRequest) returns (SearchResponseMessage) {};
+    rpc Chapters(SearchRequest) returns (SearchResponseMessage) {};
+    rpc Pargaraphs(SearchRequest) returns (SearchResponseMessage) {};
 }
