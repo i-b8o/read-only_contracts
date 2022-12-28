@@ -23,5 +23,3 @@ test_db:
 	sudo docker compose up --build test
 
 # TODO Search service
-# TODO add empty string in the title,  description fields 
-# TODO Generate the title, description fields 
