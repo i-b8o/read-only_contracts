@@ -18,194 +18,194 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// SearchGRPCClient is the client API for SearchGRPC service.
+// SearcherGRPCClient is the client API for SearcherGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SearchGRPCClient interface {
+type SearcherGRPCClient interface {
 	General(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
 	Doc(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
 	Chapter(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
 	Pargaraph(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error)
 }
 
-type searchGRPCClient struct {
+type searcherGRPCClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSearchGRPCClient(cc grpc.ClientConnInterface) SearchGRPCClient {
-	return &searchGRPCClient{cc}
+func NewSearcherGRPCClient(cc grpc.ClientConnInterface) SearcherGRPCClient {
+	return &searcherGRPCClient{cc}
 }
 
-func (c *searchGRPCClient) General(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+func (c *searcherGRPCClient) General(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/searcher.v1.SearchGRPC/General", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/searcher.v1.SearcherGRPC/General", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *searchGRPCClient) Doc(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+func (c *searcherGRPCClient) Doc(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/searcher.v1.SearchGRPC/Doc", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/searcher.v1.SearcherGRPC/Doc", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *searchGRPCClient) Chapter(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+func (c *searcherGRPCClient) Chapter(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/searcher.v1.SearchGRPC/Chapter", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/searcher.v1.SearcherGRPC/Chapter", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *searchGRPCClient) Pargaraph(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
+func (c *searcherGRPCClient) Pargaraph(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponseMessage, error) {
 	out := new(SearchResponseMessage)
-	err := c.cc.Invoke(ctx, "/searcher.v1.SearchGRPC/Pargaraph", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/searcher.v1.SearcherGRPC/Pargaraph", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// SearchGRPCServer is the server API for SearchGRPC service.
-// All implementations must embed UnimplementedSearchGRPCServer
+// SearcherGRPCServer is the server API for SearcherGRPC service.
+// All implementations must embed UnimplementedSearcherGRPCServer
 // for forward compatibility
-type SearchGRPCServer interface {
+type SearcherGRPCServer interface {
 	General(context.Context, *SearchRequest) (*SearchResponseMessage, error)
 	Doc(context.Context, *SearchRequest) (*SearchResponseMessage, error)
 	Chapter(context.Context, *SearchRequest) (*SearchResponseMessage, error)
 	Pargaraph(context.Context, *SearchRequest) (*SearchResponseMessage, error)
-	mustEmbedUnimplementedSearchGRPCServer()
+	mustEmbedUnimplementedSearcherGRPCServer()
 }
 
-// UnimplementedSearchGRPCServer must be embedded to have forward compatible implementations.
-type UnimplementedSearchGRPCServer struct {
+// UnimplementedSearcherGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedSearcherGRPCServer struct {
 }
 
-func (UnimplementedSearchGRPCServer) General(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
+func (UnimplementedSearcherGRPCServer) General(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method General not implemented")
 }
-func (UnimplementedSearchGRPCServer) Doc(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
+func (UnimplementedSearcherGRPCServer) Doc(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Doc not implemented")
 }
-func (UnimplementedSearchGRPCServer) Chapter(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
+func (UnimplementedSearcherGRPCServer) Chapter(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Chapter not implemented")
 }
-func (UnimplementedSearchGRPCServer) Pargaraph(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
+func (UnimplementedSearcherGRPCServer) Pargaraph(context.Context, *SearchRequest) (*SearchResponseMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Pargaraph not implemented")
 }
-func (UnimplementedSearchGRPCServer) mustEmbedUnimplementedSearchGRPCServer() {}
+func (UnimplementedSearcherGRPCServer) mustEmbedUnimplementedSearcherGRPCServer() {}
 
-// UnsafeSearchGRPCServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to SearchGRPCServer will
+// UnsafeSearcherGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SearcherGRPCServer will
 // result in compilation errors.
-type UnsafeSearchGRPCServer interface {
-	mustEmbedUnimplementedSearchGRPCServer()
+type UnsafeSearcherGRPCServer interface {
+	mustEmbedUnimplementedSearcherGRPCServer()
 }
 
-func RegisterSearchGRPCServer(s grpc.ServiceRegistrar, srv SearchGRPCServer) {
-	s.RegisterService(&SearchGRPC_ServiceDesc, srv)
+func RegisterSearcherGRPCServer(s grpc.ServiceRegistrar, srv SearcherGRPCServer) {
+	s.RegisterService(&SearcherGRPC_ServiceDesc, srv)
 }
 
-func _SearchGRPC_General_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearcherGRPC_General_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SearchGRPCServer).General(ctx, in)
+		return srv.(SearcherGRPCServer).General(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/searcher.v1.SearchGRPC/General",
+		FullMethod: "/searcher.v1.SearcherGRPC/General",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SearchGRPCServer).General(ctx, req.(*SearchRequest))
+		return srv.(SearcherGRPCServer).General(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SearchGRPC_Doc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearcherGRPC_Doc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SearchGRPCServer).Doc(ctx, in)
+		return srv.(SearcherGRPCServer).Doc(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/searcher.v1.SearchGRPC/Doc",
+		FullMethod: "/searcher.v1.SearcherGRPC/Doc",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SearchGRPCServer).Doc(ctx, req.(*SearchRequest))
+		return srv.(SearcherGRPCServer).Doc(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SearchGRPC_Chapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearcherGRPC_Chapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SearchGRPCServer).Chapter(ctx, in)
+		return srv.(SearcherGRPCServer).Chapter(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/searcher.v1.SearchGRPC/Chapter",
+		FullMethod: "/searcher.v1.SearcherGRPC/Chapter",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SearchGRPCServer).Chapter(ctx, req.(*SearchRequest))
+		return srv.(SearcherGRPCServer).Chapter(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SearchGRPC_Pargaraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _SearcherGRPC_Pargaraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SearchGRPCServer).Pargaraph(ctx, in)
+		return srv.(SearcherGRPCServer).Pargaraph(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/searcher.v1.SearchGRPC/Pargaraph",
+		FullMethod: "/searcher.v1.SearcherGRPC/Pargaraph",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SearchGRPCServer).Pargaraph(ctx, req.(*SearchRequest))
+		return srv.(SearcherGRPCServer).Pargaraph(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// SearchGRPC_ServiceDesc is the grpc.ServiceDesc for SearchGRPC service.
+// SearcherGRPC_ServiceDesc is the grpc.ServiceDesc for SearcherGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var SearchGRPC_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "searcher.v1.SearchGRPC",
-	HandlerType: (*SearchGRPCServer)(nil),
+var SearcherGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "searcher.v1.SearcherGRPC",
+	HandlerType: (*SearcherGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "General",
-			Handler:    _SearchGRPC_General_Handler,
+			Handler:    _SearcherGRPC_General_Handler,
 		},
 		{
 			MethodName: "Doc",
-			Handler:    _SearchGRPC_Doc_Handler,
+			Handler:    _SearcherGRPC_Doc_Handler,
 		},
 		{
 			MethodName: "Chapter",
-			Handler:    _SearchGRPC_Chapter_Handler,
+			Handler:    _SearcherGRPC_Chapter_Handler,
 		},
 		{
 			MethodName: "Pargaraph",
-			Handler:    _SearchGRPC_Pargaraph_Handler,
+			Handler:    _SearcherGRPC_Pargaraph_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
