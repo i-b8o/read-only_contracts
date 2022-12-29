@@ -8,12 +8,10 @@ message WriterDoc {
     uint64 ID           = 1;
     string Name         = 2;
     string Header       = 3;
-    string Type         = 4;
-    string SubType      = 5;
-    string Rev          = 6;
-    string Title        = 7;
-    string Description  = 8;
-    string Keywords     = 9;
+    string Rev          = 4;
+    string Title        = 5;
+    string Description  = 6;
+    string Keywords     = 7;
 }
 
 message GetDocsResponse {
