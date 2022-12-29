@@ -37,7 +37,6 @@ message GetOneChapterResponse {
     uint64 DocID                        = 4;
     uint32 OrderNum                     = 5;
     repeated ReaderParagraph Paragraphs = 6;
-    google.protobuf.Timestamp UpdatedAt = 7;
 }
 
 message ReaderChapter {
