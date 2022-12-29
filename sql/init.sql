@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS public.paragraph;
 DROP TABLE IF EXISTS public.chapter;
+DROP TABLE IF EXISTS public.subtype_doc;
 DROP TABLE IF EXISTS public.doc;
 DROP TABLE IF EXISTS public.subtype;
 DROP TABLE IF EXISTS public.type;
