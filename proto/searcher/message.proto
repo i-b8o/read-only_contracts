@@ -6,8 +6,8 @@ option go_package = "searcher/v1;pb_searcher";
 
 message SearchRequest {
     string SearchQuery = 1;
-    string Limit       = 2;
-    string Offset      = 3;
+    uint32 Limit       = 2;
+    uint32 Offset      = 3;
 }
 
 message SearchResponse {
