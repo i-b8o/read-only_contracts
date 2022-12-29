@@ -43,8 +43,7 @@ CREATE TABLE public.chapter (
 );
 CREATE INDEX chapter_doc_idx ON public.chapter (doc_id);
 CREATE TABLE public.paragraph (
-    id SERIAL PRIMARY KEY,
-    paragraph_id INT NOT NULL CHECK (paragraph_id >= 0),
+    id integer CONSTRAINT paragraph_pk PRIMARY KEY,
     order_num INT NOT NULL CHECK (order_num >= 0),
     is_table BOOLEAN NOT NULL,
     is_nft BOOLEAN NOT NULL,
