@@ -17,7 +17,6 @@ CREATE TABLE public.doc (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (NAME != '') UNIQUE,
     header TEXT NOT NULL CHECK (NAME != ''),
-    subtype_id integer REFERENCES subtype,
     rev TEXT,
     title TEXT DEFAULT ' ' NOT NULL,
     description TEXT DEFAULT ' ' NOT NULL,
@@ -25,7 +24,12 @@ CREATE TABLE public.doc (
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-CREATE INDEX doc_subtype_idx ON public.doc (subtype_id);
+CREATE TABLE public.subtype_doc (
+    subtype_id integer REFERENCES subtype,
+    doc_id integer REFERENCES doc
+);
+CREATE INDEX subtype_doc_subtype_idx ON public.subtype_doc (subtype_id);
+CREATE INDEX subtype_doc_doc_idx ON public.subtype_doc (doc_id);
 CREATE TABLE public.chapter (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL CHECK (name != ''),
@@ -54,6 +58,7 @@ CREATE USER reader WITH ENCRYPTED PASSWORD '031501';
 GRANT CONNECT ON DATABASE main TO reader;
 GRANT SELECT ON TABLE public.type TO reader;
 GRANT SELECT ON TABLE public.subtype TO reader;
+GRANT SELECT ON TABLE public.subtype_doc TO reader;
 GRANT SELECT ON TABLE public.doc TO reader;
 GRANT SELECT ON TABLE public.chapter TO reader;
 GRANT SELECT ON TABLE public.paragraph TO reader;
@@ -62,6 +67,7 @@ GRANT CONNECT ON DATABASE main TO writer;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO writer;
 GRANT ALL PRIVILEGES ON TABLE public.type TO writer;
 GRANT ALL PRIVILEGES ON TABLE public.subtype TO writer;
+GRANT ALL PRIVILEGES ON TABLE public.subtype_doc TO writer;
 GRANT ALL PRIVILEGES ON TABLE public.doc TO writer;
 GRANT ALL PRIVILEGES ON TABLE public.chapter TO writer;
 GRANT ALL PRIVILEGES ON TABLE public.paragraph TO writer;
