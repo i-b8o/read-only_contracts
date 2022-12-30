@@ -130,6 +130,7 @@ message MasterAbsent {
     string Pseudo       = 2;
     bool Done           = 3;
     uint64 Paragraph_id = 4;
+    uint64 Chapter_id   = 5;
 }
 
 message GetAbsentsResponse {
