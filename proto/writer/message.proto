@@ -109,6 +109,7 @@ message GetDocIdByChapterIdResponse {
 
 message GetOneParagraphRequest {
     uint64 ID = 1;
+    uint64 ChapterID = 2;
 }
 
 message GetOneParagraphResponse {
