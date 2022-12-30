@@ -137,7 +137,8 @@ message GetAbsentsResponse {
 }
 
 message GetOneParagraphRequest {
-    uint64 ID = 1;
+    uint64 ID        = 1;
+    uint64 ChapterID = 2;
 }
 
 message GetOneParagraphResponse {

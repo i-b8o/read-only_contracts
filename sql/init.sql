@@ -44,14 +44,16 @@ CREATE TABLE public.chapter (
 );
 CREATE INDEX chapter_doc_idx ON public.chapter (doc_id);
 CREATE TABLE public.paragraph (
-    id integer CONSTRAINT paragraph_pk PRIMARY KEY,
+    paragraph_id SERIAL PRIMARY KEY,
+    id INT NOT NULL CHECK (paragraph_id >= 0),
     order_num INT NOT NULL CHECK (order_num >= 0),
     is_table BOOLEAN NOT NULL,
     is_nft BOOLEAN NOT NULL,
     has_links BOOLEAN NOT NULL,
     class TEXT,
     content TEXT NOT NULL,
-    c_id integer REFERENCES chapter
+    c_id integer REFERENCES chapter,
+    UNIQUE (id, c_id)
 );
 CREATE INDEX paragraph_chaptedoc_idx ON public.paragraph (c_id);
 CREATE USER reader WITH ENCRYPTED PASSWORD '031501';
