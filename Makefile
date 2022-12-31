@@ -22,4 +22,5 @@ update_contracts:
 test_db:
 	sudo docker compose up --build test
 
+# TODO master service or parser service chapterId did not appear in the database
 # TODO Search service
