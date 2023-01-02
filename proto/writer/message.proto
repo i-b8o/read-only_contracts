@@ -75,8 +75,9 @@ message CreateAllParagraphsRequest {
 }
 
 message UpdateOneParagraphRequest {
-    uint64 ID      = 1;
-    string Content = 2;
+    uint64 ID             = 1;
+    uint64 ChapterID      = 2;
+    string Content        = 3;
 }
 
 message DeleteParagraphsForChapterRequest {
