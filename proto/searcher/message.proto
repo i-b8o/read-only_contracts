@@ -8,6 +8,12 @@ message SearchRequest {
     string SearchQuery = 1;
     uint32 Limit       = 2;
     uint32 Offset      = 3;
+    enum PeopleName {
+        General = 100;
+        Docs = 101;
+        Chapters = 102;
+        Pargaraphs = 103;
+    }
 }
 
 message SearchResponse {

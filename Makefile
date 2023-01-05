@@ -23,3 +23,4 @@ test_db:
 	sudo docker compose up --build test
 
 # TODO Search service
+# TODO for registered (or not only) users feauter to save chain of paragraphs/chapters
