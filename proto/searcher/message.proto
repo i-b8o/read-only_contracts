@@ -9,9 +9,9 @@ message SearchRequest {
     uint32 Limit       = 2;
     uint32 Offset      = 3;
     enum Subject {
-        General = 0;
-        Docs = 1;
-        Chapters = 2;
+        General    = 0;
+        Docs       = 1;
+        Chapters   = 2;
         Pargaraphs = 3;
     }
 }
