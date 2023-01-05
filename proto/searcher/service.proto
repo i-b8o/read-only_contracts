@@ -7,8 +7,5 @@ option go_package = "searcher/v1;pb_searcher";
 import "message.proto";
 
 service SearcherGRPC {
-    rpc Docs(SearchRequest) returns (SearchResponseMessage) {};
-    rpc Chapters(SearchRequest) returns (SearchResponseMessage) {};
-    rpc Pargaraphs(SearchRequest) returns (SearchResponseMessage) {};
-    rpc General(SearchRequest) returns (SearchResponseMessage) {};
+    rpc Search(SearchRequest) returns (SearchResponseMessage) {};
 }
