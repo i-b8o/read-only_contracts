@@ -8,6 +8,7 @@ message SearchRequest {
     string SearchQuery = 1;
     uint32 Limit       = 2;
     uint32 Offset      = 3;
+    Subject subject    = 4;
     enum Subject {
         General    = 0;
         Docs       = 1;
