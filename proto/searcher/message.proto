@@ -18,14 +18,14 @@ message SearchRequest {
 }
 
 message SearchResponse {
-    string DocID             = 1;
+    uint64 DocID             = 1;
     string DocName           = 2;
-    string ChapterID         = 3;
+    uint64 ChapterID         = 3;
     string ChapterName       = 4;
     string UpdatedAt         = 5;
-    string ParagraphID       = 6;
+    uint64 ParagraphID       = 6;
     string Text              = 7;
-    string Count             = 8;
+    uint32 Count             = 8;
 }
 
 message SearchResponseMessage {
