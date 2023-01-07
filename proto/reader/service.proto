@@ -4,7 +4,9 @@ package reader.v1;
 
 option go_package = "reader/v1;pb_reader";
 import "google/protobuf/timestamp.proto";
+
 message Empty {}
+
 service TypeGRPC {
     rpc GetAll(Empty) returns (GetAllTypesResponse) {};
 }
@@ -26,18 +28,26 @@ service ParagraphGRPC {
     rpc GetAll(GetAllParagraphsByChapterIdRequest) returns (GetAllParagraphsByChapterIdResponse) {};
 }
 
-message GetAllTypesResponse {
+message TypeResponse {
     uint64 ID = 1;
     string Name = 2;
+}
+
+message GetAllTypesResponse {
+    repeated TypeResponse Types = 1;
 }
 
 message GetAllSubtypesRequest {
     uint64 ID = 1;
 }
 
-message GetAllSubtypesResponse {
+message SubtypeResponse {
     uint64 ID = 1;
     string Name = 2;
+}
+
+message GetAllSubtypesResponse {
+    repeated SubtypeResponse Subtypes = 1;
 }
 
 message ReaderParagraph {
