@@ -3,8 +3,15 @@ syntax = "proto3";
 package reader.v1;
 
 option go_package = "reader/v1;pb_reader";
+import "google/protobuf/timestamp.proto";
+message Empty {}
+service TypeGRPC {
+    rpc GetAll(Empty) returns (GetAllTypesResponse) {};
+}
 
-import "message.proto";
+service SubGRPC {
+    rpc GetAll(GetAllSubtypesRequest) returns (GetAllSubtypesResponse) {};
+}
 
 service DocGRPC {
     rpc GetOne(GetOneDocRequest) returns (GetOneDocResponse) {};
@@ -17,4 +24,77 @@ service ChapterGRPC {
 
 service ParagraphGRPC {
     rpc GetAll(GetAllParagraphsByChapterIdRequest) returns (GetAllParagraphsByChapterIdResponse) {};
+}
+
+message GetAllTypesResponse {
+    uint64 ID = 1;
+    string Name = 2;
+}
+
+message GetAllSubtypesRequest {
+    uint64 ID = 1;
+}
+
+message GetAllSubtypesResponse {
+    uint64 ID = 1;
+    string Name = 2;
+}
+
+message ReaderParagraph {
+    uint64 ID        = 1;
+    uint32 Num       = 2;
+    bool HasLinks    = 3;
+    bool IsTable     = 4;
+    bool IsNFT       = 5;
+    string Class     = 6;
+    string Content   = 7;
+    uint64 ChapterID = 8;
+}
+
+message GetOneDocRequest {
+    uint64 ID = 1;
+}
+
+message GetOneDocResponse {
+    string Name         = 1;
+    string Abbreviation = 2;
+    string Title        = 3;
+}
+
+message GetOneChapterRequest {
+    uint64 ID = 1;
+}
+
+message GetOneChapterResponse {
+    uint64 ID                           = 1;
+    string Name                         = 2;
+    string Num                          = 3;
+    uint64 DocID                        = 4;
+    uint32 OrderNum                     = 5;
+    repeated ReaderParagraph Paragraphs = 6;
+}
+
+message ReaderChapter {
+    uint64 ID                           = 1;
+    string Name                         = 2;
+    string Num                          = 3;
+    uint64 DocID                 = 4;
+    uint32 OrderNum                     = 5;
+    google.protobuf.Timestamp UpdatedAt = 6;
+}
+
+message GetAllChaptersByDocIdRequest {
+    uint64 ID = 1;
+}
+
+message GetAllChaptersByDocIdResponse {
+    repeated ReaderChapter Chapters = 1;
+}
+
+message GetAllParagraphsByChapterIdRequest {
+    uint64 ID = 1;
+}
+
+message GetAllParagraphsByChapterIdResponse {
+    repeated ReaderParagraph Paragraphs = 1;
 }

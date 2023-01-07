@@ -28,7 +28,6 @@ service MasterParagraphGRPC{
     rpc Update(UpdateParagraphRequest) returns (Empty) {};
 }
 
-
 message ExistRequest {
     string pseudo_id = 1;
 }
@@ -36,7 +35,6 @@ message ExistRequest {
 message ExistResponse {
     bool exist = 1;
 }
-
 
 message Doc {
     uint64 ID             = 1;

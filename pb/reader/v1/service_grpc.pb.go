@@ -18,6 +18,178 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
+// TypeGRPCClient is the client API for TypeGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type TypeGRPCClient interface {
+	GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllTypesResponse, error)
+}
+
+type typeGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewTypeGRPCClient(cc grpc.ClientConnInterface) TypeGRPCClient {
+	return &typeGRPCClient{cc}
+}
+
+func (c *typeGRPCClient) GetAll(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAllTypesResponse, error) {
+	out := new(GetAllTypesResponse)
+	err := c.cc.Invoke(ctx, "/reader.v1.TypeGRPC/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// TypeGRPCServer is the server API for TypeGRPC service.
+// All implementations must embed UnimplementedTypeGRPCServer
+// for forward compatibility
+type TypeGRPCServer interface {
+	GetAll(context.Context, *Empty) (*GetAllTypesResponse, error)
+	mustEmbedUnimplementedTypeGRPCServer()
+}
+
+// UnimplementedTypeGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedTypeGRPCServer struct {
+}
+
+func (UnimplementedTypeGRPCServer) GetAll(context.Context, *Empty) (*GetAllTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedTypeGRPCServer) mustEmbedUnimplementedTypeGRPCServer() {}
+
+// UnsafeTypeGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to TypeGRPCServer will
+// result in compilation errors.
+type UnsafeTypeGRPCServer interface {
+	mustEmbedUnimplementedTypeGRPCServer()
+}
+
+func RegisterTypeGRPCServer(s grpc.ServiceRegistrar, srv TypeGRPCServer) {
+	s.RegisterService(&TypeGRPC_ServiceDesc, srv)
+}
+
+func _TypeGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TypeGRPCServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/reader.v1.TypeGRPC/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TypeGRPCServer).GetAll(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// TypeGRPC_ServiceDesc is the grpc.ServiceDesc for TypeGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var TypeGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "reader.v1.TypeGRPC",
+	HandlerType: (*TypeGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetAll",
+			Handler:    _TypeGRPC_GetAll_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+// SubGRPCClient is the client API for SubGRPC service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SubGRPCClient interface {
+	GetAll(ctx context.Context, in *GetAllSubtypesRequest, opts ...grpc.CallOption) (*GetAllSubtypesResponse, error)
+}
+
+type subGRPCClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSubGRPCClient(cc grpc.ClientConnInterface) SubGRPCClient {
+	return &subGRPCClient{cc}
+}
+
+func (c *subGRPCClient) GetAll(ctx context.Context, in *GetAllSubtypesRequest, opts ...grpc.CallOption) (*GetAllSubtypesResponse, error) {
+	out := new(GetAllSubtypesResponse)
+	err := c.cc.Invoke(ctx, "/reader.v1.SubGRPC/GetAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SubGRPCServer is the server API for SubGRPC service.
+// All implementations must embed UnimplementedSubGRPCServer
+// for forward compatibility
+type SubGRPCServer interface {
+	GetAll(context.Context, *GetAllSubtypesRequest) (*GetAllSubtypesResponse, error)
+	mustEmbedUnimplementedSubGRPCServer()
+}
+
+// UnimplementedSubGRPCServer must be embedded to have forward compatible implementations.
+type UnimplementedSubGRPCServer struct {
+}
+
+func (UnimplementedSubGRPCServer) GetAll(context.Context, *GetAllSubtypesRequest) (*GetAllSubtypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedSubGRPCServer) mustEmbedUnimplementedSubGRPCServer() {}
+
+// UnsafeSubGRPCServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SubGRPCServer will
+// result in compilation errors.
+type UnsafeSubGRPCServer interface {
+	mustEmbedUnimplementedSubGRPCServer()
+}
+
+func RegisterSubGRPCServer(s grpc.ServiceRegistrar, srv SubGRPCServer) {
+	s.RegisterService(&SubGRPC_ServiceDesc, srv)
+}
+
+func _SubGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllSubtypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubGRPCServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/reader.v1.SubGRPC/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubGRPCServer).GetAll(ctx, req.(*GetAllSubtypesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// SubGRPC_ServiceDesc is the grpc.ServiceDesc for SubGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SubGRPC_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "reader.v1.SubGRPC",
+	HandlerType: (*SubGRPCServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetAll",
+			Handler:    _SubGRPC_GetAll_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
 // DocGRPCClient is the client API for DocGRPC service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.

@@ -9,6 +9,7 @@ gen:
 	protoc -I=proto/searcher --go_out=pb/ proto/searcher/*.proto
 	protoc --go-grpc_out=pb/ proto/searcher/*.proto -I=proto/searcher
 	protoc --dart_out=grpc:../read_only_dashboard/lib/pb/ -Iproto proto/master/*.proto
+	protoc --dart_out=grpc:../read_only/lib/pb/ -Iproto proto/reader/*.proto
 
 git:
 	git add .
@@ -22,5 +23,5 @@ update_contracts:
 test_db:
 	sudo docker compose up --build test
 
-# TODO Search service
+# TODO Mob styling
 # TODO for registered (or not only) users feauter to save chain of paragraphs/chapters
