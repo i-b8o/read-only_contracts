@@ -109,6 +109,7 @@ var TypeGRPC_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SubGRPCClient interface {
 	GetAll(ctx context.Context, in *GetAllSubtypesRequest, opts ...grpc.CallOption) (*GetAllSubtypesResponse, error)
+	GetDocs(ctx context.Context, in *GetDocsRequest, opts ...grpc.CallOption) (*GetDocsResponse, error)
 }
 
 type subGRPCClient struct {
@@ -128,11 +129,21 @@ func (c *subGRPCClient) GetAll(ctx context.Context, in *GetAllSubtypesRequest, o
 	return out, nil
 }
 
+func (c *subGRPCClient) GetDocs(ctx context.Context, in *GetDocsRequest, opts ...grpc.CallOption) (*GetDocsResponse, error) {
+	out := new(GetDocsResponse)
+	err := c.cc.Invoke(ctx, "/reader.v1.SubGRPC/GetDocs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubGRPCServer is the server API for SubGRPC service.
 // All implementations must embed UnimplementedSubGRPCServer
 // for forward compatibility
 type SubGRPCServer interface {
 	GetAll(context.Context, *GetAllSubtypesRequest) (*GetAllSubtypesResponse, error)
+	GetDocs(context.Context, *GetDocsRequest) (*GetDocsResponse, error)
 	mustEmbedUnimplementedSubGRPCServer()
 }
 
@@ -142,6 +153,9 @@ type UnimplementedSubGRPCServer struct {
 
 func (UnimplementedSubGRPCServer) GetAll(context.Context, *GetAllSubtypesRequest) (*GetAllSubtypesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+}
+func (UnimplementedSubGRPCServer) GetDocs(context.Context, *GetDocsRequest) (*GetDocsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDocs not implemented")
 }
 func (UnimplementedSubGRPCServer) mustEmbedUnimplementedSubGRPCServer() {}
 
@@ -174,6 +188,24 @@ func _SubGRPC_GetAll_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubGRPC_GetDocs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDocsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubGRPCServer).GetDocs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/reader.v1.SubGRPC/GetDocs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubGRPCServer).GetDocs(ctx, req.(*GetDocsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SubGRPC_ServiceDesc is the grpc.ServiceDesc for SubGRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -184,6 +216,10 @@ var SubGRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAll",
 			Handler:    _SubGRPC_GetAll_Handler,
+		},
+		{
+			MethodName: "GetDocs",
+			Handler:    _SubGRPC_GetDocs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

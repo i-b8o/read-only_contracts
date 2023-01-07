@@ -13,6 +13,7 @@ service TypeGRPC {
 
 service SubGRPC {
     rpc GetAll(GetAllSubtypesRequest) returns (GetAllSubtypesResponse) {};
+    rpc GetDocs(GetDocsRequest) returns (GetDocsResponse) {};
 }
 
 service DocGRPC {
@@ -49,6 +50,20 @@ message SubtypeResponse {
 message GetAllSubtypesResponse {
     repeated SubtypeResponse Subtypes = 1;
 }
+
+message GetDocsRequest {
+    uint64 ID = 1;
+}
+
+message Doc {
+    uint64 ID   = 1;
+    string Name = 2;
+}
+
+message GetDocsResponse {
+    repeated Doc Docs = 1;
+}
+
 
 message ReaderParagraph {
     uint64 ID        = 1;
