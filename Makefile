@@ -9,7 +9,7 @@ gen:
 	protoc -I=proto/searcher --go_out=pb/ proto/searcher/*.proto
 	protoc --go-grpc_out=pb/ proto/searcher/*.proto -I=proto/searcher
 	protoc --dart_out=grpc:../read_only_dashboard/lib/pb/ -Iproto proto/master/*.proto
-	protoc --dart_out=grpc:../read_only/lib/pb/ -Iproto proto/reader/*.proto
+	protoc --dart_out=grpc:../read_only/lib/library/grpc_client/pb/ -Iproto proto/reader/*.proto
 
 git:
 	git add .
