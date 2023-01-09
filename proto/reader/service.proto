@@ -89,9 +89,7 @@ message Chapter {
 
 message GetOneDocResponse {
     string Name               = 1;
-    string Abbreviation       = 2;
-    string Title              = 3;
-    repeated Chapter chapters = 4;
+    repeated Chapter chapters = 2;
 }
 
 message GetOneChapterRequest {
