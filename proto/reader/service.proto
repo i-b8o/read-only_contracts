@@ -80,10 +80,17 @@ message GetOneDocRequest {
     uint64 ID = 1;
 }
 
+message Chapter {
+    uint64 ID       = 1;
+    string Name     = 2;
+    uint32 OrderNum = 3;
+}
+
 message GetOneDocResponse {
-    string Name         = 1;
-    string Abbreviation = 2;
-    string Title        = 3;
+    string Name               = 1;
+    string Abbreviation       = 2;
+    string Title              = 3;
+    repeated Chapter chapters = 4;
 }
 
 message GetOneChapterRequest {
