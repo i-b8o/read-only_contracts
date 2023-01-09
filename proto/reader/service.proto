@@ -84,6 +84,7 @@ message Chapter {
     uint64 ID       = 1;
     string Name     = 2;
     uint32 OrderNum = 3;
+    string Num      = 4;
 }
 
 message GetOneDocResponse {
